@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac24h/Data/ShareBill/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/mac24h/Desktop/ShareBill/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
                     "source": "/Users/mac24h/.gradle/caches/transforms-2/files-2.1/c1c88978b26ac2a01a46c90cfa21bff3/res/values-v16/values-v16.xml",

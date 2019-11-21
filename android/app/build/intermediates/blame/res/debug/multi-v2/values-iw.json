@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mac24h/Data/ShareBill/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "/Users/mac24h/Desktop/ShareBill/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/mac24h/.gradle/caches/transforms-2/files-2.1/1979308ebb77d17181c5c1fb44c5c2ce/res/values-iw/values-iw.xml",
