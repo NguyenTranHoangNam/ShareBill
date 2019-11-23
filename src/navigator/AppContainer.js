@@ -7,9 +7,7 @@ import { ListGroup } from "../ListGroup/ListGroup";
 
 const AppNavigator = createStackNavigator(
   {
-    ListGroup: {
-      screen: ListGroup
-    },
+
     Splash: {
       screen: Splash
     },
@@ -19,7 +17,9 @@ const AppNavigator = createStackNavigator(
     Login: {
       screen: Login
     },
-    
+    ListGroup: {
+      screen: ListGroup
+    },
   },
   {
     headerMode: "none"

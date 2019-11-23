@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { colors } from "../utils/color";
 import CustomButton from "../components/button/CustomButton";
+import IconIonicons from 'react-native-vector-icons/Ionicons'
 const { width, height } = Dimensions.get("screen");
 export function Register(props) {
 
@@ -23,6 +24,7 @@ export function Register(props) {
         imageStyle={{ flex: 1 }}
         source={require("../assets/images/background.png")}
       >
+        <IconIonicons style={{width,marginLeft:15}} name={'md-arrow-back'} size={20} color={colors.white} />
         <Text style={styles.title}>ĐĂNG KÝ</Text>
         <TextInput
           style={styles.inputStyles}
