@@ -9,6 +9,7 @@ import {
   Image,
   FlatList
 } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { colors } from "../utils/color";
 import CustomButton from "../components/button/CustomButton";
 import { defineValue } from "../utils/defineValue";
@@ -33,6 +34,7 @@ export function ListGroup(props) {
           style={styles.avatar}
           source={require("../assets/images/background.png")}
         />
+        <Icon name="rocket" size={30} color="#900" />
         <View>
           <Text style={styles.groupName}>
             {item.groupName}
