@@ -9,7 +9,9 @@ import {
   Image,
   FlatList
 } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome'
+import IconAntDesign from 'react-native-vector-icons/AntDesign'
+import IconFeather from 'react-native-vector-icons/Feather'
+import IconIonicons from 'react-native-vector-icons/Ionicons'
 import { colors } from "../utils/color";
 import CustomButton from "../components/button/CustomButton";
 import { defineValue } from "../utils/defineValue";
@@ -34,16 +36,23 @@ export function ListGroup(props) {
           style={styles.avatar}
           source={require("../assets/images/background.png")}
         />
-        <Icon name="rocket" size={30} color="#900" />
         <View>
           <Text style={styles.groupName}>
             {item.groupName}
           </Text>
-          <Text style={styles.groupInfo}>
-            {item.type === defineValue.Lend ?`Bạn cho mượn ${item.quantity}` :`Bạn nợ ${item.quantity}` }
-            
-          </Text>
+          <View style={{flexDirection:'row'}}>
+            {item.type === defineValue.Lend 
+              ?<Text style={styles.groupInfo}>Bạn cho mượn  
+                  <Text style={{color: colors.mainLight}}> {item.quantity}</Text>
+                </Text>
+              :<Text style={styles.groupInfo}>Bạn mượn  
+              <Text style={{color: colors.orange}}> {item.quantity}</Text>
+            </Text>
+            }
+           <IconFeather style={{marginLeft:5}} name={'info'} size={14} color={colors.white}/>
+          </View>
         </View>
+        <IconIonicons style={styles.arrowIcon} name={'ios-arrow-forward'} size={20} color={colors.white}/>
       </View>
     );
   };
@@ -53,10 +62,10 @@ export function ListGroup(props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.menuStyles}>
-        <Image
-          style={styles.searchIcon}
-          source={require("../assets/images/background.png")}
-        />
+        <View style={styles.searchIcon}>
+        <IconAntDesign  name='search1' size={20} color={colors.white} />
+        </View>
+        <Text style={styles.createGroup}>Tạo nhóm</Text>
       </View>
       <View style={styles.menuStyles}>
         <Text style={styles.title}>Nhóm</Text>
@@ -96,7 +105,9 @@ const styles = StyleSheet.create({
   backgroundStyles: { flex: 1, alignItems: "center" },
   menuStyles: {
     height: height * 0.06,
-    width
+    width,
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
   title: {
     marginLeft: width * 0.02,
@@ -159,6 +170,21 @@ const styles = StyleSheet.create({
     color:colors.white
   },
   groupInfo:{
-
+    color:colors.white
+  },
+  createGroup:{
+    // fontFamily: "Roboto",
+  fontSize: 12,
+  fontWeight: "300",
+  fontStyle: "normal",
+  letterSpacing: 0,
+  textAlign: "right",
+  color: colors.white,
+  marginRight: width * 0.044
+  },
+  arrowIcon:{
+    flex:1,
+    textAlign:'right',
+    marginRight: width * 0.044
   }
 });
