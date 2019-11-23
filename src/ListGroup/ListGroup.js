@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { colors } from "../utils/color";
 import CustomButton from "../components/button/CustomButton";
+import { defineValue } from "../utils/defineValue";
 const { width, height } = Dimensions.get("screen");
 const data = [
   {
@@ -33,11 +34,12 @@ export function ListGroup(props) {
           source={require("../assets/images/background.png")}
         />
         <View>
-          <Text>
+          <Text style={styles.groupName}>
             {item.groupName}
           </Text>
-          <Text>
-            {item.quantity}
+          <Text style={styles.groupInfo}>
+            {item.type === defineValue.Lend ?`Bạn cho mượn ${item.quantity}` :`Bạn nợ ${item.quantity}` }
+            
           </Text>
         </View>
       </View>
@@ -48,11 +50,6 @@ export function ListGroup(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      {/* <ImageBackground
-        style={styles.backgroundStyles}
-        imageStyle={{ flex: 1 }}
-        source={require("../assets/images/background.png")}
-      > */}
       <View style={styles.menuStyles}>
         <Image
           style={styles.searchIcon}
@@ -68,9 +65,12 @@ export function ListGroup(props) {
           source={require("../assets/images/background.png")}
         />
         <View>
-          <Text style={[styles.info, { fontSize: 14 }]}>TỔNG SỐ DƯ</Text>
-          <Text style={[styles.info, { fontSize: 20 }]}>
+          <Text style={[styles.info, { fontSize: 15 }]}>TỔNG SỐ DƯ</Text>
+          <Text style={[styles.info, { fontSize: 15,color:colors.orange }]}>
             Bạn nợ: 5.000.000đ
+          </Text>
+          <Text style={[styles.info, { fontSize: 15,color:colors.mainLight }]}>
+            Bạn cho mượn: 5.000.000đ
           </Text>
         </View>
       </View>
@@ -82,7 +82,6 @@ export function ListGroup(props) {
           ItemSeparatorComponent={itemSeparator}
         />
       </View>
-      {/* </ImageBackground> */}
     </SafeAreaView>
   );
 }
@@ -153,5 +152,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.7,
     borderColor: colors.line,
     alignSelf: "flex-end"
+  },
+  groupName:{
+    color:colors.white
+  },
+  groupInfo:{
+
   }
 });
