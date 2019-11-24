@@ -129,6 +129,7 @@ android {
 
     defaultConfig {
         applicationId "com.sharebill"
+        missingDimensionStrategy 'react-native-camera', 'general'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -179,6 +180,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-camera')
     implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -198,6 +200,13 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+allprojects {
+    repositories {
+        maven { url "https://www.jitpack.io" }
+        maven { url "https://maven.google.com" }
+    }
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
