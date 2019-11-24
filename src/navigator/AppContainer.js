@@ -3,12 +3,13 @@ import { createStackNavigator } from "react-navigation-stack";
 import { Splash } from "../screens/splash/SplashView";
 import { Register } from "../screens/register/RegisterView";
 import { Login } from "../screens/login/LoginView";
-import { ListGroup } from "../screens/listGroup/ListGroup";
-
+import { TabScreens } from "./tabNavigation/TabNavigation";
 
 const AppNavigator = createStackNavigator(
   {
-
+    Menu: {
+      screen: TabScreens
+    },
     Splash: {
       screen: Splash
     },
@@ -18,9 +19,7 @@ const AppNavigator = createStackNavigator(
     Login: {
       screen: Login
     },
-    ListGroup: {
-      screen: ListGroup
-    },
+    
   },
   {
     headerMode: "none"
