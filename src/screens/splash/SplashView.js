@@ -8,8 +8,8 @@ import {
   Image,
   StyleSheet
 } from "react-native";
-import { colors } from "../utils/color";
-import CustomButton from "../components/button/CustomButton";
+import { colors } from "../../utils/color";
+import CustomButton from "../../components/button/CustomButton";
 const { width, height } = Dimensions.get("screen");
 export function Splash(props) {
   // Khai báo 1 biến số đếm, gọi là "count"
@@ -27,10 +27,10 @@ export function Splash(props) {
       <ImageBackground
         style={styles.backgroundStyles}
         imageStyle={{ flex: 1 }}
-        source={require("../assets/images/background.png")}
+        source={require("../../assets/images/background.png")}
       >
         <Image
-          source={require("../assets/images/logo.png")}
+          source={require("../../assets/images/logo.png")}
           style={styles.logoStyles}
         />
         <Text style={styles.appNameStyles}>SHARE BILL</Text>

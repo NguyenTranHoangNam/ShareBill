@@ -5,11 +5,12 @@ import {
   ImageBackground,
   Dimensions,
   StyleSheet,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
-import { colors } from "../utils/color";
-import CustomButton from "../components/button/CustomButton";
-import IconIonicons from 'react-native-vector-icons/Ionicons'
+import { colors } from "../../utils/color";
+import CustomButton from "../../components/button/CustomButton";
+import IconIonicons from "react-native-vector-icons/Ionicons";
 const { width, height } = Dimensions.get("screen");
 export function Login(props) {
   // Khai báo 1 biến số đếm, gọi là "count"
@@ -18,14 +19,27 @@ export function Login(props) {
     props.navigation.navigate("Login");
   };
 
+  const goBack=()=>{
+    props.navigation.goBack()
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
         style={styles.backgroundStyles}
         imageStyle={{ flex: 1 }}
-        source={require("../assets/images/background.png")}
+        source={require("../../assets/images/background.png")}
       >
-        <IconIonicons style={{width,marginLeft:15}} name={'md-arrow-back'} size={20} color={colors.white} />
+        <TouchableOpacity
+          onPress={goBack}
+        >
+          <IconIonicons
+            style={{ width, marginLeft: 15 }}
+            name={"md-arrow-back"}
+            size={20}
+            color={colors.white}
+          />
+        </TouchableOpacity>
         <Text style={styles.title}>ĐĂNG NHẬP</Text>
         <TextInput
           style={styles.inputStyles}

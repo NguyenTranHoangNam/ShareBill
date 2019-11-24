@@ -1,9 +1,10 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { Login } from "../Login/LoginView";
-import { Register } from "../Register/RegisterView";
-import { Splash } from "../Splash/SplashView";
-import { ListGroup } from "../ListGroup/ListGroup";
+import { Splash } from "../screens/splash/SplashView";
+import { Register } from "../screens/register/RegisterView";
+import { Login } from "../screens/login/LoginView";
+import { ListGroup } from "../screens/listGroup/ListGroup";
+
 
 const AppNavigator = createStackNavigator(
   {

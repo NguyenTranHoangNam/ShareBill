@@ -12,9 +12,9 @@ import {
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import IconFeather from 'react-native-vector-icons/Feather'
 import IconIonicons from 'react-native-vector-icons/Ionicons'
-import { colors } from "../utils/color";
-import CustomButton from "../components/button/CustomButton";
-import { defineValue } from "../utils/defineValue";
+import { colors } from "../../utils/color";
+import CustomButton from "../../components/button/CustomButton";
+import { defineValue } from "../../utils/defineValue";
 const { width, height } = Dimensions.get("screen");
 const data = [
   {
@@ -34,7 +34,7 @@ export function ListGroup(props) {
       <View style={styles.itemStyles}>
         <Image
           style={styles.avatar}
-          source={require("../assets/images/background.png")}
+          source={require("../../assets/images/background.png")}
         />
         <View>
           <Text style={styles.groupName}>
@@ -73,7 +73,7 @@ export function ListGroup(props) {
       <View style={styles.block}>
         <Image
           style={styles.avatar}
-          source={require("../assets/images/background.png")}
+          source={require("../../assets/images/background.png")}
         />
         <View>
           <Text style={[styles.info, { fontSize: 15 }]}>TỔNG SỐ DƯ</Text>

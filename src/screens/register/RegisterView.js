@@ -5,16 +5,20 @@ import {
   ImageBackground,
   Dimensions,
   StyleSheet,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from "react-native";
-import { colors } from "../utils/color";
-import CustomButton from "../components/button/CustomButton";
-import IconIonicons from 'react-native-vector-icons/Ionicons'
+import { colors } from "../../utils/color";
+import CustomButton from "../../components/button/CustomButton";
+import IconIonicons from "react-native-vector-icons/Ionicons";
 const { width, height } = Dimensions.get("screen");
 export function Register(props) {
-
   const navigateToLogin = () => {
     props.navigation.navigate("Login");
+  };
+
+  const goBack = () => {
+    props.navigation.goBack();
   };
 
   return (
@@ -22,9 +26,16 @@ export function Register(props) {
       <ImageBackground
         style={styles.backgroundStyles}
         imageStyle={{ flex: 1 }}
-        source={require("../assets/images/background.png")}
+        source={require("../../assets/images/background.png")}
       >
-        <IconIonicons style={{width,marginLeft:15}} name={'md-arrow-back'} size={20} color={colors.white} />
+        <TouchableOpacity onPress={goBack}>
+          <IconIonicons
+            style={{ width, marginLeft: 15 }}
+            name={"md-arrow-back"}
+            size={20}
+            color={colors.white}
+          />
+        </TouchableOpacity>
         <Text style={styles.title}>ĐĂNG KÝ</Text>
         <TextInput
           style={styles.inputStyles}
@@ -50,9 +61,9 @@ export function Register(props) {
         />
         <CustomButton
           title={"Đăng ký"}
-          onPress={()=>{}}
+          onPress={() => {}}
           style={styles.registerButtonStyles}
-          titleStyles={[styles.titleStyles,styles.registerTitle]}
+          titleStyles={[styles.titleStyles, styles.registerTitle]}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -113,9 +124,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: colors.mainLight,
     borderWidth: 1,
-    marginTop: height * 0.035,
+    marginTop: height * 0.035
   },
   registerTitle: {
     color: colors.mainLight
-  },
+  }
 });
