@@ -9,12 +9,14 @@ import { ListFriends } from '../../screens/listFriends/ListFriends';
 import { HistoryScreen } from '../../screens/history/details/HistoryScreen';
 import { InformationScreen } from '../../screens/information/details/InformationScreen';
 import { TransactionDetailScreen } from '../../screens/transaction/detail/TransactionDetailScreen';
-const TabBarComponent = props => <BottomTabBar {...props} />;
+import CustomTabNavigation from '../customTabNavigation/CustomTabNavigation';
+import { GroupDetails } from '../../screens/groupDetails/details/GroupDetails';
+const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
   {
     ListGroup: {
-        screen: ListGroup
+        screen: GroupDetails//ListGroup
       },
     ListFriends: {
         screen: ListFriends
@@ -49,6 +51,7 @@ export const TabScreens = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
+      tabBarComponent: TabBarComponent,
       activeTintColor: colors.mainLight,
       inactiveTintColor: 'gray',
       activeBackgroundColor:colors.tabbar,
