@@ -8,6 +8,7 @@ import { colors } from '../../utils/color';
 import { ListFriends } from '../../screens/listFriends/ListFriends';
 import { HistoryScreen } from '../../screens/history/details/HistoryScreen';
 import { InformationScreen } from '../../screens/information/details/InformationScreen';
+import { TransactionDetailScreen } from '../../screens/transaction/detail/TransactionDetailScreen';
 const TabBarComponent = props => <BottomTabBar {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
@@ -18,6 +19,10 @@ export const TabScreens = createBottomTabNavigator(
     ListFriends: {
         screen: ListFriends
       }, 
+    Transaction: {
+        screen:TransactionDetailScreen, // Empty screen
+       
+    },
     History: {
         screen: HistoryScreen
     },
@@ -27,7 +32,7 @@ export const TabScreens = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         if (routeName === 'ListGroup') {
             return <IconMaterialIcons name={'group'} size={25} color={tintColor} />
@@ -46,6 +51,8 @@ export const TabScreens = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: colors.mainLight,
       inactiveTintColor: 'gray',
+      activeBackgroundColor:colors.tabbar,
+      inactiveBackgroundColor:colors.tabbar,
     },
   },
   {
