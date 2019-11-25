@@ -31,11 +31,7 @@ const TabBar = props => {
           route.key != "Giao dịch"
             ? <SafeAreaView
                 key={route.key}
-                style={{
-                  width: width / 5,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
+                style={styles.tabContainer}
               >
                 <TouchableWithoutFeedback onPress={() => jumpTo(route.key)}>
                   <View>
@@ -75,12 +71,7 @@ const TabBar = props => {
               </SafeAreaView>
             : <SafeAreaView
                 key={route.key}
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 45
-                }}
+                style={[styles.tabContainer,{marginBottom: 45}]}
               >
                 <TouchableWithoutFeedback onPress={() => jumpTo(route.key)}>
                   <View
@@ -129,7 +120,15 @@ const styles = StyleSheet.create({
     height: 50,
     width: "100%",
     backgroundColor: colors.tabbar
+  },
+  tabContainer:{
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+
   }
+    
+  
 });
 
 export default TabBar;
