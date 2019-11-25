@@ -2,7 +2,7 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { Splash } from "../screens/splash/SplashView";
 import { Register } from "../screens/register/RegisterView";
-import { Login } from "../screens/login/LoginView";
+import { Login, LoginScreen } from "../screens/login/LoginScreen";
 import { TabScreens } from "./tabNavigation/TabNavigation";
 
 const AppNavigator = createStackNavigator(
@@ -16,10 +16,7 @@ const AppNavigator = createStackNavigator(
     Register: {
       screen: Register
     },
-    Login: {
-      screen: Login
-    },
-    
+    Login: LoginScreen
   },
   {
     headerMode: "none"

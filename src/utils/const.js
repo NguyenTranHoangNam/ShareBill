@@ -1,0 +1,1 @@
+export const BORDER_WIDTH = 0.7
