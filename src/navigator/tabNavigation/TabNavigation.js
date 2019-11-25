@@ -15,20 +15,20 @@ const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
   {
-    ListGroup: {
+    'Nhóm': {
         screen: GroupDetails//ListGroup
       },
-    ListFriends: {
+    'Bạn Bè': {
         screen: ListFriends
       }, 
-    Transaction: {
+    'Giao dịch': {
         screen:TransactionDetailScreen, // Empty screen
        
     },
-    History: {
+    'Lịch Sử': {
         screen: HistoryScreen
     },
-    Information: {
+    'Cá Nhân': {
         screen: InformationScreen
     }
   },
@@ -36,31 +36,26 @@ export const TabScreens = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
-        if (routeName === 'ListGroup') {
+        if (routeName === 'Nhóm') {
             return <IconMaterialIcons name={'group'} size={25} color={tintColor} />
         }
-        else if (routeName === 'ListFriends') {
+        else if (routeName === 'Bạn Bè') {
             return <IconFontAwesome5 name={'user'} size={21} color={tintColor} />
         }
-        else if (routeName === 'History') {
+        else if (routeName === 'Lịch Sử') {
             return <IconMaterialIcons name={'history'} size={25} color={tintColor} />
         }
-        else if (routeName === 'Information') {
+        else if (routeName === 'Cá Nhân') {
             return <IconFontAwesome name={'user-circle-o'} size={22} color={tintColor} />
         }
       },
     }),
+    tabBarComponent: TabBarComponent,
     tabBarOptions: {
-      tabBarComponent: TabBarComponent,
       activeTintColor: colors.mainLight,
       inactiveTintColor: 'gray',
       activeBackgroundColor:colors.tabbar,
       inactiveBackgroundColor:colors.tabbar,
     },
   },
-  {
-    tabBarComponent: props => (
-      <TabBarComponent {...props} style={{ borderTopColor: '#605F60' }} />
-    ),
-  }
 );
