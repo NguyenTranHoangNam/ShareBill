@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { colors } from "../../utils/color";
 import { SBHeader, SBTextInput, SBButton } from "../../components/SBComponent";
+import { FONT_FAMILY } from "../../utils/const";
 export const LoginScreen = (props) => {
   // Khai báo 1 biến số đếm, gọi là "count"
 
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginVertical: 70,
-    fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 25,
     fontWeight: "bold",
     fontStyle: "normal",

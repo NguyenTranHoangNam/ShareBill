@@ -14,6 +14,7 @@ import IconFeather from 'react-native-vector-icons/Feather'
 import IconIonicons from 'react-native-vector-icons/Ionicons'
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
+import { FONT_FAMILY } from "../../../utils/const";
 const { width, height } = Dimensions.get("screen");
 const data = [
   {
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: width * 0.02,
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 25,
     fontWeight: "bold",
     fontStyle: "normal",
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     marginRight: width * 0.044
   },
   info: {
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     color:colors.white
   },
   createGroup:{
-    // fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
   fontSize: 12,
   fontWeight: "300",
   fontStyle: "normal",

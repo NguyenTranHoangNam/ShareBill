@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { colors } from "../../utils/color";
 import CustomButton from "../../components/button/CustomButton";
+import { FONT_FAMILY } from "../../utils/const";
 const { width, height } = Dimensions.get("screen");
 export function Splash(props) {
   // Khai báo 1 biến số đếm, gọi là "count"
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     marginTop: height * 0.0625
   },
   appNameStyles: {
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 50,
     fontWeight: "900",
     fontStyle: "normal",
@@ -96,8 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     justifyContent: "center",
-    opacity: 0.98,
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 14,
     fontWeight: "normal",
     fontStyle: "normal",

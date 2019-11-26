@@ -11,6 +11,7 @@ import {
 import { colors } from "../../utils/color";
 import CustomButton from "../../components/button/CustomButton";
 import IconIonicons from "react-native-vector-icons/Ionicons";
+import { FONT_FAMILY } from "../../utils/const";
 const { width, height } = Dimensions.get("screen");
 export function Register(props) {
   const navigateToLogin = () => {
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     marginTop: height * 0.0625
   },
   title: {
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 25,
     fontWeight: "900",
     fontStyle: "normal",
@@ -100,8 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     justifyContent: "center",
-    opacity: 0.98,
-    //fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 14,
     fontWeight: "normal",
     fontStyle: "normal",

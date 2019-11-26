@@ -12,6 +12,8 @@ import IconIonicons from "react-native-vector-icons/Ionicons";
 import IconFeather from "react-native-vector-icons/Feather";
 import { colors } from "../../../utils/color";
 import CustomButton from "../../../components/button/CustomButton";
+import { FONT_FAMILY } from "../../../utils/const";
+import Avatar from "../../../components/Avatar";
 const { width, height } = Dimensions.get("screen");
 export function GroupDetails(props) {
   const goBack = () => {
@@ -39,10 +41,11 @@ export function GroupDetails(props) {
           />
         </TouchableOpacity>
       </View>
-      <Image
-        style={styles.avatar}
+      <Avatar 
+        name={'default'} 
         source={require("../../../assets/images/background.png")}
       />
+      
       <Text style={styles.groupName}>Tên Nhóm</Text>
       <Text style={styles.info}>
         Bạn nợ{" "}
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
     marginRight: width * 0.044
   },
   groupName: {
-    // fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 20,
     fontWeight: "bold",
     fontStyle: "normal",
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     color: colors.white
   },
   info: {
-    // fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 12,
     fontWeight: "normal",
     fontStyle: "normal",
@@ -113,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
   },
   titleStyles: {
-    // fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "bold",
     fontStyle: "normal",

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { colors } from '../../utils/color';
-import { BORDER_WIDTH } from '../../utils/const';
+import { BORDER_WIDTH, FONT_FAMILY } from '../../utils/const';
 
 export default SBButton = (props) => {
     return (
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         color: colors.mainLight
     },
     buttonText: {
-        fontFamily: "Roboto",
+        fontFamily: FONT_FAMILY,
         fontSize: 14,
         fontWeight: "normal",
         fontStyle: "normal",
