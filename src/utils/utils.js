@@ -16,6 +16,11 @@ export default class Utils {
 		)
 	};
 
+	//number: số tiền. VD: 5000000
+	//places: số chữ số 0 ở phần thập phân. VD: 2 => 5000000,00
+	//symbol: đơn vị tiền tệ. VD: đ => 5000000.00đ
+	//thousand: ký tự cách phần nghìn (default: '.'). VD: . => 5.000.000,00đ
+	//decimal: ký tự cách phần thập phân (default: ','). VD: . => 5.000.000,00đ
 	static formatMoney = (number, places, symbol, thousand, decimal) => {
 		places = !isNaN(places = Math.abs(places)) ? places : 2;
 		symbol = symbol !== undefined ? symbol : "$";
