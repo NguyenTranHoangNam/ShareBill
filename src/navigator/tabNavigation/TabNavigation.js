@@ -41,13 +41,13 @@ export const TabScreens = createBottomTabNavigator(
             return <SBIconFont name={'group'} size={25} color={tintColor} />
         }
         else if (routeName === 'Bạn Bè') {
-            return <SBIconFont name={'person'} size={21} color={tintColor} />
+            return <SBIconFont name={'person'} size={25} color={tintColor} />
         }
         else if (routeName === 'Lịch Sử') {
             return <SBIconFont name={'history'} size={25} color={tintColor} />
         }
         else if (routeName === 'Cá Nhân') {
-            return <SBIconFont name={'account-circle'} size={22} color={tintColor} />
+            return <SBIconFont name={'account-circle'} size={25} color={tintColor} />
         }
       },
     }),

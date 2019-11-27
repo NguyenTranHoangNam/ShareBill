@@ -30,7 +30,7 @@ export const TransactionDetailScreen = (props) => {
                 <PayerItem payerName={'Bạn'} paidPrice={5000000} payType={PAY_TYPE.LENT} payTypePrice={2500000}/>
                 <PayerItem payerName={'Hoàng Nam'} paidPrice={0} payType={PAY_TYPE.OWE} payTypePrice={2500000}/>
             </View>
-            <View>
+            <View style={{marginTop: 10}}>
                 <SBBlockLine text={'CHÚ THÍCH'} />
             </View>
         </SafeAreaView>
