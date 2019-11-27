@@ -16,6 +16,7 @@ import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
+import { SBIconFont } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -80,15 +81,15 @@ export function GroupInfo(props) {
       </View>
       <View style={styles.blockIcon}>
         <View style={styles.circleIcon}>
-          <IconMaterial name={"person-add"} color={colors.white} size={20} />
+          <SBIconFont name={"person-add"} color={colors.white} size={20} />
         </View>
 
         <View style={styles.circleIcon}>
-          <IconMaterial name={"link"} color={colors.white} size={20} />
+          <SBIconFont name={"link"} color={colors.white} size={20} />
         </View>
 
         <View style={[styles.circleIcon, { backgroundColor: colors.red }]}>
-          <IconMaterial name={"delete"} color={colors.white} size={20} />
+          <SBIconFont name={"delete"} color={colors.white} size={20} />
         </View>
       </View>
       <View style={styles.headerList}>

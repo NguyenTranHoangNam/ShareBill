@@ -3,6 +3,7 @@ import {View, TouchableOpacity, StyleSheet, Platform, Text} from 'react-native';
 import Utils from '../../utils/utils';
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from '../../utils/color';
+import { SBIconFont } from '../SBComponent';
 
 export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, rightIconName = null, rightText = null, onRightPress, title = ''}) => {
     const getLeftIcon = () => {
@@ -21,7 +22,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
                 {leftText ? 
                     <Text>{leftText}</Text>
                 :
-                <IconMaterialIcons name={getLeftIcon(leftIconName)} size={25} color={colors.white} />
+                <SBIconFont name={getLeftIcon(leftIconName)} size={25} color={colors.white} />
                 }
             </TouchableOpacity>
             <View>
@@ -32,7 +33,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
                     rightText ?
                         <Text>{leftText}</Text>
                     :
-                        <IconMaterialIcons name={(rightIconName)} size={20} color={colors.white} />
+                        <SBIconFont name={(rightIconName)} size={20} color={colors.white} />
                 : 
                     null
                 }

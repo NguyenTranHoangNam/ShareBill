@@ -11,6 +11,7 @@ import CustomTabNavigation from '../customTabNavigation/CustomTabNavigation';
 import { GroupDetails } from '../../screens/groupDetails/details/GroupDetails';
 import { GroupInfo } from '../../screens/groupInfo/details/GroupInfo';
 import GroupNavigator from '../groupNavigator/GroupNavigator';
+import { SBIconFont } from '../../components/SBComponent';
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
@@ -37,16 +38,16 @@ export const TabScreens = createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         if (routeName === 'Nhóm') {
-            return <IconMaterialIcons name={'group'} size={25} color={tintColor} />
+            return <SBIconFont name={'group'} size={25} color={tintColor} />
         }
         else if (routeName === 'Bạn Bè') {
-            return <IconMaterialIcons name={'person'} size={21} color={tintColor} />
+            return <SBIconFont name={'person'} size={21} color={tintColor} />
         }
         else if (routeName === 'Lịch Sử') {
-            return <IconMaterialIcons name={'history'} size={25} color={tintColor} />
+            return <SBIconFont name={'history'} size={25} color={tintColor} />
         }
         else if (routeName === 'Cá Nhân') {
-            return <IconMaterialIcons name={'account-circle'} size={22} color={tintColor} />
+            return <SBIconFont name={'account-circle'} size={22} color={tintColor} />
         }
       },
     }),

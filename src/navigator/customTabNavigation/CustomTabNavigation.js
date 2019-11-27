@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../utils/color";
+import { SBIconFont } from "../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 const TabBar = props => {
   const {
@@ -94,7 +95,7 @@ const TabBar = props => {
                         justifyContent: "center"
                       }}
                     >
-                      <IconMaterialIcons
+                      <SBIconFont
                         name="add"
                         color={colors.white}
                         size={30}
