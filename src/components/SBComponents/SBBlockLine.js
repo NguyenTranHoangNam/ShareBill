@@ -3,10 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { colors } from '../../utils/color';
 import { FONT_FAMILY } from '../../utils/const';
 
-export default SBBlockLine = (props) => {
+export default SBBlockLine = ({style, text}) => {
     return (
-        <View style={styles.blockLine}>
-            <Text style={styles.text}>{props.text}</Text>
+        <View style={[styles.blockLine, {...style}]}>
+            <Text style={styles.text}>{text}</Text>
         </View>
     )
 }
