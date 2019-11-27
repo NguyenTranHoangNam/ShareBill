@@ -66,7 +66,9 @@ export function GroupInfo(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader rightIconName={"info"} />
+      <SBHeader 
+        onLeftPress={goBack}
+      />
       <View style={{ width, alignItems: "center" }}>
         <Avatar
           name={"default"}

@@ -7,7 +7,8 @@ import {
   StyleSheet,
   View,
   Image,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from "react-native";
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import IconFeather from 'react-native-vector-icons/Feather'
@@ -29,8 +30,16 @@ const data = [
   }
 ];
 export function ListGroup(props) {
+
+  const navigateToGroupDetails=()=>{
+    props.navigation.navigate('GroupDetails')
+  }
+
   const renderItem = ({ index, item }) => {
     return (
+      <TouchableOpacity
+        onPress={navigateToGroupDetails}
+      >
       <View style={styles.itemStyles}>
         <Image
           style={styles.avatar}
@@ -54,6 +63,7 @@ export function ListGroup(props) {
         </View>
         <IconIonicons style={styles.arrowIcon} name={'ios-arrow-forward'} size={20} color={colors.white}/>
       </View>
+      </TouchableOpacity>
     );
   };
   const itemSeparator = () => {

@@ -56,9 +56,6 @@ const data = [
 ];
 
 export function GroupDetails(props) {
-  const goBack = () => {
-    props.navigation.goBack();
-  };
 
   const renderItem = ({ item, index }) => {
     return (
@@ -104,15 +101,25 @@ export function GroupDetails(props) {
         </View>
         <View style={{ flex: 1 }}>
           {item.type === defineValue.Lend
-            ? <View style={{ alignSelf: "flex-end",marginRight:10 }}>
-                <Text style={styles.info} >Bạn cho mượn</Text>
-                <Text style={[styles.info,{ color: colors.mainLight,alignSelf: "flex-end" }]}>
+            ? <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
+                <Text style={styles.info}>Bạn cho mượn</Text>
+                <Text
+                  style={[
+                    styles.info,
+                    { color: colors.mainLight, alignSelf: "flex-end" }
+                  ]}
+                >
                   {" "}{item.quantity}
                 </Text>
               </View>
-            : <View style={{ alignSelf: "flex-end",marginRight:10 }}>
-                <Text style={styles.info} >Bạn mượn</Text>
-                <Text style={[styles.info,{ color: colors.orange ,alignSelf: "flex-end"}]}>
+            : <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
+                <Text style={styles.info}>Bạn mượn</Text>
+                <Text
+                  style={[
+                    styles.info,
+                    { color: colors.orange, alignSelf: "flex-end" }
+                  ]}
+                >
                   {" "}{item.quantity}
                 </Text>
               </View>}
@@ -124,17 +131,27 @@ export function GroupDetails(props) {
   const renderHeader = ({ section: { title } }) => {
     return (
       <View style={styles.header}>
-      <Text style={styles.titleHeader}>
-        {title}
-      </Text>
+        <Text style={styles.titleHeader}>
+          {title}
+        </Text>
       </View>
     );
   };
 
+  const navigateToGroupInfo = () => {
+    props.navigation.navigate("GroupInfo");
+  };
+
+  const goBack = () => {
+    props.navigation.goBack()
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader
-        rightIconName={'info'}
+      <SBHeader 
+      rightIconName={"info"} 
+      onRightPress={navigateToGroupInfo} 
+      onLeftPress={goBack}
       />
       <Avatar
         name={"default"}
@@ -247,17 +264,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.block,
     justifyContent: "center"
   },
-  titleHeader:{
+  titleHeader: {
     fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "bold",
     fontStyle: "normal",
     letterSpacing: 0,
     color: colors.white,
-    paddingLeft: 10,
-
+    paddingLeft: 10
   },
-  info:{
+  info: {
     fontFamily: FONT_FAMILY,
     fontSize: 12,
     fontWeight: "normal",
