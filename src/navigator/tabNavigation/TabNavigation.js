@@ -1,8 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
-import IconFontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
-import IconFontAwesome from "react-native-vector-icons/FontAwesome";
 import { ListGroup } from '../../screens/listGroup/details/ListGroup';
 import { colors } from '../../utils/color';
 import { ListFriends } from '../../screens/listFriends/ListFriends';
@@ -41,13 +39,13 @@ export const TabScreens = createBottomTabNavigator(
             return <IconMaterialIcons name={'group'} size={25} color={tintColor} />
         }
         else if (routeName === 'Bạn Bè') {
-            return <IconFontAwesome5 name={'user'} size={21} color={tintColor} />
+            return <IconMaterialIcons name={'person'} size={21} color={tintColor} />
         }
         else if (routeName === 'Lịch Sử') {
             return <IconMaterialIcons name={'history'} size={25} color={tintColor} />
         }
         else if (routeName === 'Cá Nhân') {
-            return <IconFontAwesome name={'user-circle-o'} size={22} color={tintColor} />
+            return <IconMaterialIcons name={'account-circle'} size={22} color={tintColor} />
         }
       },
     }),
