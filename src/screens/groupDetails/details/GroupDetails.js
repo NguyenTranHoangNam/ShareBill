@@ -16,6 +16,7 @@ import { FONT_FAMILY } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
+import { SBButton } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -56,7 +57,6 @@ const data = [
 ];
 
 export function GroupDetails(props) {
-
   const renderItem = ({ item, index }) => {
     return (
       <View
@@ -143,15 +143,15 @@ export function GroupDetails(props) {
   };
 
   const goBack = () => {
-    props.navigation.goBack()
+    props.navigation.goBack();
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader 
-      rightIconName={"info"} 
-      onRightPress={navigateToGroupInfo} 
-      onLeftPress={goBack}
+      <SBHeader
+        rightIconName={"info"}
+        onRightPress={navigateToGroupInfo}
+        onLeftPress={goBack}
       />
       <Avatar
         name={"default"}
@@ -163,17 +163,15 @@ export function GroupDetails(props) {
         <Text style={[styles.info, { color: colors.orange }]}>500.000đ</Text>
       </Text>
       <View style={styles.blockButton}>
-        <CustomButton
-          title={"Trả nợ"}
-          //   onPress={navigateToLogin}
-          style={styles.buttonStyles}
-          titleStyles={[styles.titleStyles]}
+        <SBButton
+          buttonText={"Trả nợ"}
+          buttonStyle={styles.buttonStyles}
+          textStyle={[styles.titleStyles]}
         />
-        <CustomButton
-          title={"Số dư"}
-          //   onPress={navigateToLogin}
-          style={styles.buttonStyles}
-          titleStyles={[styles.titleStyles]}
+        <SBButton
+          buttonText={"Số dư"}
+          buttonStyle={styles.buttonStyles}
+          textStyle={[styles.titleStyles]}
         />
       </View>
 

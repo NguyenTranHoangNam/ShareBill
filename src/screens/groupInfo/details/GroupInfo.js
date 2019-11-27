@@ -8,12 +8,9 @@ import {
   Text,
   FlatList
 } from "react-native";
-import IconMaterial from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../../utils/color";
-import CustomButton from "../../../components/button/CustomButton";
 import { FONT_FAMILY } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
-import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont } from "../../../components/SBComponent";

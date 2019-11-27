@@ -10,12 +10,10 @@ import {
   FlatList,
   TouchableOpacity
 } from "react-native";
-import IconAntDesign from 'react-native-vector-icons/AntDesign'
-import IconFeather from 'react-native-vector-icons/Feather'
-import IconIonicons from 'react-native-vector-icons/Ionicons'
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
 import { FONT_FAMILY } from "../../../utils/const";
+import { SBIconFont } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 const data = [
   {
@@ -58,10 +56,10 @@ export function ListGroup(props) {
               <Text style={{color: colors.orange}}> {item.quantity}</Text>
             </Text>
             }
-           <IconFeather style={{marginLeft:5}} name={'info'} size={14} color={colors.white}/>
+           <SBIconFont style={{marginLeft:5}} name={'info'} size={14} color={colors.white}/>
           </View>
         </View>
-        <IconIonicons style={styles.arrowIcon} name={'ios-arrow-forward'} size={20} color={colors.white}/>
+        <SBIconFont style={styles.arrowIcon} name={'keyboard-arrow-right'} size={20} color={colors.white}/>
       </View>
       </TouchableOpacity>
     );
@@ -73,7 +71,7 @@ export function ListGroup(props) {
     <SafeAreaView style={styles.container}>
       <View style={styles.menuStyles}>
         <View style={styles.searchIcon}>
-        <IconAntDesign  name='search1' size={20} color={colors.white} />
+        <SBIconFont  name='search' size={20} color={colors.white} />
         </View>
         <Text style={styles.createGroup}>Tạo nhóm</Text>
       </View>
