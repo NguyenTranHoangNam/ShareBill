@@ -53,7 +53,7 @@ const TabBar = props => {
                   </Text>
               </TouchableOpacity>
             :
-              <TouchableOpacity style={[styles.tabButtonContainer, {justifyContent: 'flex-end'}]} onPress={() => jumpTo(route.key)}>
+              <TouchableOpacity activeOpacity={1} style={[styles.tabButtonContainer, {justifyContent: 'flex-end'}]} onPress={() => jumpTo(route.key)}>
                 <View style={styles.addButtonFirstContainer}>
                   <View style={styles.addButtonSecondContainer}>
                     <SBIconFont
