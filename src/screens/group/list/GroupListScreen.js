@@ -27,7 +27,7 @@ const data = [
     groupName: "Thái lan"
   }
 ];
-export function ListGroup(props) {
+export function GroupListScreen(props) {
 
   const navigateToGroupDetails=()=>{
     props.navigation.navigate('GroupDetails')

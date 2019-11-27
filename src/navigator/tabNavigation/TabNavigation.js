@@ -1,15 +1,11 @@
 import React from 'react';
-import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
-import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { ListGroup } from '../../screens/listGroup/details/ListGroup';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { colors } from '../../utils/color';
 import { ListFriends } from '../../screens/listFriends/ListFriends';
 import { HistoryScreen } from '../../screens/history/details/HistoryScreen';
 import { InformationScreen } from '../../screens/information/details/InformationScreen';
 import { TransactionDetailScreen } from '../../screens/transaction/detail/TransactionDetailScreen';
 import CustomTabNavigation from '../customTabNavigation/CustomTabNavigation';
-import { GroupDetails } from '../../screens/groupDetails/details/GroupDetails';
-import { GroupInfo } from '../../screens/groupInfo/details/GroupInfo';
 import GroupNavigator from '../groupNavigator/GroupNavigator';
 import { SBIconFont } from '../../components/SBComponent';
 const TabBarComponent = props => <CustomTabNavigation {...props} />;

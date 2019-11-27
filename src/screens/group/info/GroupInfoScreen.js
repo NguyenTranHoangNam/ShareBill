@@ -29,7 +29,7 @@ const data = [
   }
 ];
 
-export function GroupInfo(props) {
+export function GroupInfoScreen(props) {
   const goBack = () => {
     props.navigation.goBack();
   };

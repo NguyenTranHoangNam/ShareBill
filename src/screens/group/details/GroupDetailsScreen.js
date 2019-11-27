@@ -8,10 +8,7 @@ import {
   Text,
   SectionList
 } from "react-native";
-import IconIonicons from "react-native-vector-icons/Ionicons";
-import IconFeather from "react-native-vector-icons/Feather";
 import { colors } from "../../../utils/color";
-import CustomButton from "../../../components/button/CustomButton";
 import { FONT_FAMILY } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
@@ -56,7 +53,7 @@ const data = [
   }
 ];
 
-export function GroupDetails(props) {
+export function GroupDetailsScreen(props) {
   const renderItem = ({ item, index }) => {
     return (
       <View
