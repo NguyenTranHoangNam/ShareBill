@@ -10,12 +10,13 @@ import { TransactionDetailScreen } from '../../screens/transaction/detail/Transa
 import CustomTabNavigation from '../customTabNavigation/CustomTabNavigation';
 import { GroupDetails } from '../../screens/groupDetails/details/GroupDetails';
 import { GroupInfo } from '../../screens/groupInfo/details/GroupInfo';
+import GroupNavigator from '../groupNavigator/GroupNavigator';
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
   {
     'Nhóm': {
-        screen: GroupInfo//ListGroup
+        screen: GroupNavigator
       },
     'Bạn Bè': {
         screen: ListFriends

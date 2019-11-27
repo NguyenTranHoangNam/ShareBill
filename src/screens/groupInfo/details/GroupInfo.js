@@ -15,6 +15,7 @@ import { FONT_FAMILY } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
+import SBButton from "../../../components/SBComponents/SBButton";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -52,14 +53,10 @@ export function GroupInfo(props) {
           style={{ borderRadius: 20, marginLeft: 20 }}
         />
         <View style={{ marginLeft: 35 }}>
-          <Text
-            style={styles.memberName}
-          >
+          <Text style={styles.memberName}>
             {item.name}
           </Text>
-          <Text
-            style={styles.memberNumberPhone}
-          >
+          <Text style={styles.memberNumberPhone}>
             {item.numberPhone}
           </Text>
         </View>
@@ -69,7 +66,9 @@ export function GroupInfo(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader rightIconName={"info"} />
+      <SBHeader 
+        onLeftPress={goBack}
+      />
       <View style={{ width, alignItems: "center" }}>
         <Avatar
           name={"default"}
@@ -96,6 +95,13 @@ export function GroupInfo(props) {
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
       </View>
       <FlatList data={data} renderItem={renderItem} />
+      <View style={styles.blockSave}>
+        <SBButton
+          buttonStyle={styles.saveButton}
+          buttonText={"LƯU THÔNG TIN"}
+          textStyle={styles.saveTitle}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -158,7 +164,7 @@ const styles = StyleSheet.create({
     color: colors.subTitle,
     paddingLeft: 10
   },
-  memberName:{
+  memberName: {
     fontFamily: FONT_FAMILY,
     fontSize: 14,
     fontWeight: "500",
@@ -166,12 +172,26 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.white
   },
-  memberNumberPhone:{
+  memberNumberPhone: {
     fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
     color: colors.subTitle
-  }
+  },
+  saveTitle: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 16,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: colors.white
+  },
+  saveButton: {
+    backgroundColor: colors.mainLight,
+    borderRadius: 23
+  },
+  blockSave: { height: 40, marginLeft: 20, marginRight: 20, marginBottom: 10 }
 });
