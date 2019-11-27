@@ -32,7 +32,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
                     rightText ?
                         <Text>{leftText}</Text>
                     :
-                        <IconMaterialIcons name={getRightIcon(rightIconName)} size={20} color={colors.white} />
+                        <IconMaterialIcons name={(rightIconName)} size={20} color={colors.white} />
                 : 
                     null
                 }

@@ -15,6 +15,7 @@ import CustomButton from "../../../components/button/CustomButton";
 import { FONT_FAMILY } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
+import SBHeader from "../../../components/SBComponents/SBHeader";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -122,38 +123,23 @@ export function GroupDetails(props) {
 
   const renderHeader = ({ section: { title } }) => {
     return (
-      <Text style={styles.header}>
+      <View style={styles.header}>
+      <Text style={styles.titleHeader}>
         {title}
       </Text>
+      </View>
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerStyles}>
-        <TouchableOpacity onPress={goBack}>
-          <IconIonicons
-            style={{ marginLeft: 15 }}
-            name={"md-arrow-back"}
-            size={20}
-            color={colors.white}
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={goBack}>
-          <IconFeather
-            style={{ marginRight: 15 }}
-            name={"info"}
-            size={20}
-            color={colors.white}
-          />
-        </TouchableOpacity>
-      </View>
+      <SBHeader
+        rightIconName={'info'}
+      />
       <Avatar
         name={"default"}
         source={require("../../../assets/images/background.png")}
       />
-
       <Text style={styles.groupName}>Tên Nhóm</Text>
       <Text style={styles.info}>
         Bạn nợ{" "}
@@ -199,9 +185,9 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   avatar: {
-    width: width * 0.16,
-    height: width * 0.16,
-    borderRadius: width * 0.8,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     marginLeft: 150,
     marginRight: 150
   },
@@ -227,7 +213,7 @@ const styles = StyleSheet.create({
   },
   buttonStyles: {
     backgroundColor: colors.main,
-    width: width * 0.3,
+    width: 120,
     height: height * 0.041,
     borderRadius: 4,
     alignItems: "center",
@@ -259,6 +245,9 @@ const styles = StyleSheet.create({
     width,
     height: 20,
     backgroundColor: colors.block,
+    justifyContent: "center"
+  },
+  titleHeader:{
     fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "bold",
@@ -266,7 +255,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.white,
     paddingLeft: 10,
-    justifyContent: "center"
+
   },
   info:{
     fontFamily: FONT_FAMILY,
