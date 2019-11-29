@@ -1,13 +1,15 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { colors } from '../../utils/color';
-import { ListFriends } from '../../screens/listFriends/ListFriends';
+import { ListFriendsScreen } from '../../screens/listFriends/details/ListFriends';
 import { HistoryScreen } from '../../screens/history/details/HistoryScreen';
 import { InformationScreen } from '../../screens/information/details/InformationScreen';
 import { TransactionDetailScreen } from '../../screens/transaction/detail/TransactionDetailScreen';
 import CustomTabNavigation from '../customTabNavigation/CustomTabNavigation';
 import GroupNavigator from '../groupNavigator/GroupNavigator';
 import { SBIconFont } from '../../components/SBComponent';
+import { FriendInfoScreen } from '../../screens/listFriends/info/FriendInfoScreen';
+import FriendsNavigator from '../friendsNavigator/FriendsNavigator';
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 export const TabScreens = createBottomTabNavigator(
@@ -16,7 +18,7 @@ export const TabScreens = createBottomTabNavigator(
         screen: GroupNavigator
       },
     'Bạn Bè': {
-        screen: ListFriends
+        screen: FriendsNavigator
       }, 
     'Giao dịch': {
         screen:TransactionDetailScreen, // Empty screen
@@ -31,6 +33,10 @@ export const TabScreens = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
+      tabBarVisible:
+                navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'Giao dịch'
+                    || navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'GroupInfo'
+                    ? false : true,
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         if (routeName === 'Nhóm') {
