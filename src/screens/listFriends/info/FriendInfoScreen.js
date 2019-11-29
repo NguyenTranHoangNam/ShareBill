@@ -36,9 +36,12 @@ export function FriendInfoScreen(props) {
     props.navigation.goBack();
   };
 
+  const navigateToGroupDetails = () => {
+    props.navigation.navigate('GroupDetails')
+  };
   const renderItem = ({ index, item }) => {
     return (
-      <TouchableOpacity >
+      <TouchableOpacity  onPress={navigateToGroupDetails}>
         <View style={styles.itemStyles}>
           <Image
             style={styles.avatar}
