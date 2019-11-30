@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   SafeAreaView,
@@ -17,96 +17,20 @@ import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
 const { width, height } = Dimensions.get("screen");
 
-const data = [
-  {
-    avatar: "",
-    name: "Lương Kiên Hào",
-    numberPhone: "123456789"
-  },
-  {
-    avatar: "",
-    name: "Nguyễn Trần Hoàng Nam",
-    numberPhone: "112233445"
-  }
-];
 
-export function GroupAddScreen(props) {
+export function AddMemberScreen(props) {
   const goBack = () => {
     props.navigation.goBack();
   };
 
-  const modalAddMember = useRef();
-
-  const addMember = () => {
-    // modalAddMember.current.alertaa()
-  };
-
-  const renderItem = ({ item, index }) => {
-    return (
-      <View
-        style={{
-          width,
-          height: 60,
-          flexDirection: "row",
-          alignItems: "center"
-        }}
-      >
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-          size={40}
-          style={{ borderRadius: 20, marginLeft: 20 }}
-        />
-        <View style={{ marginLeft: 35 }}>
-          <Text style={styles.memberName}>
-            {item.name}
-          </Text>
-          <Text style={styles.memberNumberPhone}>
-            {item.numberPhone}
-          </Text>
-        </View>
-      </View>
-    );
-  };
+  
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader onLeftPress={goBack} />
-      <View style={{ width, alignItems: "center" }}>
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-        />
-
-        {/* <Text style={styles.groupName}>Tên Nhóm</Text> */}
-        <View style={{ marginLeft: 133, marginRight: 133 }}>
-          <SBTextInput
-            style={styles.groupName}
-            placeholder={"Tên nhóm"}
-            autoFocus
-          />
-        </View>
-        <Text style={styles.countMember}>2 thành viên</Text>
-      </View>
-      <View style={styles.blockIcon}>
-        <TouchableOpacity onPress={addMember}>
-          <View style={styles.circleIcon}>
-            <SBIconFont name={"person-add"} color={colors.white} size={20} />
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.headerList}>
-        <Text style={styles.titleHeader}>Thành viên nhóm</Text>
-      </View>
-      <FlatList data={data} renderItem={renderItem} />
-      <View style={styles.blockSave}>
-        <SBButton
-          buttonStyle={styles.saveButton}
-          buttonText={"LƯU THÔNG TIN"}
-          textStyle={styles.saveTitle}
-        />
-      </View>
-      <ModalAddMember ref={modalAddMember} />
+      <SBHeader 
+        onLeftPress={goBack}
+      />
+     
     </SafeAreaView>
   );
 }
@@ -126,7 +50,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     borderBottomWidth: 1,
     borderBottomColor: colors.subTitle,
-    paddingBottom: 1
+    paddingBottom:1,
   },
   circleIcon: {
     width: 30,

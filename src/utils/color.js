@@ -11,5 +11,6 @@ export const colors = {
   red: "#d0021b",
   block: "#252526",
   white_70: "rgba(228, 230, 229, 0.7)",
-  disable: "#dadfe2"
+  disable: "#dadfe2",
+  dim: "rgba(0,0,0,0.5)"
 };

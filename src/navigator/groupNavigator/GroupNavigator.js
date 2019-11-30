@@ -5,6 +5,7 @@ import { GroupDetailsScreen } from "../../screens/group/details/GroupDetailsScre
 import { GroupInfoScreen } from "../../screens/group/info/GroupInfoScreen";
 import { TransitionConfiguration } from "../transitionConfig";
 import { GroupAddScreen } from "../../screens/group/add/GroupAddScreen";
+import { SBAddMember } from "../../screens/group/addMember/components/addMember/SBAddMember";
 
 const GroupNavigator = createStackNavigator(
   {
