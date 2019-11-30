@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { GroupListScreen } from "../../screens/group/list/GroupListScreen";
 import { GroupDetailsScreen } from "../../screens/group/details/GroupDetailsScreen";
 import { GroupInfoScreen } from "../../screens/group/info/GroupInfoScreen";
+import { TransitionConfiguration } from "../transitionConfig";
 
 const GroupNavigator = createStackNavigator(
   {
@@ -17,7 +18,8 @@ const GroupNavigator = createStackNavigator(
     }
   },
   {
-    headerMode: "none"
+    headerMode: "none",
+    transitionConfig:TransitionConfiguration
   }
 );
 

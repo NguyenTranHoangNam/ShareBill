@@ -4,6 +4,7 @@ import { Splash } from "../screens/splash/SplashView";
 import { Register } from "../screens/register/RegisterView";
 import { Login, LoginScreen } from "../screens/login/LoginScreen";
 import { TabScreens } from "./tabNavigation/TabNavigation";
+import { TransitionConfiguration } from "./transitionConfig";
 
 const AppNavigator = createStackNavigator(
   {
@@ -19,7 +20,8 @@ const AppNavigator = createStackNavigator(
     Login: LoginScreen
   },
   {
-    headerMode: "none"
+    headerMode: "none",
+    transitionConfig:TransitionConfiguration
   }
 );
 
