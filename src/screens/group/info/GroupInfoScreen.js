@@ -34,6 +34,10 @@ export function GroupInfoScreen(props) {
     props.navigation.goBack();
   };
 
+  const navigateToAddMember=()=>{
+    props.navigation.navigate('AddMember');
+  }
+
   const renderItem = ({ item, index }) => {
     return (
       <View
@@ -64,22 +68,23 @@ export function GroupInfoScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader 
-        onLeftPress={goBack}
-      />
+      <SBHeader onLeftPress={goBack} />
       <View style={{ width, alignItems: "center" }}>
         <Avatar
           name={"default"}
           source={require("../../../assets/images/background.png")}
         />
-
         <Text style={styles.groupName}>Tên Nhóm</Text>
         <Text style={styles.countMember}>2 thành viên</Text>
       </View>
       <View style={styles.blockIcon}>
-        <View style={styles.circleIcon}>
-          <SBIconFont name={"person-add"} color={colors.white} size={20} />
-        </View>
+        <TouchableOpacity
+          onPress={navigateToAddMember}
+        >
+          <View style={styles.circleIcon}>
+            <SBIconFont name={"person-add"} color={colors.white} size={20} />
+          </View>
+        </TouchableOpacity>
 
         <View style={styles.circleIcon}>
           <SBIconFont name={"link"} color={colors.white} size={20} />
