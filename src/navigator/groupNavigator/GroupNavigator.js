@@ -4,6 +4,7 @@ import { GroupListScreen } from "../../screens/group/list/GroupListScreen";
 import { GroupDetailsScreen } from "../../screens/group/details/GroupDetailsScreen";
 import { GroupInfoScreen } from "../../screens/group/info/GroupInfoScreen";
 import { TransitionConfiguration } from "../transitionConfig";
+import { GroupAddScreen } from "../../screens/group/add/GroupAddScreen";
 
 const GroupNavigator = createStackNavigator(
   {
@@ -15,10 +16,14 @@ const GroupNavigator = createStackNavigator(
     },
     GroupInfo: {
       screen: GroupInfoScreen
+    },
+    GroupAdd: {
+      screen: GroupAddScreen
     }
   },
   {
     headerMode: "none",
+    // initialRouteName:'GroupAdd',
     transitionConfig:TransitionConfiguration
   }
 );

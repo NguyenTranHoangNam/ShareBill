@@ -37,11 +37,11 @@ export function FriendInfoScreen(props) {
   };
 
   const navigateToGroupDetails = () => {
-    props.navigation.navigate('GroupDetails')
+    props.navigation.navigate("GroupDetails");
   };
   const renderItem = ({ index, item }) => {
     return (
-      <TouchableOpacity  onPress={navigateToGroupDetails}>
+      <TouchableOpacity onPress={navigateToGroupDetails}>
         <View style={styles.itemStyles}>
           <Image
             style={styles.avatar}
@@ -85,7 +85,7 @@ export function FriendInfoScreen(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader onLeftPress={goBack} />
+      <SBHeader onLeftPress={goBack} rightText={"Huỷ kết bạn"} />
       <View style={{ width, alignItems: "center" }}>
         <Avatar
           name={"default"}
@@ -169,12 +169,12 @@ const styles = StyleSheet.create({
     marginLeft: width * 0.04,
     marginRight: width * 0.044
   },
-  arrowIcon:{
-    flex:1,
-    textAlign:'right',
+  arrowIcon: {
+    flex: 1,
+    textAlign: "right",
     marginRight: width * 0.044
   },
-  friendName:{
+  friendName: {
     fontFamily: FONT_FAMILY,
     fontSize: 20,
     fontWeight: "bold",
