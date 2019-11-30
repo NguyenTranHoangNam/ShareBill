@@ -7,7 +7,7 @@ export default SBButton = (props) => {
     return (
         <TouchableOpacity
             {...props}
-            style={[styles.buttonWrapper, props.borderOnly ? styles.buttonBorderWrapper : null, props.roundVertical ? styles.roundVerticalStyle : null, {...props.buttonStyle}]}>
+            style={[styles.buttonWrapper, props.borderOnly ? styles.buttonBorderWrapper : null, props.roundVertical ? styles.roundVerticalStyle : null, {...props.buttonStyle}, props.disabled ? {backgroundColor: colors.disable} : null]}>
             <Text style={[styles.buttonText, props.borderOnly ? styles.borderOnlyText : null, {...props.textStyle}]}>
                 {props.buttonText}
             </Text>
