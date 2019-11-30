@@ -4,6 +4,7 @@ import Utils from '../../utils/utils';
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from '../../utils/color';
 import { SBIconFont } from '../SBComponent';
+import { FONT_FAMILY } from '../../utils/const';
 
 export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, rightIconName = null, rightText = null, onRightPress, title = ''}) => {
     const getLeftIcon = () => {
@@ -20,7 +21,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
         <View style={styles.container}>
             <TouchableOpacity onPress={onLeftPress} style={styles.iconContainer}>
                 {leftText ? 
-                    <Text>{leftText}</Text>
+                    <Text style={styles.headerText}>{leftText}</Text>
                 :
                 <SBIconFont name={getLeftIcon(leftIconName)} size={25} color={colors.white} />
                 }
@@ -31,7 +32,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
             <TouchableOpacity onPress={onRightPress} style={styles.iconContainer}>
                 {rightText || rightIconName ? 
                     rightText ?
-                        <Text>{leftText}</Text>
+                        <Text style={styles.headerText}>{rightText}</Text>
                     :
                         <SBIconFont name={(rightIconName)} size={20} color={colors.white} />
                 : 
@@ -57,5 +58,13 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    headerText: {
+        fontFamily: FONT_FAMILY,
+        fontSize: 12,
+        fontWeight: "300",
+        fontStyle: "normal",
+        textAlign: "right",
+        color: colors.white
     }
 })
