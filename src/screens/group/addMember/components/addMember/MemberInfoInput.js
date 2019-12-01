@@ -8,7 +8,7 @@ import { colors } from "../../../../../utils/color";
 import { SBTextInput, SBButton } from "../../../../../components/SBComponent";
 import { FONT_FAMILY } from "../../../../../utils/const";
 
-export function SBAddMember(props) {
+export function MemberInfoInput(props) {
   const [name, setMember] = useState("");
   const [email, setEmail] = useState("");
 

@@ -15,7 +15,7 @@ import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
-import { SBAddMember } from "./components/addMember/SBAddMember";
+import { MemberInfoInput } from "./components/addMember/MemberInfoInput";
 const { width, height } = Dimensions.get("screen");
 
 export function AddMemberScreen(props) {
@@ -41,7 +41,7 @@ export function AddMemberScreen(props) {
         <Text style={styles.titleHeader}>Hoặc nhập thông tin thành viên</Text>
       </View>
       <View style={{ flex: 1, paddingVertical: 20 }}>
-        <SBAddMember />
+        <MemberInfoInput />
       </View>
     </SafeAreaView>
   );

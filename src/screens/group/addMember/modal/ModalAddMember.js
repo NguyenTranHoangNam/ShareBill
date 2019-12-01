@@ -9,7 +9,7 @@ import {
   Text
 } from "react-native";
 import { colors } from "../../../../utils/color";
-import { SBAddMember } from "../components/addMember/SBAddMember";
+import { MemberInfoInput } from "../components/addMember/MemberInfoInput";
 
 const { width, height } = Dimensions.get("screen");
 export function ModalAddMember(props) {
@@ -33,7 +33,7 @@ export function ModalAddMember(props) {
           >
             THÊM THÀNH VIÊN
           </Text>
-          <SBAddMember />
+          <MemberInfoInput />
         </View>
       </SafeAreaView>
     </Modal>
