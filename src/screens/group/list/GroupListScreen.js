@@ -13,7 +13,7 @@ import {
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
 import { FONT_FAMILY } from "../../../utils/const";
-import { SBIconFont } from "../../../components/SBComponent";
+import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 const data = [
   {
@@ -69,12 +69,7 @@ export function GroupListScreen(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.menuStyles}>
-        <View style={styles.searchIcon}>
-        <SBIconFont  name='search' size={20} color={colors.white} />
-        </View>
-        <Text style={styles.createGroup}>Tạo nhóm</Text>
-      </View>
+       <SBHeader leftIconName={'search'}  rightText={"Tạo nhóm"} />
       <View style={styles.menuStyles}>
         <Text style={styles.title}>Nhóm</Text>
       </View>

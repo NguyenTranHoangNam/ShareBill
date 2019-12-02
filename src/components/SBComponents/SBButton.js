@@ -3,13 +3,13 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { colors } from '../../utils/color';
 import { BORDER_WIDTH, FONT_FAMILY } from '../../utils/const';
 
-export default SBButton = (props) => {
+export default SBButton = ({borderOnly, roundVertical, buttonStyle, disabled, textStyle, buttonText, ...props}) => {
     return (
         <TouchableOpacity
             {...props}
-            style={[styles.buttonWrapper, props.borderOnly ? styles.buttonBorderWrapper : null, props.roundVertical ? styles.roundVerticalStyle : null, {...props.buttonStyle}, props.disabled ? {backgroundColor: colors.disable} : null]}>
-            <Text style={[styles.buttonText, props.borderOnly ? styles.borderOnlyText : null, {...props.textStyle}]}>
-                {props.buttonText}
+            style={[styles.buttonWrapper, borderOnly ? styles.buttonBorderWrapper : null, roundVertical ? styles.roundVerticalStyle : null, {...buttonStyle}, disabled ? {backgroundColor: colors.disable} : null]}>
+            <Text style={[styles.buttonText, borderOnly ? styles.borderOnlyText : null, {...textStyle}]}>
+                {buttonText}
             </Text>
         </TouchableOpacity>
     )
