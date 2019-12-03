@@ -28,7 +28,7 @@ const GroupNavigator = createStackNavigator(
   },
   {
     headerMode: "none",
-    initialRouteName:'CreateGroup',
+    // initialRouteName:'CreateGroup',
     transitionConfig:TransitionConfiguration
   }
 );
