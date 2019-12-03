@@ -21,19 +21,19 @@ const { width, height } = Dimensions.get("screen");
 
 const data = [
   {
-    key: '0',
+    key: "0",
     avatar: "",
     name: "Lương Kiên Hào",
     numberPhone: "123456789"
   },
   {
-    key: '1',
+    key: "1",
     avatar: "",
     name: "Nguyễn Trần Hoàng Nam",
     numberPhone: "112233445"
   },
   {
-    key: '2',
+    key: "2",
     avatar: "",
     name: "Nguyễn Trần Hoàng Nam",
     numberPhone: "112233445"
@@ -53,29 +53,36 @@ export function GroupAddScreen(props) {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View
-        style={{
-          width,
-          height: 60,
-          flexDirection: "row",
-          alignItems: "center"
-        }}
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => console.log(item)}
+        style={styles.rowFront}
+        underlayColor={"#AAA"}
       >
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-          size={40}
-          style={{ borderRadius: 20, marginLeft: 20 }}
-        />
-        <View style={{ marginLeft: 35 }}>
-          <Text style={styles.memberName}>
-            {item.name}
-          </Text>
-          <Text style={styles.memberNumberPhone}>
-            {item.numberPhone}
-          </Text>
+        <View
+          style={{
+            width,
+            height: 60,
+            flexDirection: "row",
+            alignItems: "center"
+          }}
+        >
+          <Avatar
+            name={"default"}
+            source={require("../../../assets/images/background.png")}
+            size={40}
+            style={{ borderRadius: 20, marginLeft: 20 }}
+          />
+          <View style={{ marginLeft: 35 }}>
+            <Text style={styles.memberName}>
+              {item.name}
+            </Text>
+            <Text style={styles.memberNumberPhone}>
+              {item.numberPhone}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -105,13 +112,9 @@ export function GroupAddScreen(props) {
       </View>
       <View style={styles.headerList}>
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
-      </View> 
+      </View>
       {/* {/* <FlatList data={data} renderItem={renderItem} /> */}
-      <SBSwipeListView
-        useFlatList
-        data={data}
-        renderItem={renderItem}
-      />
+      <SBSwipeListView useFlatList data={data} renderItem={renderItem} />
       <View style={styles.blockSave}>
         <SBButton
           buttonStyle={styles.saveButton}
@@ -210,5 +213,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mainLight,
     borderRadius: 23
   },
-  blockSave: { height: 40, marginLeft: 20, marginRight: 20, marginBottom: 10 }
+  blockSave: {
+    height: 40,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10
+  },
+  rowFront: {
+    alignItems: "center",
+    backgroundColor: colors.background,
+    justifyContent: "center"
+    // height: 50
+  }
 });

@@ -128,41 +128,8 @@ class SBSwipeListView extends Component {
       <View style={styles.container}>
         {useFlatList &&
           <SwipeListView
-            // data={this.state.listViewData}
             data={data}
-            renderItem={item =>
-              <TouchableHighlight
-                onPress={() => console.log(item)}
-                style={styles.rowFront}
-                underlayColor={"#AAA"}
-              >
-                <View
-                  style={{
-                    width,
-                    height: 60,
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                  
-                >
-                  <Avatar
-                    name={"default"}
-                    source={require("../../../assets/images/background.png")}
-                    size={40}
-                    style={{ borderRadius: 20, marginLeft: 20 }}
-                  />
-                  <View style={{ marginLeft: 35 }}>
-                    <Text style={styles.memberName}>
-                      {item.item.name}
-                    </Text>
-                    <Text style={styles.memberNumberPhone}>
-                      {item.item.numberPhone}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableHighlight>
-            }
-            // renderItem={renderItem}
+            renderItem={renderItem}
             renderHiddenItem={this.renderHiddenItem}
             leftOpenValue={75}
             rightOpenValue={-150}
@@ -175,78 +142,16 @@ class SBSwipeListView extends Component {
 
         {useAdvanced &&
           <SwipeListView
-            data={this.state.listViewData}
-            renderItem={(data, rowMap) =>
-              <SwipeRow
-                disableLeftSwipe={parseInt(data.item.key) % 2 === 0}
-                leftOpenValue={20 + Math.random() * 150}
-                rightOpenValue={-150}
-              >
-                <View style={styles.rowBack}>
-                  <Text>Left</Text>
-                  <TouchableOpacity
-                    style={[styles.backRightBtn, styles.backRightBtnLeft]}
-                    onPress={() => this.closeRow(rowMap, data.item.key)}
-                  >
-                    <Text style={styles.backTextWhite}>Close</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[styles.backRightBtn, styles.backRightBtnRight]}
-                    onPress={() => this.deleteRow(rowMap, data.item.key)}
-                  >
-                    <Text style={styles.backTextWhite}>Delete</Text>
-                  </TouchableOpacity>
-                </View>
-                <TouchableHighlight
-                  onPress={() => console.log("You touched me")}
-                  style={styles.rowFront}
-                  underlayColor={"#AAA"}
-                >
-                  <View>
-                    <Text>
-                      I am {data.item.text} in a SwipeListView
-                    </Text>
-                  </View>
-                </TouchableHighlight>
-              </SwipeRow>}
+            data={data}
+            renderItem={renderItem}
           />}
 
         {useSectionList &&
           <SwipeListView
             useSectionList
-            sections={this.state.sectionListData}
-            renderItem={data =>
-              <TouchableHighlight
-                onPress={() => console.log("You touched me")}
-                style={styles.rowFront}
-                underlayColor={"#AAA"}
-              >
-                <View>
-                  <Text>
-                    I am {data.item.text} in a SwipeListView
-                  </Text>
-                </View>
-              </TouchableHighlight>}
-            renderHiddenItem={(data, rowMap) =>
-              <View style={styles.rowBack}>
-                <Text>Left</Text>
-                <TouchableOpacity
-                  style={[styles.backRightBtn, styles.backRightBtnLeft]}
-                  onPress={() => this.closeRow(rowMap, data.item.key)}
-                >
-                  <Text style={styles.backTextWhite}>Close</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.backRightBtn, styles.backRightBtnRight]}
-                  onPress={() => this.deleteSectionRow(rowMap, data.item.key)}
-                >
-                  <Text style={styles.backTextWhite}>Delete</Text>
-                </TouchableOpacity>
-              </View>}
-            renderSectionHeader={({ section }) =>
-              <Text>
-                {section.title}
-              </Text>}
+            sections={data}
+            renderItem={renderItem}
+            renderHiddenItem={this.renderHiddenItem}
             leftOpenValue={75}
             rightOpenValue={-150}
             previewRowKey={"0"}
@@ -271,7 +176,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.background,
     justifyContent: "center",
-    height: 50
+    // height: 50
   },
   rowBack: {
     alignItems: "center",
