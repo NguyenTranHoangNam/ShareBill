@@ -1,15 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { colors } from "../../utils/color";
-import { ListFriendsScreen } from "../../screens/listFriends/details/ListFriends";
 import { HistoryScreen } from "../../screens/history/details/HistoryScreen";
 import { InformationScreen } from "../../screens/information/details/InformationScreen";
-import { TransactionDetailScreen } from "../../screens/transaction/detail/TransactionDetailScreen";
 import CustomTabNavigation from "../customTabNavigation/CustomTabNavigation";
 import GroupNavigator from "../groupNavigator/GroupNavigator";
 import { SBIconFont } from "../../components/SBComponent";
-import { FriendInfoScreen } from "../../screens/listFriends/info/FriendInfoScreen";
 import FriendsNavigator from "../friendsNavigator/FriendsNavigator";
+import TransactionNavigator from "../transactionNavigator/TransactionNavigator";
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 const setVisibleTabbar = navigation => {
@@ -31,14 +29,17 @@ const setVisibleTabbar = navigation => {
 };
 export const TabScreens = createBottomTabNavigator(
   {
-    Nhóm: {
+    "Nhóm": {
       screen: GroupNavigator
     },
     "Bạn Bè": {
       screen: FriendsNavigator
     },
     "Giao dịch": {
-      screen: TransactionDetailScreen // Empty screen
+      screen: TransactionNavigator,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     "Lịch Sử": {
       screen: HistoryScreen

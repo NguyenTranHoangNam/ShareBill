@@ -73,17 +73,12 @@ export function GroupListScreen(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.menuStyles}>
-        <View style={styles.searchIcon}>
-        <SBIconFont  name='search' size={20} color={colors.white} />
-        </View>
-        <Text style={styles.createGroup}>Tạo nhóm</Text>
-      </View> */}
       <SBHeader
       leftIconName={'search'}
       rightText={'Tạo nhóm'}
       onRightPress={navigateToCreateGroup}
       />
+
       <View style={styles.menuStyles}>
         <Text style={styles.title}>Nhóm</Text>
       </View>

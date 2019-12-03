@@ -27,7 +27,7 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
                 }
             </TouchableOpacity>
             <View>
-                <Text>{title}</Text>
+                <Text style={styles.title}>{title}</Text>
             </View>
             <TouchableOpacity onPress={onRightPress} style={styles.iconContainer}>
                 {rightText || rightIconName ? 
@@ -65,6 +65,13 @@ const styles = StyleSheet.create({
         fontWeight: "300",
         fontStyle: "normal",
         textAlign: "right",
+        color: colors.white
+    },
+    title: {
+        fontFamily: FONT_FAMILY,
+        fontSize: 17,
+        fontWeight: "normal",
+        fontStyle: "normal",
         color: colors.white
     }
 })

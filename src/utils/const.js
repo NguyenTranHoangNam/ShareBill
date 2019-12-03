@@ -1,5 +1,8 @@
 import Utils from "./utils";
 import { colors } from "./color";
+import {Dimensions} from 'react-native';
+
+export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export const BORDER_WIDTH = 0.7;
 export const FONT_FAMILY = Utils.isAndroid() ? 'Roboto' : 'System';
