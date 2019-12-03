@@ -15,15 +15,25 @@ import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
+import SBSwipeListView from "./SBSwipeListView";
+
 const { width, height } = Dimensions.get("screen");
 
 const data = [
   {
+    key: '0',
     avatar: "",
     name: "Lương Kiên Hào",
     numberPhone: "123456789"
   },
   {
+    key: '1',
+    avatar: "",
+    name: "Nguyễn Trần Hoàng Nam",
+    numberPhone: "112233445"
+  },
+  {
+    key: '2',
     avatar: "",
     name: "Nguyễn Trần Hoàng Nam",
     numberPhone: "112233445"
@@ -77,8 +87,6 @@ export function GroupAddScreen(props) {
           name={"default"}
           source={require("../../../assets/images/background.png")}
         />
-
-        {/* <Text style={styles.groupName}>Tên Nhóm</Text> */}
         <View style={{ marginLeft: 133, marginRight: 133 }}>
           <SBTextInput
             style={styles.groupName}
@@ -97,8 +105,13 @@ export function GroupAddScreen(props) {
       </View>
       <View style={styles.headerList}>
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
-      </View>
-      <FlatList data={data} renderItem={renderItem} />
+      </View> 
+      {/* {/* <FlatList data={data} renderItem={renderItem} /> */}
+      <SBSwipeListView
+        useFlatList
+        data={data}
+        renderItem={renderItem}
+      />
       <View style={styles.blockSave}>
         <SBButton
           buttonStyle={styles.saveButton}

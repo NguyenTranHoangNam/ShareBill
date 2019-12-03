@@ -4,7 +4,7 @@ import { GroupListScreen } from "../../screens/group/list/GroupListScreen";
 import { GroupDetailsScreen } from "../../screens/group/details/GroupDetailsScreen";
 import { GroupInfoScreen } from "../../screens/group/info/GroupInfoScreen";
 import { TransitionConfiguration } from "../transitionConfig";
-import { GroupAddScreen } from "../../screens/group/add/GroupAddScreen";
+import  {GroupAddScreen}  from "../../screens/group/add/GroupAddScreen";
 import { MemberInfoInput } from "../../screens/group/addMember/components/addMember/MemberInfoInput";
 import { AddMemberScreen } from "../../screens/group/addMember/AddMemberScreen";
 
@@ -19,7 +19,7 @@ const GroupNavigator = createStackNavigator(
     GroupInfo: {
       screen: GroupInfoScreen
     },
-    GroupAdd: {
+    CreateGroup: {
       screen: GroupAddScreen
     },
     AddMember:{
@@ -28,7 +28,7 @@ const GroupNavigator = createStackNavigator(
   },
   {
     headerMode: "none",
-    // initialRouteName:'AddMember',
+    initialRouteName:'CreateGroup',
     transitionConfig:TransitionConfiguration
   }
 );

@@ -12,6 +12,23 @@ import { FriendInfoScreen } from "../../screens/listFriends/info/FriendInfoScree
 import FriendsNavigator from "../friendsNavigator/FriendsNavigator";
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
+const setVisibleTabbar = navigation => {
+
+  // navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'Giao dịch'
+      //     || navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'GroupInfo'
+      //     ? false : true,
+    if (navigation.state.routeName === "Giao dịch") {
+      return false;
+    }
+    else if(navigation.state.routes){
+      const routeName = navigation.state.routes[navigation.state.routes.length - 1].routeName
+      if(routeName == 'GroupInfo' || routeName == 'AddMember' || routeName == 'CreateGroup'){
+        return false;
+      }
+    }
+    return true;
+  
+};
 export const TabScreens = createBottomTabNavigator(
   {
     Nhóm: {
@@ -32,10 +49,11 @@ export const TabScreens = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarVisible: true,
-      // navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'Giao dịch'
-      //     || navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'GroupInfo'
-      //     ? false : true,
+      // tabBarVisible: navigation.state.routes != undefined
+      // && navigation.state.routes[0].params != undefined
+      // && navigation.state.routes[0].params.tabBarVisible === true ?
+      // false : navigation.state.routeName === 'Giao dịch' ? false : true,
+      tabBarVisible: setVisibleTabbar(navigation),
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         if (routeName === "Nhóm") {
