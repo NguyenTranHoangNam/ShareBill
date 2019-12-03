@@ -76,19 +76,30 @@ class SBSwipeListView extends Component {
     this.rowSwipeAnimatedValues[key].setValue(Math.abs(value));
   };
   renderHiddenItem = (data, rowMap) => {
+    const { leftIconName,onLeftIconPress,rightIconName,onRightIconPress } = this.props;
+   
     return (
       <View style={styles.rowBack}>
         <TouchableOpacity
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
-          onPress={() => this.closeRow(rowMap, data.item.key)}
+          // onPress={() => this.closeRow(rowMap, data.item.key)}
+          onPress={()=>{
+            this.closeRow(rowMap, data.item.key)
+            onLeftIconPress()
+          }}
         >
-          <View style={styles.circleIcon}>
-            <SBIconFont name={"create"} color={colors.white} size={20} />
-          </View>
+          {leftIconName &&
+            <View style={styles.circleIcon}>
+              <SBIconFont name={leftIconName} color={colors.white} size={20} />
+            </View>}
         </TouchableOpacity>
+       {rightIconName &&
         <TouchableOpacity
           style={[styles.backRightBtn, styles.backRightBtnRight]}
-          onPress={() => this.deleteRow(rowMap, data.item.key)}
+          onPress={() =>{
+            this.closeRow(rowMap, data.item.key)
+            onRightIconPress()
+          }}
         >
           <Animated.View
             style={[
@@ -109,10 +120,11 @@ class SBSwipeListView extends Component {
             ]}
           >
             <View style={[styles.circleIcon, { backgroundColor: "red" }]}>
-              <SBIconFont name={"delete"} color={colors.white} size={20} />
+              <SBIconFont name={rightIconName} color={colors.white} size={20} />
             </View>
           </Animated.View>
         </TouchableOpacity>
+  }
       </View>
     );
   };
@@ -140,11 +152,7 @@ class SBSwipeListView extends Component {
             onSwipeValueChange={this.onSwipeValueChange}
           />}
 
-        {useAdvanced &&
-          <SwipeListView
-            data={data}
-            renderItem={renderItem}
-          />}
+        {useAdvanced && <SwipeListView data={data} renderItem={renderItem} />}
 
         {useSectionList &&
           <SwipeListView
@@ -164,6 +172,11 @@ class SBSwipeListView extends Component {
   }
 }
 
+SBSwipeListView.defaultProps = {
+  onLeftIconPress:()=>{}
+  ,onRightIconPress:()=>{}
+}
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
@@ -175,7 +188,7 @@ const styles = StyleSheet.create({
   rowFront: {
     alignItems: "center",
     backgroundColor: colors.background,
-    justifyContent: "center",
+    justifyContent: "center"
     // height: 50
   },
   rowBack: {
@@ -225,7 +238,7 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     letterSpacing: 0,
     color: colors.subTitle
-  },
+  }
 });
 
 export default SBSwipeListView;

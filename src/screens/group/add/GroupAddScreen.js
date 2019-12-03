@@ -114,7 +114,13 @@ export function GroupAddScreen(props) {
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
       </View>
       {/* {/* <FlatList data={data} renderItem={renderItem} /> */}
-      <SBSwipeListView useFlatList data={data} renderItem={renderItem} />
+      <SBSwipeListView
+        leftIconName={"create"}
+        rightIconName={"delete"}
+        useFlatList
+        data={data}
+        renderItem={renderItem}
+      />
       <View style={styles.blockSave}>
         <SBButton
           buttonStyle={styles.saveButton}
