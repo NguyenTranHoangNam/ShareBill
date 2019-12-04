@@ -36,12 +36,7 @@ export function Splash(props) {
           style={styles.logoStyles}
         />
         <Text style={styles.appNameStyles}>SHARE BILL</Text>
-        {/* <CustomButton
-          title={"Login"}
-          onPress={navigateToLogin}
-          style={styles.loginButtonStyles}
-          titleStyles={[styles.titleStyles,styles.logInTitle]}
-        /> */}
+
         <SBButton
           onPress={navigateToLogin}
           buttonStyle={styles.loginButtonStyles}
@@ -49,24 +44,24 @@ export function Splash(props) {
           textStyle={styles.titleStyles}
         />
         <SBButton
+          onPress={navigateToRegister}
           buttonStyle={styles.registerButtonStyles}
           buttonText={"Đăng ký"}
-          textStyle={ styles.registerTitle}
+          textStyle={styles.registerTitle}
         />
-        {/* <CustomButton
-          title={"Register"}
-          onPress={navigateToRegister}
-          style={styles.registerButtonStyles}
-          titleStyles={[styles.titleStyles,styles.registerTitle]}
-        /> */}
-        <CustomButton
-          title={"Quên mật khẩu?"}
-          onPress={() => {
-            alert(1);
+
+        <View
+          style={{
+            marginRight: 60,
+            marginLeft: 60
           }}
-          style={styles.forgotPasswordButton}
-          titleStyles={styles.forgotPasswordStyles}
-        />
+        >
+          <SBButton
+            buttonStyle={styles.forgotPasswordButton}
+            buttonText={"Quên mật khẩu?"}
+            textStyle={styles.forgotPasswordStyles}
+          />
+        </View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -104,7 +99,7 @@ const styles = StyleSheet.create({
     borderColor: colors.mainLight,
     borderWidth: 1,
     marginTop: height * 0.035,
-    backgroundColor:'transparent'
+    backgroundColor: "transparent"
   },
 
   logInTitle: {
@@ -123,7 +118,8 @@ const styles = StyleSheet.create({
     color: colors.white
   },
   forgotPasswordButton: {
-    marginTop: height * 0.035
+    marginTop: height * 0.035,
+    backgroundColor:'transparent',
   },
   titleStyles: {
     fontFamily: FONT_FAMILY,

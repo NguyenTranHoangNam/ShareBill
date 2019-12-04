@@ -12,6 +12,7 @@ import { colors } from "../../utils/color";
 import CustomButton from "../../components/button/CustomButton";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import { FONT_FAMILY } from "../../utils/const";
+import { SBButton } from "../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function Register(props) {
   const navigateToLogin = () => {
@@ -60,11 +61,10 @@ export function Register(props) {
           placeholder={"Nhập lại mật khẩu"}
           secureTextEntry
         />
-        <CustomButton
-          title={"Đăng ký"}
-          onPress={() => {}}
-          style={styles.registerButtonStyles}
-          titleStyles={[styles.titleStyles, styles.registerTitle]}
+       <SBButton
+          buttonStyle={styles.registerButtonStyles}
+          buttonText={"Đăng ký"}
+          textStyle={styles.registerTitle}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -128,5 +128,23 @@ const styles = StyleSheet.create({
   },
   registerTitle: {
     color: colors.mainLight
-  }
+  },
+  registerButtonStyles: {
+    width: width * 0.61,
+    height: height * 0.055,
+    borderRadius: 4,
+    borderColor: colors.mainLight,
+    borderWidth: 1,
+    marginTop: height * 0.035,
+    backgroundColor: "transparent"
+  },
+  registerTitle: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 14,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: colors.mainLight
+  },
 });
