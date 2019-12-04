@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,17 +11,18 @@ import {
 import { colors } from "../../utils/color";
 import CustomButton from "../../components/button/CustomButton";
 import { FONT_FAMILY } from "../../utils/const";
+import { SBButton } from "../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function Splash(props) {
   // Khai báo 1 biến số đếm, gọi là "count"
-  
-  const navigateToLogin=()=>{
-    props.navigation.navigate('Login')
-  }
 
-  const navigateToRegister=()=>{
-    props.navigation.navigate('Register')
-  }
+  const navigateToLogin = () => {
+    props.navigation.navigate("Login");
+  };
+
+  const navigateToRegister = () => {
+    props.navigation.navigate("Register");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,18 +36,29 @@ export function Splash(props) {
           style={styles.logoStyles}
         />
         <Text style={styles.appNameStyles}>SHARE BILL</Text>
-        <CustomButton
+        {/* <CustomButton
           title={"Login"}
           onPress={navigateToLogin}
           style={styles.loginButtonStyles}
           titleStyles={[styles.titleStyles,styles.logInTitle]}
+        /> */}
+        <SBButton
+          onPress={navigateToLogin}
+          buttonStyle={styles.loginButtonStyles}
+          buttonText={"Đăng nhập"}
+          textStyle={styles.titleStyles}
         />
-        <CustomButton
+        <SBButton
+          buttonStyle={styles.registerButtonStyles}
+          buttonText={"Đăng ký"}
+          textStyle={ styles.registerTitle}
+        />
+        {/* <CustomButton
           title={"Register"}
           onPress={navigateToRegister}
           style={styles.registerButtonStyles}
           titleStyles={[styles.titleStyles,styles.registerTitle]}
-        />
+        /> */}
         <CustomButton
           title={"Quên mật khẩu?"}
           onPress={() => {
@@ -92,27 +104,42 @@ const styles = StyleSheet.create({
     borderColor: colors.mainLight,
     borderWidth: 1,
     marginTop: height * 0.035,
+    backgroundColor:'transparent'
   },
-  titleStyles: {
-    flex: 1,
-    textAlign: "center",
-    justifyContent: "center",
-    fontFamily: FONT_FAMILY,
-    fontSize: 14,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0
-  },
+
   logInTitle: {
     color: colors.white
   },
   registerTitle: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 14,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
     color: colors.mainLight
   },
-  forgotPasswordStyles:{
-    color:colors.white
+  forgotPasswordStyles: {
+    color: colors.white
   },
-  forgotPasswordButton:{
-    marginTop: height * 0.035,
+  forgotPasswordButton: {
+    marginTop: height * 0.035
+  },
+  titleStyles: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 14,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: colors.white
+  },
+  buttonStyles: {
+    backgroundColor: colors.main,
+    width: 120,
+    height: height * 0.041,
+    borderRadius: 4,
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

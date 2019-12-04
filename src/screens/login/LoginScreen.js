@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: "center",
     paddingHorizontal: 45,
+    
   },
   title: {
     marginVertical: 70,
@@ -66,5 +67,15 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     textAlign: "center",
     color: colors.white
+  },
+  titleStyles: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 11,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: colors.white,
+    alignSelf: "center"
   },
 });

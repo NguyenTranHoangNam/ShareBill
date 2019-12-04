@@ -8,20 +8,22 @@ import { TransitionConfiguration } from "./transitionConfig";
 
 const AppNavigator = createStackNavigator(
   {
-    Menu: {
-      screen: TabScreens
-    },
     Splash: {
       screen: Splash
+    },
+    Login: {
+      screen: LoginScreen
     },
     Register: {
       screen: Register
     },
-    Login: LoginScreen
+    Menu: {
+      screen: TabScreens
+    }
   },
   {
     headerMode: "none",
-    transitionConfig:TransitionConfiguration
+    transitionConfig: TransitionConfiguration
   }
 );
 
