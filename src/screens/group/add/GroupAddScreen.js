@@ -15,7 +15,7 @@ import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
-import SBSwipeListView from "./SBSwipeListView";
+import SBSwipeListView from "../../../components/SBComponents/SBSwipeListView";
 
 const { width, height } = Dimensions.get("screen");
 

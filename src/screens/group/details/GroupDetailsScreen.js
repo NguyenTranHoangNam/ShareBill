@@ -14,6 +14,8 @@ import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import { SBButton } from "../../../components/SBComponent";
+import SBSwipeListView from "../../../components/SBComponents/SBSwipeListView";
+import SwipeListView from "../../../components/SBComponents/SwipeListView";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -173,12 +175,19 @@ export function GroupDetailsScreen(props) {
       </View>
 
       <View style={styles.blockSectionList}>
-        <SectionList
+        {/* <SectionList
           sections={data}
           keyExtractor={(item, index) => item + index}
           renderItem={renderItem}
           renderSectionHeader={renderHeader}
+        /> */}
+        <SBSwipeListView
+          useSectionList
+          data={data}
+          renderItem={renderItem}
+          renderSectionHeader={renderHeader}
         />
+       
       </View>
     </SafeAreaView>
   );
