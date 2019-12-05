@@ -9,7 +9,6 @@ import {
   StyleSheet
 } from "react-native";
 import { colors } from "../../utils/color";
-import CustomButton from "../../components/button/CustomButton";
 import { FONT_FAMILY } from "../../utils/const";
 import { SBButton } from "../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");

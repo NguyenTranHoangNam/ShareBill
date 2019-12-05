@@ -8,15 +8,15 @@ import { TransitionConfiguration } from "./transitionConfig";
 
 const AppNavigator = createStackNavigator(
   {
-    Splash: {
-      screen: Splash
-    },
-    Login: {
-      screen: LoginScreen
-    },
-    Register: {
-      screen: Register
-    },
+    // Splash: {
+    //   screen: Splash
+    // },
+    // Login: {
+    //   screen: LoginScreen
+    // },
+    // Register: {
+    //   screen: Register
+    // },
     Menu: {
       screen: TabScreens
     }

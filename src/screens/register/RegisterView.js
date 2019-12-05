@@ -9,7 +9,6 @@ import {
   TouchableOpacity
 } from "react-native";
 import { colors } from "../../utils/color";
-import CustomButton from "../../components/button/CustomButton";
 import IconIonicons from "react-native-vector-icons/Ionicons";
 import { FONT_FAMILY } from "../../utils/const";
 import { SBButton } from "../../components/SBComponent";
