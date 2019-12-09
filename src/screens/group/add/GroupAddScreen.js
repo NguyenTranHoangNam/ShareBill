@@ -15,7 +15,6 @@ import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
-import SBSwipeListView from "../../../components/SBComponents/SBSwipeListView";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -114,13 +113,13 @@ export function GroupAddScreen(props) {
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
       </View>
       {/* {/* <FlatList data={data} renderItem={renderItem} /> */}
-      <SBSwipeListView
+      {/* <SBSwipeListView
         leftIconName={"create"}
         rightIconName={"delete"}
         useFlatList
         data={data}
         renderItem={renderItem}
-      />
+      /> */}
       <View style={styles.blockSave}>
         <SBButton
           buttonStyle={styles.saveButton}

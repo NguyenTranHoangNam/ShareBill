@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, SectionList, Platform, ViewPropTypes } from 'react-native';
 
-import SwipeRow from './SBSwipeRow';
+import SwipeRow from './SwipeRow';
 
 /**
  * ListView that renders SwipeRows.

@@ -14,8 +14,7 @@ import Avatar from "../../../components/Avatar";
 import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import { SBButton } from "../../../components/SBComponent";
-import SBSwipeListView from "../../../components/SBComponents/SBSwipeListView";
-import SwipeListView from "../../../components/SBComponents/SwipeListView";
+import SwipeListView from "../../../components/SwipeList/SwipeListView";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -63,7 +62,8 @@ export function GroupDetailsScreen(props) {
           width,
           height: 60,
           flexDirection: "row",
-          alignItems: "center"
+          alignItems: "center",
+          backgroundColor: colors.background
         }}
       >
         <Avatar
@@ -101,27 +101,27 @@ export function GroupDetailsScreen(props) {
         <View style={{ flex: 1 }}>
           {item.type === defineValue.Lend
             ? <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
-                <Text style={styles.info}>Bạn cho mượn</Text>
-                <Text
-                  style={[
-                    styles.info,
-                    { color: colors.mainLight, alignSelf: "flex-end" }
-                  ]}
-                >
-                  {" "}{item.quantity}
-                </Text>
-              </View>
+              <Text style={styles.info}>Bạn cho mượn</Text>
+              <Text
+                style={[
+                  styles.info,
+                  { color: colors.mainLight, alignSelf: "flex-end" }
+                ]}
+              >
+                {" "}{item.quantity}
+              </Text>
+            </View>
             : <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
-                <Text style={styles.info}>Bạn mượn</Text>
-                <Text
-                  style={[
-                    styles.info,
-                    { color: colors.orange, alignSelf: "flex-end" }
-                  ]}
-                >
-                  {" "}{item.quantity}
-                </Text>
-              </View>}
+              <Text style={styles.info}>Bạn mượn</Text>
+              <Text
+                style={[
+                  styles.info,
+                  { color: colors.orange, alignSelf: "flex-end" }
+                ]}
+              >
+                {" "}{item.quantity}
+              </Text>
+            </View>}
         </View>
       </View>
     );
@@ -175,19 +175,32 @@ export function GroupDetailsScreen(props) {
       </View>
 
       <View style={styles.blockSectionList}>
-        {/* <SectionList
-          sections={data}
-          keyExtractor={(item, index) => item + index}
-          renderItem={renderItem}
-          renderSectionHeader={renderHeader}
-        /> */}
-        <SBSwipeListView
+        <SwipeListView
           useSectionList
-          data={data}
+          style={{ flex: 1 }}
+          initialNumToRender={10}
+          leftOpenValue={0}
+          disableRightSwipe={true}
+          rightOpenValue={-87}
           renderItem={renderItem}
           renderSectionHeader={renderHeader}
+          renderHiddenItem={(data, rowMap) => (
+            <View style={styles.swipeoutContainer}>
+              <TouchableOpacity style={[styles.swipeoutBtn, {backgroundColor: colors.subTitle}]}>
+                <SBIconFont name={'edit'} color={colors.white} size={20} />
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.swipeoutBtn, {backgroundColor: colors.red}]}>
+                <SBIconFont name={'delete'} color={colors.white} size={20} />
+              </TouchableOpacity>
+            </View>
+          )}
+          sections={data}
+          stickySectionHeadersEnabled={false}
+          keyExtractor={(item, index) => {
+            return `${index}`;
+          }}
         />
-       
+
       </View>
     </SafeAreaView>
   );
@@ -285,5 +298,22 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: "right",
     color: colors.white
+  },
+  swipeoutContainer: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 87,
+    flex: 1,
+    alignSelf: 'flex-end',
+  },
+  swipeoutBtn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 30,
+    height: 30,
+    borderRadius: 15,
   }
 });
