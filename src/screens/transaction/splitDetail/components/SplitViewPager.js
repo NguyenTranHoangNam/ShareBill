@@ -5,6 +5,11 @@ import { colors } from '../../../../utils/color';
 import IndicatorViewPager from '../../../../components/ViewPager/IndicatorViewPager';
 import PagerCustomIndicator from '../../../../components/ViewPager/indicator/PagerCustomIndicator';
 import PagerTitle from './PagerTitle';
+import { SplitByEqually } from './SplitByEqually';
+import { SplitByExactly } from './SplitByExactly';
+import { SplitByPercent } from './SplitByPercent';
+import { SplitByShares } from './SplitByShares';
+import { SplitByAdjustment } from './SplitByAdjustment';
 export default SplitViewPager = () => {
     const [tabIndex, setTabIndex] = useState(0);
 
@@ -67,19 +72,19 @@ export default SplitViewPager = () => {
                 onPageSelected={onPageSelected}
             >
                 <View>
-                    <Text>Page 1</Text>
+                    <SplitByEqually/>
                 </View>
                 <View>
-                    <Text>Page 2</Text>
+                    <SplitByExactly/>
                 </View>
                 <View>
-                    <Text>Page 3</Text>
+                    <SplitByPercent/>
                 </View>
                 <View>
-                    <Text>Page 4</Text>
+                    <SplitByShares/>
                 </View>
                 <View>
-                    <Text>Page 5</Text>
+                    <SplitByAdjustment/>
                 </View>
             </IndicatorViewPager>
         </View>
