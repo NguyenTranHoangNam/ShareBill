@@ -8,16 +8,6 @@ export default PagerTitle = ({tabIndex = 0}) => {
         return (
             <View>
                 <Text style={styles.viewPagerTitle}>CHIA ĐỀU</Text>
-                <View style={[styles.pagerSummaryContainer, styles.row]}>
-                    <View style={styles.summaryLeftContainer}>
-                        <Text style={styles.summaryTilte}>2.500.000đ/người</Text>
-                        <Text style={[styles.summaryTilte, {fontWeight: 'normal'}]}>(2 người)</Text>
-                    </View>
-                    <View style={styles.summaryRightContainer}>
-                        <Text style={[styles.summaryTilte, {marginRight: 5}]}>Tất cả</Text>
-                        <SBIconFont name='check-circle' color={colors.main} size={20} />
-                    </View>
-                </View>
             </View>
         )
     }
@@ -25,10 +15,6 @@ export default PagerTitle = ({tabIndex = 0}) => {
         return (
             <View>
                 <Text style={styles.viewPagerTitle}>CHIA THEO SỐ TIỀN CHÍNH XÁC</Text>
-                <View style={styles.pagerSummaryContainer}>
-                    <Text style={styles.summaryTilte}>0đ trên 5.000.000đ</Text>
-                    <Text style={[styles.summaryTilte, {fontWeight: 'normal'}]}>còn 5.000.000đ</Text>
-                </View>
             </View>
         )
     }
@@ -36,10 +22,6 @@ export default PagerTitle = ({tabIndex = 0}) => {
         return (
             <View>
                 <Text style={styles.viewPagerTitle}>CHIA THEO PHẦN TRĂM</Text>
-                <View style={styles.pagerSummaryContainer}>
-                    <Text style={styles.summaryTilte}>0% trên 100%</Text>
-                    <Text style={[styles.summaryTilte, {fontWeight: 'normal'}]}>còn 100%</Text>
-                </View>
             </View>
         )
     }
@@ -47,9 +29,6 @@ export default PagerTitle = ({tabIndex = 0}) => {
         return (
             <View>
                 <Text style={styles.viewPagerTitle}>CHIA THEO CÁC PHẦN</Text>
-                <View style={styles.pagerSummaryContainer}>
-                    <Text style={styles.summaryTilte}>Tổng cộng 1 phần</Text>
-                </View>
             </View>
         )
     }

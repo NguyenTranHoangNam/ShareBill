@@ -52,14 +52,14 @@ const styles = StyleSheet.create({
   rowStyles: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10
+    paddingLeft: 20,
+    paddingRight: 15,
+    paddingVertical: 10,
   },
   avatarStyles: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginLeft: 20
   },
   memberStyles: {
     marginLeft: 15,
@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
   },
   unitPercent:{
       color:colors.white,
-
       paddingBottom:7
   }
 });

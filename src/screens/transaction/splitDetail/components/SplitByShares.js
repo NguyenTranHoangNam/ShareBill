@@ -27,17 +27,20 @@ export const SplitByShares = props => {
           Tên thành viên {item}
         </Text>
         <View style={styles.inputAmountContainer}>
-            <SBTextInput 
+          <SBTextInput
             style={styles.inputAmount}
             placeholder={'1'}
-            />
-            <Text style={styles.unitPercent}>phần</Text>
+          />
+          <Text style={styles.unitPercent}>phần</Text>
         </View>
       </View>
     );
   };
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.pagerSummaryContainer}>
+        <Text style={styles.summaryTilte}>Tổng cộng 1 phần</Text>
+      </View>
       <FlatList renderItem={renderItem} data={data} />
     </SafeAreaView>
   );
@@ -51,14 +54,14 @@ const styles = StyleSheet.create({
   rowStyles: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10
+    paddingLeft: 20,
+    paddingRight: 15,
+    paddingVertical: 10,
   },
   avatarStyles: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginLeft: 20
   },
   memberStyles: {
     marginLeft: 15,
@@ -70,18 +73,30 @@ const styles = StyleSheet.create({
   inputAmountContainer: {
     flex: 1,
     justifyContent: "flex-end",
-    alignItems:'flex-end',
-    flexDirection:'row'
+    alignItems: 'flex-end',
+    flexDirection: 'row'
   },
-  inputAmount:{
+  inputAmount: {
     width: 60,
-    borderBottomColor:colors.subTitle,
-    paddingBottom:0,
-    textAlign:'right'
+    borderBottomColor: colors.subTitle,
+    paddingBottom: 0,
+    textAlign: 'right'
   },
-  unitPercent:{
-      color:colors.white,
-      marginRight:15,
-      paddingBottom:7
-  }
+  unitPercent: {
+    color: colors.white,
+    paddingBottom: 7
+  },
+  pagerSummaryContainer: {
+    height: 50,
+    paddingVertical: 10,
+    backgroundColor: colors.block,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  summaryTilte: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 13,
+    color: colors.white,
+    fontWeight: 'bold'
+  },
 });
