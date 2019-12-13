@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   SafeAreaView,
-  StyleSheet,
   Image,
   Text,
   FlatList,
@@ -21,7 +20,7 @@ export const SplitByEqually = props => {
           style={styles.avatarStyles}
         />
         <Text style={styles.memberStyles}>Tên thành viên {item}</Text>
-        <View style={localStyles.checkBoxStyles}>
+        <View style={styles.checkBoxStyles}>
           <SBCheckbox />
         </View>
       </View>
@@ -34,7 +33,7 @@ export const SplitByEqually = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={[styles.pagerSummaryContainer, localStyles.row]}>
+      <View style={[styles.pagerSummaryContainer, styles.row]}>
         <View style={styles.summaryLeftContainer}>
           <Text style={styles.summaryTilte}>2.500.000đ/người</Text>
           <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>(2 người)</Text>
@@ -48,14 +47,3 @@ export const SplitByEqually = props => {
     </SafeAreaView>
   );
 };
-
-const localStyles = StyleSheet.create({
-  checkBoxStyles: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: 'flex-end'
-  },
-  row: {
-    flexDirection: 'row',
-  },
-});

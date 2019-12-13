@@ -68,5 +68,12 @@ export const styles = StyleSheet.create({
         color: colors.white,
         paddingBottom: 7
     },
-
+    checkBoxStyles: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: 'flex-end'
+    },
+    row: {
+        flexDirection: 'row',
+    },
 })
