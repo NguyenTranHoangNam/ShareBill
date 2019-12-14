@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Switch,
-  TouchableOpacity,
-  Image,
-  Text
-} from "react-native";
+import { View, SafeAreaView, StyleSheet, Text} from "react-native";
 import { colors } from "../../../utils/color";
-import {
-  SBHeader,
-  SBTextInput,
-  SBButton,
-  SBIconFont
-} from "../../../components/SBComponent";
-import { SplitByExactly } from "../splitDetail/components/SplitByExactly";
-import { SplitByEqually } from "../splitDetail/components/SplitByEqually";
+import { SBHeader, SBSwitch } from "../../../components/SBComponent";
+import PayByOne from "./components/PayByOne";
+import PayByMulti from "./components/PayByMulti";
 
 export const SelectPayerScreen = props => {
   const [isMultiPayer, setMultiPayer] = useState(false);
@@ -38,9 +25,9 @@ export const SelectPayerScreen = props => {
             Được trả bởi nhiều người
           </Text>
         </View>
-        <Switch value={isMultiPayer} onValueChange={setMultiPayerChange} />
+        <SBSwitch value={isMultiPayer} onValueChange={setMultiPayerChange} />
       </View>
-      {isMultiPayer ? <SplitByExactly /> : <SplitByEqually />}
+      {!isMultiPayer ? <PayByOne data={[1, 2]} /> : <PayByMulti data={[1, 2]} />}
     </SafeAreaView>
   );
 };
@@ -54,7 +41,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
+    paddingLeft: 20,
+    paddingRight: 15,
     paddingVertical: 10,
     height: 60,
     backgroundColor: colors.block
