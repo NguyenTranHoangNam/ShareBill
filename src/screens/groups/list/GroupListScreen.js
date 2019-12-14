@@ -29,10 +29,10 @@ const data = [
 ];
 export function GroupListScreen(props) {
 
-  const navigateToGroupDetails=()=>{
+  const navigateToGroupDetails = () => {
     props.navigation.navigate('GroupDetails')
   }
-  const navigateToCreateGroup=()=>{
+  const navigateToCreateGroup = () => {
     // props.navigation.navigate('GroupDetails')
     props.navigation.navigate('CreateGroup')
   }
@@ -42,29 +42,29 @@ export function GroupListScreen(props) {
       <TouchableOpacity
         onPress={navigateToGroupDetails}
       >
-      <View style={styles.itemStyles}>
-        <Image
-          style={styles.avatar}
-          source={require("../../../assets/images/background.png")}
-        />
-        <View>
-          <Text style={styles.groupName}>
-            {item.groupName}
-          </Text>
-          <View style={{flexDirection:'row'}}>
-            {item.type === defineValue.Lend 
-              ?<Text style={styles.groupInfo}>Bạn cho mượn  
-                  <Text style={{color: colors.mainLight}}> {item.quantity}</Text>
-                </Text>
-              :<Text style={styles.groupInfo}>Bạn mượn  
-              <Text style={{color: colors.orange}}> {item.quantity}</Text>
+        <View style={styles.itemStyles}>
+          <Image
+            style={styles.avatar}
+            source={require("../../../assets/images/background.png")}
+          />
+          <View>
+            <Text style={styles.groupName}>
+              {item.groupName}
             </Text>
-            }
-           <SBIconFont style={{marginLeft:5}} name={'info'} size={14} color={colors.white}/>
+            <View style={{ flexDirection: 'row' }}>
+              {item.type === defineValue.Lend
+                ? <Text style={styles.groupInfo}>Bạn cho mượn
+                  <Text style={{ color: colors.mainLight }}> {item.quantity}</Text>
+                </Text>
+                : <Text style={styles.groupInfo}>Bạn mượn
+              <Text style={{ color: colors.orange }}> {item.quantity}</Text>
+                </Text>
+              }
+              <SBIconFont style={{ marginLeft: 5 }} name={'info'} size={14} color={colors.white} />
+            </View>
           </View>
+          <SBIconFont style={styles.arrowIcon} name={'keyboard-arrow-right'} size={20} color={colors.white} />
         </View>
-        <SBIconFont style={styles.arrowIcon} name={'keyboard-arrow-right'} size={20} color={colors.white}/>
-      </View>
       </TouchableOpacity>
     );
   };
@@ -74,9 +74,9 @@ export function GroupListScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader
-      leftIconName={'search'}
-      rightText={'Tạo nhóm'}
-      onRightPress={navigateToCreateGroup}
+        leftIconName={'search'}
+        rightText={'Tạo nhóm'}
+        onRightPress={navigateToCreateGroup}
       />
 
       <View style={styles.menuStyles}>
@@ -89,10 +89,10 @@ export function GroupListScreen(props) {
         />
         <View>
           <Text style={[styles.info, { fontSize: 15 }]}>TỔNG SỐ DƯ</Text>
-          <Text style={[styles.info, { fontSize: 15,color:colors.orange }]}>
+          <Text style={[styles.info, { fontSize: 15, color: colors.orange }]}>
             Bạn nợ: 5.000.000đ
           </Text>
-          <Text style={[styles.info, { fontSize: 15,color:colors.mainLight }]}>
+          <Text style={[styles.info, { fontSize: 15, color: colors.mainLight }]}>
             Bạn cho mượn: 5.000.000đ
           </Text>
         </View>
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   menuStyles: {
     height: height * 0.06,
     width,
-    flexDirection:'row',
-    justifyContent:'space-between'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   title: {
     marginLeft: width * 0.02,
@@ -178,25 +178,35 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     alignSelf: "flex-end"
   },
-  groupName:{
-    color:colors.white
-  },
-  groupInfo:{
-    color:colors.white
-  },
-  createGroup:{
+  groupName: {
     fontFamily: FONT_FAMILY,
-  fontSize: 12,
-  fontWeight: "300",
-  fontStyle: "normal",
-  letterSpacing: 0,
-  textAlign: "right",
-  color: colors.white,
-  marginRight: width * 0.044
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontStyle: "normal",
+    letterSpacing: 0,
+    color: colors.white
   },
-  arrowIcon:{
-    flex:1,
-    textAlign:'right',
+  groupInfo: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 11,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    color: colors.white
+  },
+  createGroup: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 12,
+    fontWeight: "300",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "right",
+    color: colors.white,
+    marginRight: width * 0.044
+  },
+  arrowIcon: {
+    flex: 1,
+    textAlign: 'right',
     marginRight: width * 0.044
   }
 });

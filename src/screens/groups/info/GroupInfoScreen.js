@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   memberName: {
     fontFamily: FONT_FAMILY,
     fontSize: 14,
-    fontWeight: "500",
+    fontWeight: "bold",
     fontStyle: "normal",
     letterSpacing: 0,
     color: colors.white

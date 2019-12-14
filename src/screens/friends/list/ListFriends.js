@@ -204,9 +204,18 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end"
   },
   friendName: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontStyle: "normal",
+    letterSpacing: 0,
     color: colors.white
   },
   groupInfo: {
+    fontSize: 11,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
     color: colors.white
   },
   createGroup: {
