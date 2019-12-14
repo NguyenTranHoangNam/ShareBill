@@ -4,7 +4,7 @@ import {
     SafeAreaView
  } from 'react-native';
 
-export function InformationScreen(props){
+export function ProfileScreen(props){
 
     return(
         <SafeAreaView>

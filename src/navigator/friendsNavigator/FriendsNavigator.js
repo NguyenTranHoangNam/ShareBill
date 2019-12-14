@@ -2,9 +2,9 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 import { TransitionConfiguration } from "../transitionConfig";
-import { ListFriendsScreen } from "../../screens/listFriends/details/ListFriends";
-import { FriendInfoScreen } from "../../screens/listFriends/info/FriendInfoScreen";
-import { GroupDetailsScreen } from "../../screens/group/details/GroupDetailsScreen";
+import { ListFriendsScreen } from "../../screens/friends/list/ListFriends";
+import { FriendInfoScreen } from "../../screens/friends/info/FriendInfoScreen";
+import { GroupDetailsScreen } from "../../screens/groups/details/GroupDetailsScreen";
 
 const FriendsNavigator = createStackNavigator(
   {

@@ -1,8 +1,8 @@
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { colors } from "../../utils/color";
-import { HistoryScreen } from "../../screens/history/details/HistoryScreen";
-import { InformationScreen } from "../../screens/information/details/InformationScreen";
+import { HistoryScreen } from "../../screens/history/list/HistoryScreen";
+import { ProfileScreen } from "../../screens/profile/details/ProfileScreen";
 import CustomTabNavigation from "../customTabNavigation/CustomTabNavigation";
 import GroupNavigator from "../groupNavigator/GroupNavigator";
 import { SBIconFont } from "../../components/SBComponent";
@@ -45,7 +45,7 @@ export const TabScreens = createBottomTabNavigator(
       screen: HistoryScreen
     },
     "Cá Nhân": {
-      screen: InformationScreen
+      screen: ProfileScreen
     }
   },
   {
