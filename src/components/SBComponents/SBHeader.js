@@ -51,8 +51,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         backgroundColor: 'transparent',
-        paddingLeft: (Platform.OS == 'ios' ? 12 : 16),
-        paddingRight: (Platform.OS == 'ios' ? 12 : 16),
+        paddingHorizontal: 10,
     },
     iconContainer: {
         height: '100%',
