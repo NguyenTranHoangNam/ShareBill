@@ -5,12 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   Text,
-  Dimensions
 } from "react-native";
-import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../utils/color";
 import { SBIconFont } from "../../components/SBComponent";
-const { width, height } = Dimensions.get("screen");
+import { SCREEN_WIDTH } from "../../utils/const";
 const TabBar = props => {
   const {
     navigation: { state: { index, routes } },
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tabbar,
   },
   tabButtonContainer: {
-    width: width/5, 
+    width: SCREEN_WIDTH/5, 
     alignItems: 'center', 
     justifyContent: 'center',
   },

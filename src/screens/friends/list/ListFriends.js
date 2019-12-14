@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
-import { FONT_FAMILY } from "../../../utils/const";
+import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 import TabSummary from "../../../components/TabSummary";
 const data = [
@@ -43,6 +43,7 @@ export function ListFriendsScreen(props) {
       <TouchableListItem
         onPress={navigateToGroupDetails}
         title={item.friendName}
+        index={index}
       >
         {item.info &&
           item.info.map(data => {
@@ -63,28 +64,22 @@ export function ListFriendsScreen(props) {
       </TouchableListItem>
     );
   };
-  const itemSeparator = () => {
-    return <View style={styles.itemSeparatorStyles} />;
-  };
 
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader 
         leftIconName={'search'} 
         rightText={"Thêm bạn"} 
+        tabTitle={'Bạn bè'}
       />
-
-      <View style={styles.menuStyles}>
-        <Text style={styles.title}>Bạn bè</Text>
-      </View>
-
+      
       <TabSummary />
 
       <FlatList
+        contentContainerStyle={styles.contentContainerStyle}
         data={data}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
-        ItemSeparatorComponent={itemSeparator}
       />
     </SafeAreaView>
   );
@@ -94,24 +89,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
-  menuStyles: {
-    height: 47,
-    marginLeft: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  title: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 25,
-    fontWeight: "bold",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    color: colors.white
-  },
-  itemSeparatorStyles: {
-    width: '100%',
-    height: 0.7,
-    backgroundColor: colors.line,
+  contentContainerStyle: {
+    paddingLeft: 20, 
+    borderBottomWidth: BORDER_WIDTH,
+    borderBottomColor: colors.line
   },
   subTitle: {
     fontFamily: FONT_FAMILY,

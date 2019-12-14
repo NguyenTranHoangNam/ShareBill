@@ -3,11 +3,11 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import Avatar from './Avatar';
 import { SBIconFont } from './SBComponent';
 import { colors } from '../utils/color';
-import { FONT_FAMILY } from '../utils/const';
+import { FONT_FAMILY, BORDER_WIDTH } from '../utils/const';
 
-export default TouchableListItem = ({ title, subTitle, onPress, children }) => {
+export default TouchableListItem = ({ title, subTitle, index, onPress, children }) => {
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity style={[styles.container, index !== 0 ? {borderTopColor: colors.line, borderTopWidth: BORDER_WIDTH} : null]} onPress={onPress}>
             <View style={{ flexDirection: "row", alignItems: 'center' }}>
                 <Avatar name={title} size={50} />
                 <View style={styles.titleContainer}>
@@ -31,11 +31,10 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         flexDirection: 'row',
-        paddingLeft: 20,
         paddingRight: 10,
         paddingVertical: 10,
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     titleContainer: {
         justifyContent: 'space-between',
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         fontSize: 11,
         fontWeight: "normal",
         fontStyle: "normal",
-        color: colors.orange
+        color: colors.subTitle
     },
     arrowIcon: {
 

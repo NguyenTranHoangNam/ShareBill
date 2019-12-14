@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
-import { FONT_FAMILY } from "../../../utils/const";
+import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 import TouchableListItem from "../../../components/TouchableListItem";
 import TabSummary from "../../../components/TabSummary";
@@ -36,11 +36,12 @@ export function GroupListScreen(props) {
     props.navigation.navigate('CreateGroup')
   }
 
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index}) => {
     return (
       <TouchableListItem
         onPress={navigateToGroupDetails}
         title={item.groupName}
+        index={index}
       >
         <View style={{ flexDirection: "row", }}>
           {item.type === defineValue.Lend
@@ -53,10 +54,6 @@ export function GroupListScreen(props) {
     );
   };
 
-  const itemSeparator = () => {
-    return <View style={styles.itemSeparatorStyles} />;
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader
@@ -65,17 +62,13 @@ export function GroupListScreen(props) {
         onRightPress={navigateToCreateGroup}
       />
 
-      <View style={styles.menuStyles}>
-        <Text style={styles.title}>Nhóm</Text>
-      </View>
-
       <TabSummary />
 
       <FlatList
+        contentContainerStyle={styles.contentContainerStyle}
         data={data}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
-        ItemSeparatorComponent={itemSeparator}
       />
     </SafeAreaView>
   );
@@ -85,23 +78,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
   },
-  menuStyles: {
-    height: 47,
-    marginLeft: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  title: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 25,
-    fontWeight: "bold",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    color: colors.white
+  contentContainerStyle: {
+    paddingLeft: 20, 
+    borderBottomWidth: BORDER_WIDTH,
+    borderBottomColor: colors.line
   },
   itemSeparatorStyles: {
     width: '100%',
-    height: 0.7,
+    height: BORDER_WIDTH,
     backgroundColor: colors.line,
   },
   subTitle: {
