@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         color: colors.white,
         fontFamily: FONT_FAMILY,
         fontSize: 14,
-        fontWeight: "500"
+        fontWeight: "bold"
     },
     rowStyles: {
         flexDirection: "row",
