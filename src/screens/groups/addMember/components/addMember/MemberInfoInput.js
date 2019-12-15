@@ -34,8 +34,8 @@ export function MemberInfoInput(props) {
       </View>
       <View style={styles.blockButton}>
         <SBButton
-          buttonStyle={styles.buttonStyles}
-          textStyle={styles.titleStyles}
+          buttonStyle={styles.buttonStyle}
+          textStyle={styles.buttonTextStyle}
           buttonText={"THÊM THÀNH VIÊN"}
           disabled={name == "" || email == ""}
         />
@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.subTitle,
     paddingBottom: 1
   },
-  buttonStyles: {
+  buttonStyle: {
     borderRadius: 23
   },
-  titleStyles: {
+  buttonTextStyle: {
     fontFamily: FONT_FAMILY,
     fontSize: 16,
     fontWeight: "normal",

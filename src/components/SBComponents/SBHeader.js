@@ -1,17 +1,19 @@
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet, Platform, Text} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Platform, Text } from 'react-native';
 import Utils from '../../utils/utils';
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from '../../utils/color';
 import { SBIconFont } from '../SBComponent';
-import { FONT_FAMILY } from '../../utils/const';
+import { FONT_FAMILY, SCREEN_WIDTH } from '../../utils/const';
 
-export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, rightIconName = null, rightText = null, onRightPress, title = ''}) => {
+const Header = (props) => {
+    const { leftIconName = null, leftText = null, onLeftPress, rightIconName = null, rightText = null, onRightPress, title = '' } = props;
+
     const getLeftIcon = () => {
         if (leftIconName) {
             return leftIconName
         }
-        if (Utils.isAndroid()){
+        if (Utils.isAndroid()) {
             return 'arrow-back'
         }
         return 'arrow-back-ios'
@@ -20,22 +22,22 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={onLeftPress} style={styles.iconContainer}>
-                {leftText ? 
+                {leftText ?
                     <Text style={styles.headerText}>{leftText}</Text>
-                :
-                <SBIconFont name={getLeftIcon(leftIconName)} size={25} color={colors.white} />
+                    :
+                    <SBIconFont name={getLeftIcon(leftIconName)} size={25} color={colors.white} />
                 }
             </TouchableOpacity>
             <View>
                 <Text style={styles.title}>{title}</Text>
             </View>
             <TouchableOpacity onPress={onRightPress} style={styles.iconContainer}>
-                {rightText || rightIconName ? 
+                {rightText || rightIconName ?
                     rightText ?
                         <Text style={styles.headerText}>{rightText}</Text>
-                    :
+                        :
                         <SBIconFont name={(rightIconName)} size={20} color={colors.white} />
-                : 
+                    :
                     null
                 }
             </TouchableOpacity>
@@ -43,16 +45,30 @@ export default SBHeader = ({leftIconName = null, leftText = null, onLeftPress, r
     )
 }
 
+export default SBHeader = (props) => {
+    const { tabTitleOnly = false, tabTitle } = props;
+    return (
+        <View>
+            {!tabTitleOnly ? <Header {...props} /> : null }
+            { tabTitle ? 
+            <View style={styles.menuStyles}>
+                <Text style={styles.tabTitle}>{tabTitle}</Text>
+            </View>
+            : null }
+        </View>
+    )
+
+}
+
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        width: SCREEN_WIDTH,
         height: Utils.isAndroid() ? 62 : (Utils.isiPhoneX() ? 64 : 45),
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
         backgroundColor: 'transparent',
-        paddingLeft: (Platform.OS == 'ios' ? 12 : 16),
-        paddingRight: (Platform.OS == 'ios' ? 12 : 16),
+        paddingHorizontal: 10,
     },
     iconContainer: {
         height: '100%',
@@ -73,5 +89,19 @@ const styles = StyleSheet.create({
         fontWeight: "normal",
         fontStyle: "normal",
         color: colors.white
-    }
+    },
+    menuStyles: {
+        height: 47,
+        marginLeft: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    tabTitle: {
+        fontFamily: FONT_FAMILY,
+        fontSize: 25,
+        fontWeight: "bold",
+        fontStyle: "normal",
+        letterSpacing: 0,
+        color: colors.white
+    },
 })
