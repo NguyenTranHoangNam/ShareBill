@@ -22,7 +22,7 @@ export default Avatar = (props) => {
     return (
         <View style={{width: size, height: size}}>
             {!props.source ? 
-            <View style={[styles.container, {width: size, height: size, borderRadius: size / 2,backgroundColor: stringToColour(name) }]}>
+            <View style={[styles.container, {width: size, height: size, borderRadius: size / 2,backgroundColor: stringToColour(name) }, {...props.style}]}>
                 <Text style={[styles.avatarText, {fontSize: size/1.5}]}>{name[0].toUpperCase()}</Text>
             </View>
             :

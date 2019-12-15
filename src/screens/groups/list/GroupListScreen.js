@@ -83,11 +83,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: BORDER_WIDTH,
     borderBottomColor: colors.line
   },
-  itemSeparatorStyles: {
-    width: '100%',
-    height: BORDER_WIDTH,
-    backgroundColor: colors.line,
-  },
   subTitle: {
     fontFamily: FONT_FAMILY,
     fontSize: 11,

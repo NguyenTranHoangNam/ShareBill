@@ -6,7 +6,7 @@ import {
   Dimensions,
   StyleSheet,
   Text,
-  SectionList
+  ScrollView
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { FONT_FAMILY } from "../../../utils/const";
@@ -15,6 +15,8 @@ import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import { SBButton } from "../../../components/SBComponent";
 import SwipeListView from "../../../components/SwipeList/SwipeListView";
+import DetailCover from "../../../components/DetailCover";
+import TransactionItem from "./components/TransactionItem";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -23,14 +25,14 @@ const data = [
     data: [
       {
         type: "Own",
-        quantity: 500000,
-        groupName: "Bánh kẹo",
+        price: 500000,
+        transName: "Bánh kẹo",
         info: "Bạn nợ "
       },
       {
         type: "Lend",
-        quantity: 450000,
-        groupName: "Giày",
+        price: 450000,
+        transName: "Giày",
         info: "Hoàng Nam trả "
       }
     ]
@@ -40,14 +42,14 @@ const data = [
     data: [
       {
         type: "Own",
-        quantity: 50000,
-        groupName: "Bánh bao",
+        price: 50000,
+        transName: "Bánh bao",
         info: "Bạn nợ "
       },
       {
         type: "Lend",
-        quantity: 100000,
-        groupName: "Trà sửa",
+        price: 100000,
+        transName: "Trà sữa",
         info: "K.Hào trả "
       }
     ]
@@ -57,73 +59,7 @@ const data = [
 export function GroupDetailsScreen(props) {
   const renderItem = ({ item, index }) => {
     return (
-      <View
-        style={{
-          width,
-          height: 60,
-          flexDirection: "row",
-          alignItems: "center",
-          backgroundColor: colors.background
-        }}
-      >
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-          size={40}
-          style={{ borderRadius: 8, marginLeft: 20 }}
-        />
-        <View style={{ marginLeft: 35 }}>
-          <Text
-            style={{
-              fontFamily: FONT_FAMILY,
-              fontSize: 14,
-              fontWeight: "bold",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              color: colors.white
-            }}
-          >
-            {item.groupName}
-          </Text>
-          <Text
-            style={{
-              fontFamily: FONT_FAMILY,
-              fontSize: 11,
-              fontWeight: "normal",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              color: colors.subTitle
-            }}
-          >
-            {item.info} {item.quantity}
-          </Text>
-        </View>
-        <View style={{ flex: 1 }}>
-          {item.type === defineValue.Lend
-            ? <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
-              <Text style={styles.info}>Bạn cho mượn</Text>
-              <Text
-                style={[
-                  styles.info,
-                  { color: colors.mainLight, alignSelf: "flex-end" }
-                ]}
-              >
-                {" "}{item.quantity}
-              </Text>
-            </View>
-            : <View style={{ alignSelf: "flex-end", marginRight: 10 }}>
-              <Text style={styles.info}>Bạn mượn</Text>
-              <Text
-                style={[
-                  styles.info,
-                  { color: colors.orange, alignSelf: "flex-end" }
-                ]}
-              >
-                {" "}{item.quantity}
-              </Text>
-            </View>}
-        </View>
-      </View>
+        <TransactionItem item={item}/>
     );
   };
 
@@ -152,27 +88,19 @@ export function GroupDetailsScreen(props) {
         onRightPress={navigateToGroupInfo}
         onLeftPress={goBack}
       />
-      <Avatar
-        name={"default"}
-        source={require("../../../assets/images/background.png")}
-      />
-      <Text style={styles.groupName}>Tên Nhóm</Text>
-      <Text style={styles.info}>
-        Bạn nợ{" "}
-        <Text style={[styles.info, { color: colors.orange }]}>500.000đ</Text>
-      </Text>
-      <View style={styles.blockButton}>
+      <ScrollView>
+      <DetailCover name={'Tên nhóm'}>
         <SBButton
-          buttonText={"Trả nợ"}
-          buttonStyle={styles.buttonStyles}
-          textStyle={[styles.titleStyles]}
+          buttonText={"TRẢ NỢ"}
+          buttonStyle={styles.buttonStyle}
+          textStyle={[styles.buttonTextStyle]}
         />
         <SBButton
-          buttonText={"Số dư"}
-          buttonStyle={styles.buttonStyles}
-          textStyle={[styles.titleStyles]}
+          buttonText={"SỐ DƯ"}
+          buttonStyle={styles.buttonStyle}
+          textStyle={[styles.buttonTextStyle]}
         />
-      </View>
+      </DetailCover>
 
       <View style={styles.blockSectionList}>
         <SwipeListView
@@ -186,10 +114,10 @@ export function GroupDetailsScreen(props) {
           renderSectionHeader={renderHeader}
           renderHiddenItem={(data, rowMap) => (
             <View style={styles.swipeoutContainer}>
-              <TouchableOpacity style={[styles.swipeoutBtn, {backgroundColor: colors.subTitle}]}>
+              <TouchableOpacity style={[styles.swipeoutBtn, { backgroundColor: colors.subTitle }]}>
                 <SBIconFont name={'edit'} color={colors.white} size={20} />
               </TouchableOpacity>
-              <TouchableOpacity style={[styles.swipeoutBtn, {backgroundColor: colors.red}]}>
+              <TouchableOpacity style={[styles.swipeoutBtn, { backgroundColor: colors.red }]}>
                 <SBIconFont name={'delete'} color={colors.white} size={20} />
               </TouchableOpacity>
             </View>
@@ -202,6 +130,7 @@ export function GroupDetailsScreen(props) {
         />
 
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -211,49 +140,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: "center"
   },
-  headerStyles: {
-    height: 47,
-    width,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 15
-  },
-  avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginLeft: 150,
-    marginRight: 150
-  },
-  groupName: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 20,
-    fontWeight: "bold",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "center",
-    color: colors.white,
-    marginTop: 10
-  },
-  info: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "center",
-    color: colors.white,
-    marginTop: 5
-  },
-  buttonStyles: {
+  buttonStyle: {
     backgroundColor: colors.main,
     width: 120,
-    height: height * 0.041,
+    height: 30,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center"
   },
-  titleStyles: {
+  buttonTextStyle: {
     fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "bold",
@@ -262,12 +157,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: colors.white,
     alignSelf: "center"
-  },
-  blockButton: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width,
-    marginTop: 15
   },
   blockSectionList: {
     flex: 1,
@@ -289,15 +178,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.white,
     paddingLeft: 10
-  },
-  info: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "right",
-    color: colors.white
   },
   swipeoutContainer: {
     flexDirection: 'row',

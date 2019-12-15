@@ -4,7 +4,7 @@ import Utils from '../../utils/utils';
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from '../../utils/color';
 import { SBIconFont } from '../SBComponent';
-import { FONT_FAMILY } from '../../utils/const';
+import { FONT_FAMILY, SCREEN_WIDTH } from '../../utils/const';
 
 const Header = (props) => {
     const { leftIconName = null, leftText = null, onLeftPress, rightIconName = null, rightText = null, onRightPress, title = '' } = props;
@@ -62,7 +62,7 @@ export default SBHeader = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        width: SCREEN_WIDTH,
         height: Utils.isAndroid() ? 62 : (Utils.isiPhoneX() ? 64 : 45),
         alignItems: 'center',
         justifyContent: 'space-between',

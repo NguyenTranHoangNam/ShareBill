@@ -10,12 +10,14 @@ import {
   Image
 } from "react-native";
 import { colors } from "../../../utils/color";
-import { FONT_FAMILY } from "../../../utils/const";
+import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import Avatar from "../../../components/Avatar";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont } from "../../../components/SBComponent";
 import { defineValue } from "../../../utils/defineValue";
+import DetailCover from "../../../components/DetailCover";
+import TouchableListItem from "../../../components/TouchableListItem";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -41,69 +43,34 @@ export function FriendInfoScreen(props) {
   };
   const renderItem = ({ index, item }) => {
     return (
-      <TouchableOpacity onPress={navigateToGroupDetails}>
-        <View style={styles.itemStyles}>
-          <Image
-            style={styles.avatar}
-            source={require("../../../assets/images/background.png")}
-          />
-          <View>
-            <Text style={styles.groupName}>
-              {item.groupName}
-            </Text>
-            <View style={{ flexDirection: "row" }}>
-              {item.type === defineValue.Lend
-                ? <Text style={styles.groupInfo}>
-                    Bạn cho mượn
-                    <Text style={{ color: colors.mainLight }}>
-                      {" "}{item.quantity}
-                    </Text>
-                  </Text>
-                : <Text style={styles.groupInfo}>
-                    Bạn mượn
-                    <Text style={{ color: colors.orange }}>
-                      {" "}{item.quantity}
-                    </Text>
-                  </Text>}
-              <SBIconFont
-                style={{ marginLeft: 5 }}
-                name={"info"}
-                size={14}
-                color={colors.white}
-              />
-            </View>
-          </View>
-          <SBIconFont
-            style={styles.arrowIcon}
-            name={"keyboard-arrow-right"}
-            size={20}
-            color={colors.white}
-          />
+      <TouchableListItem
+        onPress={navigateToGroupDetails}
+        title={item.groupName}
+        index={index}
+      >
+        <View style={{ flexDirection: "row", }}>
+          {item.type === defineValue.Lend
+            ? <Text style={styles.subTitle}>Bạn cho mượn<Text style={{ color: colors.mainLight }}> {item.quantity}</Text></Text>
+            : <Text style={styles.subTitle}>Bạn mượn<Text style={{ color: colors.orange }}> {item.quantity}</Text></Text>
+          }
+          <SBIconFont style={{ marginLeft: 5 }} name='info-outline' size={14} color={colors.white} />
         </View>
-      </TouchableOpacity>
+      </TouchableListItem>
     );
   };
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={goBack} rightText={"Huỷ kết bạn"} />
-      <View style={{ width, alignItems: "center" }}>
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-        />
-
-        <Text style={styles.friendName}>Tên Bạn</Text>
-        <Text style={styles.loanInfo}>Bạn nợ 50000đ</Text>
-      </View>
-      <View style={styles.blockLoanInfo}>
+      
+      <DetailCover name="Tên Bạn">
         <SBButton
-          buttonStyle={styles.loanButton}
+          buttonStyle={styles.buttonStyle}
           buttonText={"TRẢ NỢ"}
-          textStyle={styles.loanTitle}
+          textStyle={styles.buttonTextStyle}
         />
-      </View>
+      </DetailCover>
 
-      <FlatList data={data} renderItem={renderItem} />
+      <FlatList contentContainerStyle={styles.contentContainerStyle} data={data} renderItem={renderItem} />
     </SafeAreaView>
   );
 }
@@ -111,76 +78,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background
-    // alignItems: "center"
   },
-  groupName: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 14,
-    fontWeight: 'bold',
-    fontStyle: "normal",
-    letterSpacing: 0,
-    color: colors.white
+  contentContainerStyle: {
+    paddingLeft: 20, 
+    borderBottomWidth: BORDER_WIDTH,
+    borderBottomColor: colors.line
   },
-  loanInfo: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 12,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "center",
-    color: colors.subTitle,
-    marginTop: 5
-  },
-  loanTitle: {
-    fontFamily: FONT_FAMILY,
-    fontSize: 16,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    letterSpacing: 0,
-    textAlign: "center",
-    color: colors.white
-  },
-  loanButton: {
-    backgroundColor: colors.mainLight,
-    borderRadius: 3
-  },
-  blockLoanInfo: {
-    height: 40,
-    marginLeft: 120,
-    marginRight: 120,
-    marginBottom: 20,
-    marginTop: 15
-  },
-  groupInfo: {
-    color: colors.white
-  },
-  itemStyles: {
-    width: width,
-    height: height * 0.09,
-    justifyContent: "flex-start",
+  buttonStyle: {
+    backgroundColor: colors.main,
+    width: 120,
+    height: 30,
+    borderRadius: 4,
     alignItems: "center",
-    flexDirection: "row",
-    marginBottom: 5
+    justifyContent: "center"
   },
-  avatar: {
-    width: width * 0.16,
-    height: width * 0.16,
-    borderRadius: width * 0.8,
-    marginLeft: width * 0.04,
-    marginRight: width * 0.044
-  },
-  arrowIcon: {
-    flex: 1,
-    textAlign: "right",
-    marginRight: width * 0.044
-  },
-  friendName: {
+  buttonTextStyle: {
     fontFamily: FONT_FAMILY,
-    fontSize: 20,
+    fontSize: 11,
     fontWeight: "bold",
     fontStyle: "normal",
     letterSpacing: 0,
     textAlign: "center",
+    color: colors.white,
+    alignSelf: "center"
+  },
+  subTitle: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 11,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
     color: colors.white
-  }
+  },
 });
