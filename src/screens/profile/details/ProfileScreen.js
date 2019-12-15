@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   itemSeparatorStyles: {
-    width: width * 0.9,
+    width: width - 40,
     height: 0.1,
     borderStyle: "solid",
     borderWidth: 0.7,

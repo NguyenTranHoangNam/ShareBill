@@ -2,35 +2,35 @@ import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { colors } from "../../utils/color";
 import { HistoryScreen } from "../../screens/history/list/HistoryScreen";
-import { ProfileScreen } from "../../screens/profile/details/ProfileScreen";
 import CustomTabNavigation from "../customTabNavigation/CustomTabNavigation";
 import GroupNavigator from "../groupNavigator/GroupNavigator";
 import { SBIconFont } from "../../components/SBComponent";
 import FriendsNavigator from "../friendsNavigator/FriendsNavigator";
 import TransactionNavigator from "../transactionNavigator/TransactionNavigator";
-import { NotiSettingsScreen } from "../../screens/profile/notiSettings/NotiSettings";
+import ProfileNavigator from "../profileNavigator/ProfileNavigator";
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 const setVisibleTabbar = navigation => {
+  if (navigation.state.routeName === "Giao dịch") {
+    return false;
+  } else if (navigation.state.routes) {
+    const routeName =
+      navigation.state.routes[navigation.state.routes.length - 1].routeName;
 
-  // navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'Giao dịch'
-      //     || navigation.state.routes != undefined && navigation.state.routes[navigation.state.routes.length - 1].routeName === 'GroupInfo'
-      //     ? false : true,
-    if (navigation.state.routeName === "Giao dịch") {
+    if (
+      routeName == "GroupInfo" ||
+      routeName == "AddMember" ||
+      routeName == "CreateGroup" ||
+      routeName == "NotiSettings"
+    ) {
       return false;
     }
-    else if(navigation.state.routes){
-      const routeName = navigation.state.routes[navigation.state.routes.length - 1].routeName
-      if(routeName == 'GroupInfo' || routeName == 'AddMember' || routeName == 'CreateGroup'){
-        return false;
-      }
-    }
-    return true;
-  
+  }
+  return true;
 };
 export const TabScreens = createBottomTabNavigator(
   {
-    "Nhóm": {
+    Nhóm: {
       screen: GroupNavigator
     },
     "Bạn Bè": {
@@ -46,7 +46,7 @@ export const TabScreens = createBottomTabNavigator(
       screen: HistoryScreen
     },
     "Cá Nhân": {
-      screen: NotiSettingsScreen//ProfileScreen
+      screen: ProfileNavigator
     }
   },
   {

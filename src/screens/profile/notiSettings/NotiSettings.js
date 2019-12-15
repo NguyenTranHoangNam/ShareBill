@@ -8,7 +8,7 @@ import {
   Switch
 } from "react-native";
 import { colors } from "../../../utils/color";
-import { SBHeader } from "../../../components/SBComponent";
+import { SBHeader, SBSwitch } from "../../../components/SBComponent";
 import { FONT_FAMILY } from "../../../utils/const";
 const { width, height } = Dimensions.get("screen");
 export function NotiSettingsScreen(props) {
@@ -28,7 +28,7 @@ export function NotiSettingsScreen(props) {
       <View style={styles.contentContainer}>
         <Text style={styles.titleStyles}>Khi ai đó thêm tôi vào nhóm</Text>
         <View style={styles.switchContainer}>
-          <Switch
+          <SBSwitch
             value={notiWhenAddToGroup}
             onValueChange={() => setNotiWhenAddToGroup(!notiWhenAddToGroup)}
           />
@@ -38,7 +38,7 @@ export function NotiSettingsScreen(props) {
       <View style={styles.contentContainer}>
         <Text style={styles.titleStyles}>Khi ai đó thêm bạn với tôi</Text>
         <View style={styles.switchContainer}>
-          <Switch
+          <SBSwitch
             value={notiWhenAddFriend}
             onValueChange={() => setNotiWhenAddFriend(!notiWhenAddFriend)}
           />
@@ -50,7 +50,7 @@ export function NotiSettingsScreen(props) {
       <View style={styles.contentContainer}>
         <Text style={styles.titleStyles}>Khi có chi tiêu được thêm</Text>
         <View style={styles.switchContainer}>
-          <Switch
+          <SBSwitch
             value={notiWhenAddTransaction}
             onValueChange={() => setNotiWhenAddTransaction(!notiWhenAddTransaction)}
           />
@@ -62,7 +62,7 @@ export function NotiSettingsScreen(props) {
           Khi có chi tiêu được chỉnh sửa/xoá
         </Text>
         <View style={styles.switchContainer}>
-          <Switch
+          <SBSwitch
             value={notiWhenUpdateTransaction}
             onValueChange={() => setNotiWhenUpdateTransaction(!notiWhenUpdateTransaction)}
           />
@@ -72,7 +72,7 @@ export function NotiSettingsScreen(props) {
       <View style={styles.contentContainer}>
         <Text style={styles.titleStyles}>Khi ai đó trả lời vào chi tiêu</Text>
         <View style={styles.switchContainer}>
-          <Switch
+          <SBSwitch
             value={notiWhenAnswerTransaction}
             onValueChange={() => setNotiWhenAnswerTransaction(!notiWhenAnswerTransaction)}
           />
@@ -81,6 +81,13 @@ export function NotiSettingsScreen(props) {
       <View
         style={[styles.itemSeparatorStyles, styles.enddingItemSeparatorStyles]}
       />
+      <View style={styles.blockSave}>
+        <SBButton
+          buttonStyle={styles.saveButton}
+          buttonText={"LƯU THÔNG TIN"}
+          textStyle={styles.saveTitle}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -130,5 +137,15 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 13,
     fontFamily: FONT_FAMILY
-  }
+  },
+  saveButton: {
+    backgroundColor: colors.mainLight,
+    borderRadius: 23
+  },
+  blockSave: {
+    height: 40,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10,
+  },
 });
