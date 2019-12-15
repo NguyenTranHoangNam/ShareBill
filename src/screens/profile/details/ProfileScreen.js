@@ -13,6 +13,9 @@ import { FONT_FAMILY } from "../../../utils/const";
 import { SBIconFont } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function ProfileScreen(props) {
+  const navigationToNotiSetting=()=>{
+    props.navigation.navigate("NotiSettings");
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.menuStyles}>
@@ -54,7 +57,9 @@ export function ProfileScreen(props) {
       </TouchableOpacity>
       <View style={styles.itemSeparatorStyles} />
       {/* Announcement */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={navigationToNotiSetting}
+      >
         <View style={styles.blockFunction}>
           <SBIconFont
             style={{ marginLeft: 10, marginRight: 10 }}

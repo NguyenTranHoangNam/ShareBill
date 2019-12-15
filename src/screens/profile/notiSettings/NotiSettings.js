@@ -15,13 +15,19 @@ export function NotiSettingsScreen(props) {
   const [notiWhenAddToGroup, setNotiWhenAddToGroup] = useState(true);
   const [notiWhenAddFriend, setNotiWhenAddFriend] = useState(true);
   const [notiWhenAddTransaction, setNotiWhenAddTransaction] = useState(true);
-  const [notiWhenUpdateTransaction, setNotiWhenUpdateTransaction] = useState(true);
+  const [notiWhenUpdateTransaction, setNotiWhenUpdateTransaction] = useState(
+    true
+  );
   const [notiWhenAnswerTransaction, setNotiWhenAnswerTransaction] = useState(
     true
   );
+
+  const goBack = () => {
+    props.navigation.goBack();
+  };
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader title={"Thông báo"} />
+      <SBHeader onLeftPress={goBack} title={"Thông báo"} />
       <View style={styles.header}>
         <Text style={styles.titleHeader}>NHÓM VÀ BẠN BÈ</Text>
       </View>
@@ -31,6 +37,7 @@ export function NotiSettingsScreen(props) {
           <SBSwitch
             value={notiWhenAddToGroup}
             onValueChange={() => setNotiWhenAddToGroup(!notiWhenAddToGroup)}
+            style={styles.switchStyles}
           />
         </View>
       </View>
@@ -41,6 +48,7 @@ export function NotiSettingsScreen(props) {
           <SBSwitch
             value={notiWhenAddFriend}
             onValueChange={() => setNotiWhenAddFriend(!notiWhenAddFriend)}
+            style={styles.switchStyles}
           />
         </View>
       </View>
@@ -52,7 +60,9 @@ export function NotiSettingsScreen(props) {
         <View style={styles.switchContainer}>
           <SBSwitch
             value={notiWhenAddTransaction}
-            onValueChange={() => setNotiWhenAddTransaction(!notiWhenAddTransaction)}
+            onValueChange={() =>
+              setNotiWhenAddTransaction(!notiWhenAddTransaction)}
+            style={styles.switchStyles}
           />
         </View>
       </View>
@@ -64,7 +74,9 @@ export function NotiSettingsScreen(props) {
         <View style={styles.switchContainer}>
           <SBSwitch
             value={notiWhenUpdateTransaction}
-            onValueChange={() => setNotiWhenUpdateTransaction(!notiWhenUpdateTransaction)}
+            onValueChange={() =>
+              setNotiWhenUpdateTransaction(!notiWhenUpdateTransaction)}
+            style={styles.switchStyles}
           />
         </View>
       </View>
@@ -74,7 +86,9 @@ export function NotiSettingsScreen(props) {
         <View style={styles.switchContainer}>
           <SBSwitch
             value={notiWhenAnswerTransaction}
-            onValueChange={() => setNotiWhenAnswerTransaction(!notiWhenAnswerTransaction)}
+            onValueChange={() =>
+              setNotiWhenAnswerTransaction(!notiWhenAnswerTransaction)}
+            style={styles.switchStyles}
           />
         </View>
       </View>
@@ -146,6 +160,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 10,
+    marginBottom: 10
   },
+  switchStyles: { alignSelf: "flex-end", marginRight: 14 }
 });

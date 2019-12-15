@@ -14,7 +14,7 @@ const ProfileNavigator = createStackNavigator(
   },
   {
     headerMode: "none",
-    initialRouteName:'ProfileScreen',
+    // initialRouteName:'ProfileScreen',
     transitionConfig:TransitionConfiguration
   }
 );
