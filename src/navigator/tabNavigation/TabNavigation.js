@@ -8,6 +8,7 @@ import GroupNavigator from "../groupNavigator/GroupNavigator";
 import { SBIconFont } from "../../components/SBComponent";
 import FriendsNavigator from "../friendsNavigator/FriendsNavigator";
 import TransactionNavigator from "../transactionNavigator/TransactionNavigator";
+import { NotiSettingsScreen } from "../../screens/profile/notiSettings/NotiSettings";
 const TabBarComponent = props => <CustomTabNavigation {...props} />;
 
 const setVisibleTabbar = navigation => {
@@ -45,7 +46,7 @@ export const TabScreens = createBottomTabNavigator(
       screen: HistoryScreen
     },
     "Cá Nhân": {
-      screen: ProfileScreen
+      screen: NotiSettingsScreen//ProfileScreen
     }
   },
   {
