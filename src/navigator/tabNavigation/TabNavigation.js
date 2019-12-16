@@ -21,7 +21,8 @@ const setVisibleTabbar = navigation => {
       routeName == "GroupInfo" ||
       routeName == "AddMember" ||
       routeName == "CreateGroup" ||
-      routeName == "NotiSettings"
+      routeName == "NotiSettings" ||
+      routeName == "MyQRCode"
     ) {
       return false;
     }

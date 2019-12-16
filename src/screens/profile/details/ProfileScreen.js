@@ -16,6 +16,10 @@ export function ProfileScreen(props) {
   const navigationToNotiSetting=()=>{
     props.navigation.navigate("NotiSettings");
   }
+
+  const navigationToMyQRCode=()=>{
+    props.navigation.navigate("MyQRCode");
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.menuStyles}>
@@ -38,7 +42,9 @@ export function ProfileScreen(props) {
         </View>
       </View>
       {/* My QR Code */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={navigationToMyQRCode}
+      >
         <View style={styles.blockFunction}>
           <SBIconFont
             style={{ marginLeft: 10, marginRight: 10 }}

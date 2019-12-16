@@ -162,5 +162,17 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginBottom: 10
   },
-  switchStyles: { alignSelf: "flex-end", marginRight: 14 }
+  switchStyles: {
+    alignSelf: "flex-end",
+    marginRight: 14
+  },
+  saveTitle: {
+    fontFamily: FONT_FAMILY,
+    fontSize: 16,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: colors.white
+  }
 });
