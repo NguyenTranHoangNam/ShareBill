@@ -10,14 +10,12 @@ import {
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { FONT_FAMILY } from "../../../utils/const";
-import { SBIconFont } from "../../../components/SBComponent";
+import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function ProfileScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.menuStyles}>
-        <Text style={styles.title}>Cá nhân </Text>
-      </View>
+      <SBHeader type='tab' tabTitle={'Cá nhân'} />
       <View style={styles.blockBoard}>
         <View style={styles.boardStyles}>
           <Image

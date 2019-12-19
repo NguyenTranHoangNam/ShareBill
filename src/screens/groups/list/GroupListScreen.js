@@ -54,12 +54,17 @@ export function GroupListScreen(props) {
     );
   };
 
+  const onHeaderIconPress = (index) => {
+    
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader
-        leftIconName={'search'}
-        rightText={'Tạo nhóm'}
-        onRightPress={navigateToCreateGroup}
+      <SBHeader 
+        type='tab'
+        tabTitle={'Nhóm'}
+        icons={['group-add', 'search']}
+        onIconPress={onHeaderIconPress}
       />
 
       <TabSummary />

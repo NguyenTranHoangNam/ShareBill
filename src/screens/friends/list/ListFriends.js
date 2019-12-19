@@ -65,12 +65,17 @@ export function ListFriendsScreen(props) {
     );
   };
 
+  const onHeaderIconPress = (index) => {
+    
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader 
-        leftIconName={'search'} 
-        rightText={"Thêm bạn"} 
+        type='tab'
         tabTitle={'Bạn bè'}
+        icons={['person-add', 'search']}
+        onIconPress={onHeaderIconPress}
       />
       
       <TabSummary />

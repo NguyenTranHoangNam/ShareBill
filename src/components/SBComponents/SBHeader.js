@@ -46,16 +46,26 @@ const Header = (props) => {
 }
 
 export default SBHeader = (props) => {
-    const { tabTitleOnly = false, tabTitle } = props;
-    return (
-        <View>
-            {!tabTitleOnly ? <Header {...props} /> : null }
-            { tabTitle ? 
+    const { type = 'screen', tabTitle, icons = [], onIconPress } = props;
+    
+    if (type === 'tab'){
+        return (
             <View style={styles.menuStyles}>
                 <Text style={styles.tabTitle}>{tabTitle}</Text>
+                <View style={styles.row}>
+                    {icons.map((icon, index) => {
+                        return (
+                            <TouchableOpacity onPress={() => onIconPress(index)} style={styles.icon}>
+                                <SBIconFont name={icon} size={20} color={colors.background}/>
+                            </TouchableOpacity>
+                        )
+                    })}
+                </View>
             </View>
-            : null }
-        </View>
+        )
+    }
+    return (
+        <Header {...props} />
     )
 
 }
@@ -92,8 +102,9 @@ const styles = StyleSheet.create({
     },
     menuStyles: {
         height: 47,
-        marginLeft: 10,
+        paddingHorizontal: 10,
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between'
     },
     tabTitle: {
@@ -104,4 +115,16 @@ const styles = StyleSheet.create({
         letterSpacing: 0,
         color: colors.white
     },
+    icon: {
+        width: 30,
+        height: 30,
+        borderRadius: 15,
+        backgroundColor: colors.white_70,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
+    },
+    row: {
+        flexDirection: 'row'
+    }
 })

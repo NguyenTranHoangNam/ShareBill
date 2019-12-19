@@ -24,10 +24,7 @@ export function HistoryScreen(props) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <SBHeader
-                tabTitleOnly
-                tabTitle={'Lịch sử'}
-            />
+            <SBHeader type='tab' tabTitle={'Lịch sử'}/>
             <FlatList
                 contentContainerStyle={styles.contentContainerStyle}
                 data={data}
