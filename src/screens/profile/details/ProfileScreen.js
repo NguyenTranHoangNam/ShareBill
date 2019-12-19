@@ -13,6 +13,13 @@ import { FONT_FAMILY } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function ProfileScreen(props) {
+  const navigationToNotiSetting=()=>{
+    props.navigation.navigate("NotiSettings");
+  }
+
+  const navigationToMyQRCode=()=>{
+    props.navigation.navigate("MyQRCode");
+  }
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader type='tab' tabTitle={'Cá nhân'} />
@@ -33,7 +40,9 @@ export function ProfileScreen(props) {
         </View>
       </View>
       {/* My QR Code */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={navigationToMyQRCode}
+      >
         <View style={styles.blockFunction}>
           <SBIconFont
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -52,7 +61,9 @@ export function ProfileScreen(props) {
       </TouchableOpacity>
       <View style={styles.itemSeparatorStyles} />
       {/* Announcement */}
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={navigationToNotiSetting}
+      >
         <View style={styles.blockFunction}>
           <SBIconFont
             style={{ marginLeft: 10, marginRight: 10 }}
