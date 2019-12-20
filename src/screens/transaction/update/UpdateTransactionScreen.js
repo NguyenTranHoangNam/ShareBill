@@ -10,8 +10,8 @@ import { TransactionImageView } from './components/TransactionImageView';
 export const UpdateTransactionScreen = (props) => {
 
     const onBackPress = () => {
-        console.warn('props.param', props.navigation.state.params)
-        props.navigation.navigate("Bạn Bè");
+        console.warn('props.param', JSON.stringify(props.navigation.state.params.fromTab))
+        props.navigation.navigate(props.navigation.state.params.fromTab);
     }
     return (
         <SafeAreaView style={styles.container}>

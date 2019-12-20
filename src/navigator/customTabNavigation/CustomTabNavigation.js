@@ -34,7 +34,7 @@ const TabBar = props => {
   
   const onAddTransPress = (tabName) => {
     console.log('fromTab', tabName);
-    props.navigation.navigate("Giao dịch", { fromTab: tabName })
+    props.navigation.navigate("UpdateTransaction", { fromTab: tabName })
   }
 
   return (
