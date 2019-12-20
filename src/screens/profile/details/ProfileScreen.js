@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { colors } from "../../../utils/color";
-import { FONT_FAMILY } from "../../../utils/const";
+import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 const { width, height } = Dimensions.get("screen");
 export function ProfileScreen(props) {
@@ -185,18 +185,14 @@ const styles = StyleSheet.create({
   },
   itemSeparatorStyles: {
     width: width - 40,
-    height: 0.1,
-    borderStyle: "solid",
-    borderWidth: 0.7,
-    borderColor: colors.line,
+    height: BORDER_WIDTH,
+    backgroundColor: colors.line,
     alignSelf: "flex-end"
   },
   endingItemSeparatorStyles:{
     width,
-    height: 0.1,
-    borderStyle: "solid",
-    borderWidth: 0.7,
-    borderColor: colors.line,
+    height: BORDER_WIDTH,
+    backgroundColor: colors.line,
     alignSelf: "flex-end"
   },
   arrowIcon: {

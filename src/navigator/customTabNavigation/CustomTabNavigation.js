@@ -16,20 +16,25 @@ const TabBar = props => {
     renderIcon,
     jumpTo,
   } = props;
-  
+
   const getColor = (index, idx, route, props) => {
-    const {tabFeatured, activeTintColor, activeFeaturedTintColor, inactiveTintColor, inactiveFeatureTintColor} = props;
-    if (index === idx){
-      if (route.key !== tabFeatured){
+    const { tabFeatured, activeTintColor, activeFeaturedTintColor, inactiveTintColor, inactiveFeatureTintColor } = props;
+    if (index === idx) {
+      if (route.key !== tabFeatured) {
         return activeTintColor
-      } 
+      }
       return activeFeaturedTintColor
     } else {
-      if (route.key !== tabFeatured){
+      if (route.key !== tabFeatured) {
         return inactiveTintColor
       }
       return inactiveFeatureTintColor
     }
+  }
+  
+  const onAddTransPress = (tabName) => {
+    console.log('fromTab', tabName);
+    props.navigation.navigate("Giao dịch", { fromTab: tabName })
   }
 
   return (
@@ -38,30 +43,30 @@ const TabBar = props => {
         (route, idx) =>
           route.key != "Giao dịch"
             ?
-              <TouchableOpacity activeOpacity={1} style={styles.tabButtonContainer} onPress={() => jumpTo(route.key)}>
-                  <View style={styles.iconContainer}>
-                    {renderIcon({
-                      route,
-                      focused: index === idx,
-                      tintColor: getColor(index, idx, route, props)
-                    })}
-                  </View>
-                  <Text style={[ styles.labelStyles, {color: getColor(index, idx, route, props)} ]} >
-                    {route.key}
-                  </Text>
-              </TouchableOpacity>
+            <TouchableOpacity activeOpacity={1} style={styles.tabButtonContainer} onPress={() => jumpTo(route.key)}>
+              <View style={styles.iconContainer}>
+                {renderIcon({
+                  route,
+                  focused: index === idx,
+                  tintColor: getColor(index, idx, route, props)
+                })}
+              </View>
+              <Text style={[styles.labelStyles, { color: getColor(index, idx, route, props) }]} >
+                {route.key}
+              </Text>
+            </TouchableOpacity>
             :
-              <TouchableOpacity activeOpacity={1} style={[styles.tabButtonContainer, {justifyContent: 'flex-end'}]} onPress={() => jumpTo(route.key)}>
-                <View style={styles.addButtonFirstContainer}>
-                  <View style={styles.addButtonSecondContainer}>
-                    <SBIconFont
-                      name="add"
-                      color={colors.white}
-                      size={30}
-                    />
-                  </View>
+            <TouchableOpacity activeOpacity={1} style={[styles.tabButtonContainer, { justifyContent: 'flex-end' }]} onPress={() => onAddTransPress(routes[index].key)}>
+              <View style={styles.addButtonFirstContainer}>
+                <View style={styles.addButtonSecondContainer}>
+                  <SBIconFont
+                    name="add"
+                    color={colors.white}
+                    size={30}
+                  />
                 </View>
-              </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
       )}
     </SafeAreaView>
   );
@@ -81,8 +86,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tabbar,
   },
   tabButtonContainer: {
-    width: SCREEN_WIDTH/5, 
-    alignItems: 'center', 
+    width: SCREEN_WIDTH / 5,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   addButtonFirstContainer: {
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 15, 
+    marginBottom: 15,
   },
   addButtonSecondContainer: {
     width: 55,

@@ -31,7 +31,7 @@ const setVisibleTabbar = navigation => {
 };
 export const TabScreens = createBottomTabNavigator(
   {
-    Nhóm: {
+    "Nhóm": {
       screen: GroupNavigator
     },
     "Bạn Bè": {
@@ -39,9 +39,6 @@ export const TabScreens = createBottomTabNavigator(
     },
     "Giao dịch": {
       screen: TransactionNavigator,
-      navigationOptions: {
-        tabBarVisible: false
-      }
     },
     "Lịch Sử": {
       screen: HistoryScreen
