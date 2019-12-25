@@ -2,11 +2,14 @@ import React from 'react';
 import { SafeAreaView, StatusBar} from 'react-native';
 import AppContainer from './src/navigator/AppContainer';
 import NavigationService from './src/navigator/NavigationService';
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootReducer from './src/reducer/rootReducer';
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './src/saga/rootSaga';
 
-const store = createStore(rootReducer)
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(rootReducer,applyMiddleware(sagaMiddleware))
 const App: () => React$Node = () => {
   return (
     <>
@@ -21,5 +24,6 @@ const App: () => React$Node = () => {
     </>
   );
 };
+sagaMiddleware.run(rootSaga)
 
 export default App;

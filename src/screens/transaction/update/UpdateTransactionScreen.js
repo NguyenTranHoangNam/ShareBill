@@ -49,7 +49,7 @@ export const UpdateTransactionScreen = props => {
           roundVertical
           onPress={() => {
             dispatch({
-              type: "INCREMENT"
+              type: "INCREMENT_ASYNC"
             });
           }}
         />
