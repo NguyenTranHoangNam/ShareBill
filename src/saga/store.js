@@ -7,16 +7,17 @@ import AsyncStorage from '@react-native-community/async-storage';
 import rootSaga from './rootSaga';
 
 /* Reducers */
-import transactionReducer from './../redux/transaction/transaction.reducer';
+import {transactionReducer as transaction} from './../redux/transaction/transaction.reducer';
 
 const reducers = {
-    transactionReducer
+    transaction
 };
 
 /* Redux-Persist */
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage: AsyncStorage,
+  whitelist: ['transaction'],
 }, reducers);
 
 /* Saga */

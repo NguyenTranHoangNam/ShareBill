@@ -4,24 +4,12 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Image,
-  Text
 } from "react-native";
 import { colors } from "../../../utils/color";
 import {
   SBHeader,
-  SBTextInput,
   SBButton,
-  SBIconFont
 } from "../../../components/SBComponent";
-import {
-  FONT_FAMILY,
-  PAY_TYPE_TEXT,
-  PAY_TYPE,
-  SCREEN_WIDTH,
-  BORDER_WIDTH
-} from "../../../utils/const";
 import TransactionRequireInfoView from "./components/TransactionRequireInfoView";
 import TransactionOptionalInfoView from "./components/TransactionOptionalInfoView";
 import { TransactionImageView } from "./components/TransactionImageView";
@@ -32,7 +20,7 @@ export const UpdateTransactionScreen = props => {
     props.navigation.navigate(props.navigation.state.params.fromTab);
   };
 
-  const counter = useSelector(state => state.transactionReducer.counter);
+  const counter = useSelector(state => state.transaction.counter);
   const dispatch = useDispatch();
 
   return (
