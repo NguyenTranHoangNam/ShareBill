@@ -26,13 +26,15 @@ import TransactionRequireInfoView from "./components/TransactionRequireInfoView"
 import TransactionOptionalInfoView from "./components/TransactionOptionalInfoView";
 import { TransactionImageView } from "./components/TransactionImageView";
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "./action/action";
+
 export const UpdateTransactionScreen = props => {
   const onBackPress = () => {
     props.navigation.navigate(props.navigation.state.params.fromTab);
   };
+
   const counter = useSelector(state => state.transactionReducer.counter);
   const dispatch = useDispatch();
+
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu " + counter} />

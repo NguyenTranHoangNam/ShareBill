@@ -1,4 +1,4 @@
-import { INCREMENT } from "../index/actionTypes"
+import { INCREMENT } from './transaction.type'
 import { takeEvery,put } from 'redux-saga/effects'
 
 export function* incrementAsync() {
