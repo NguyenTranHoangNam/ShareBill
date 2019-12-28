@@ -16,7 +16,7 @@ const Header = (props) => {
         if (Utils.isAndroid()) {
             return 'arrow-back'
         }
-        return 'arrow-back-ios'
+        return 'chevron-left'
     }
 
     return (

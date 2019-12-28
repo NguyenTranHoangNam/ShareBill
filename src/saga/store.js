@@ -8,16 +8,17 @@ import rootSaga from './rootSaga';
 
 /* Reducers */
 import {transactionReducer as transaction} from './../redux/transaction/transaction.reducer';
-
+import {groupReducer as group} from './../redux/group/group.reducer';
 const reducers = {
-    transaction
+    transaction,
+    group
 };
 
 /* Redux-Persist */
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['transaction'],
+  whitelist: ['transaction','group'],
 }, reducers);
 
 /* Saga */

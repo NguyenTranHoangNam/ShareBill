@@ -57,10 +57,9 @@ const data = [
 ];
 
 export function GroupDetailsScreen(props) {
+  const { groupSelected } = props.navigation.state.params;
   const renderItem = ({ item, index }) => {
-    return (
-        <TransactionItem item={item}/>
-    );
+    return <TransactionItem item={item} />;
   };
 
   const renderHeader = ({ section: { title } }) => {
@@ -89,47 +88,52 @@ export function GroupDetailsScreen(props) {
         onLeftPress={goBack}
       />
       <ScrollView>
-      <DetailCover name={'Tên nhóm'}>
-        <SBButton
-          buttonText={"TRẢ NỢ"}
-          buttonStyle={styles.buttonStyle}
-          textStyle={[styles.buttonTextStyle]}
-        />
-        <SBButton
-          buttonText={"SỐ DƯ"}
-          buttonStyle={styles.buttonStyle}
-          textStyle={[styles.buttonTextStyle]}
-        />
-      </DetailCover>
+        <DetailCover name={groupSelected.name}>
+          <SBButton
+            buttonText={"TRẢ NỢ"}
+            buttonStyle={styles.buttonStyle}
+            textStyle={[styles.buttonTextStyle]}
+          />
+          <SBButton
+            buttonText={"SỐ DƯ"}
+            buttonStyle={styles.buttonStyle}
+            textStyle={[styles.buttonTextStyle]}
+          />
+        </DetailCover>
 
-      <View style={styles.blockSectionList}>
-        <SwipeListView
-          useSectionList
-          style={{ flex: 1 }}
-          initialNumToRender={10}
-          leftOpenValue={0}
-          disableRightSwipe={true}
-          rightOpenValue={-87}
-          renderItem={renderItem}
-          renderSectionHeader={renderHeader}
-          renderHiddenItem={(data, rowMap) => (
-            <View style={styles.swipeoutContainer}>
-              <TouchableOpacity style={[styles.swipeoutBtn, { backgroundColor: colors.subTitle }]}>
-                <SBIconFont name={'edit'} color={colors.white} size={20} />
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.swipeoutBtn, { backgroundColor: colors.red }]}>
-                <SBIconFont name={'delete'} color={colors.white} size={20} />
-              </TouchableOpacity>
-            </View>
-          )}
-          sections={data}
-          stickySectionHeadersEnabled={false}
-          keyExtractor={(item, index) => {
-            return `${index}`;
-          }}
-        />
-
-      </View>
+        <View style={styles.blockSectionList}>
+          <SwipeListView
+            useSectionList
+            style={{ flex: 1 }}
+            initialNumToRender={10}
+            leftOpenValue={0}
+            disableRightSwipe={true}
+            rightOpenValue={-87}
+            renderItem={renderItem}
+            renderSectionHeader={renderHeader}
+            renderHiddenItem={(data, rowMap) =>
+              <View style={styles.swipeoutContainer}>
+                <TouchableOpacity
+                  style={[
+                    styles.swipeoutBtn,
+                    { backgroundColor: colors.subTitle }
+                  ]}
+                >
+                  <SBIconFont name={"edit"} color={colors.white} size={20} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.swipeoutBtn, { backgroundColor: colors.red }]}
+                >
+                  <SBIconFont name={"delete"} color={colors.white} size={20} />
+                </TouchableOpacity>
+              </View>}
+            sections={data}
+            stickySectionHeadersEnabled={false}
+            keyExtractor={(item, index) => {
+              return `${index}`;
+            }}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -180,20 +184,20 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   swipeoutContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 15,
     paddingHorizontal: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
     width: 87,
     flex: 1,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end"
   },
   swipeoutBtn: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     width: 30,
     height: 30,
-    borderRadius: 15,
+    borderRadius: 15
   }
 });
