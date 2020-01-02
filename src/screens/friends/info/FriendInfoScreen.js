@@ -40,7 +40,6 @@ export function FriendInfoScreen(props) {
     return (
       <TouchableListItem
         onPress={navigateToGroupDetails.bind(null,item)}
-        // onPress={()=>{alert(JSON.stringify(item))}}
         title={item.name}
         index={index}
       >
