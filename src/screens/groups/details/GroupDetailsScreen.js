@@ -77,6 +77,7 @@ export function GroupDetailsScreen(props) {
   };
 
   const goBack = () => {
+    console.log(groupSelected)
     props.navigation.goBack();
   };
 

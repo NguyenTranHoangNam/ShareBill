@@ -14,6 +14,8 @@ import { defineValue } from "../../../utils/defineValue";
 import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 import TabSummary from "../../../components/TabSummary";
+import { useSelector, useDispatch } from "react-redux";
+import TouchableListItem from "../../../components/TouchableListItem";
 const data = [
   {
     friendName: "Kiên Hào",
@@ -34,15 +36,19 @@ const data = [
   }
 ];
 export function ListFriendsScreen(props) {
-  const navigateToGroupDetails = () => {
-    props.navigation.navigate('FriendInfo')
+
+  const {listFriends} = useSelector(state => state.friend);
+  const dispatch = useDispatch();
+
+  const navigateToGroupDetails = (friendSelected) => {
+    props.navigation.navigate('FriendInfo',{friendSelected})
   };
 
   const renderItem = ({ index, item }) => {
     return (
       <TouchableListItem
-        onPress={navigateToGroupDetails}
-        title={item.friendName}
+        onPress={navigateToGroupDetails.bind(null,item)}
+        title={item.fullname}
         index={index}
       >
         {item.info &&
@@ -82,7 +88,7 @@ export function ListFriendsScreen(props) {
 
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={data}
+        data={listFriends}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
       />

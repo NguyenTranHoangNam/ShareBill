@@ -7,7 +7,14 @@ const initState = {
       name: "Đài loan",
       url: "",
       avatar: "",
-      member:[1,2,3]
+      member:['tkien@gmail.com','nloan@gmail.com']
+    },
+    {
+      id: 2,
+      name: "Thái lan",
+      url: "",
+      avatar: "",
+      member:['tkien@gmail.com','khao@gmail.com']
     }
   ]
 };

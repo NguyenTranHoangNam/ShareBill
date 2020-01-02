@@ -18,34 +18,30 @@ import { SBIconFont } from "../../../components/SBComponent";
 import { defineValue } from "../../../utils/defineValue";
 import DetailCover from "../../../components/DetailCover";
 import TouchableListItem from "../../../components/TouchableListItem";
+import { useSelector, useDispatch } from "react-redux";
+import { getFriendGroups } from "../../../redux/friend/friend.action";
 const { width, height } = Dimensions.get("screen");
 
-const data = [
-  {
-    type: "Own",
-    quantity: 500000,
-    groupName: "Đài loan"
-  },
-  {
-    type: "Lend",
-    quantity: 4500000,
-    groupName: "Thái lan"
-  }
-];
-
 export function FriendInfoScreen(props) {
+  const { friendSelected } = props.navigation.state.params;
+  const {friendGroups} = useSelector(state => state.friend);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getFriendGroups(friendSelected))
+  },[])
   const goBack = () => {
     props.navigation.goBack();
   };
 
-  const navigateToGroupDetails = () => {
-    props.navigation.navigate("GroupDetails");
+  const navigateToGroupDetails = (groupSelected) => {
+    props.navigation.navigate("GroupDetails",{groupSelected});
   };
-  const renderItem = ({ index, item }) => {
+  const renderItem = ({ item, index }) => {
     return (
       <TouchableListItem
-        onPress={navigateToGroupDetails}
-        title={item.groupName}
+        onPress={navigateToGroupDetails.bind(null,item)}
+        // onPress={()=>{alert(JSON.stringify(item))}}
+        title={item.name}
         index={index}
       >
         <View style={{ flexDirection: "row", }}>
@@ -62,7 +58,7 @@ export function FriendInfoScreen(props) {
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={goBack} rightText={"Huỷ kết bạn"} />
       
-      <DetailCover name="Tên Bạn">
+      <DetailCover name={friendSelected.fullname}>
         <SBButton
           buttonStyle={styles.buttonStyle}
           buttonText={"TRẢ NỢ"}
@@ -70,7 +66,7 @@ export function FriendInfoScreen(props) {
         />
       </DetailCover>
 
-      <FlatList contentContainerStyle={styles.contentContainerStyle} data={data} renderItem={renderItem} />
+      <FlatList contentContainerStyle={styles.contentContainerStyle} data={friendGroups} renderItem={renderItem} />
     </SafeAreaView>
   );
 }
