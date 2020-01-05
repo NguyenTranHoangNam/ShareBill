@@ -6,6 +6,7 @@ import { SCREEN_WIDTH, FONT_FAMILY, BORDER_WIDTH } from '../../../../utils/const
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import _ from 'lodash';
 import moment from 'moment';
+import Utils from '../../../../utils/utils';
 
 export default TransactionOptionalInfoView = ({transaction}) => {
     const [isDateTimePickerVisible, setDateTimePickerVisible] = useState(false);
@@ -47,7 +48,7 @@ export default TransactionOptionalInfoView = ({transaction}) => {
             <View style={{ flexDirection: 'row', marginTop: 10 }}>
                 <View style={[styles.iconContainer, { borderRadius: 20, backgroundColor: 'white' }]} />
                 <TouchableOpacity activeOpacity={1} style={styles.buttonContainer}>
-                    <Text style={styles.buttonText}>{transaction.group.name}</Text>
+                    <Text style={styles.buttonText}>{Utils.getGroupNameById(transaction.groupId)}</Text>
                 </TouchableOpacity>
             </View>
         </View>

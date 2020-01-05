@@ -19,8 +19,8 @@ import moment from "moment";
 import { createTransaction } from "../../../redux/transaction/transaction.action";
 
 let  initTrans = {
-  id: '',
-  group: {id: 1, name: 'Singapore'},
+  id: moment().format('DDMMYYYYHHmmss'),
+  groupId: 1,
   description: 'Ăn sáng',
   amount: 10000,
   createTime: moment().format('DD/MM/YYYY HH:mm'),
@@ -33,13 +33,12 @@ let  initTrans = {
 }
 
 export const UpdateTransactionScreen = (props) => {
-  const [transaction, updateTransaction] = useState(_.clone(props.navigation.getParam('transaction', initTrans)));
+  const [transaction] = useState(_.clone(props.navigation.getParam('transaction', initTrans)));
 
   const onBackPress = () => {
     props.navigation.navigate(props.navigation.state.params.fromTab);
   };
 
-  const counter = useSelector(state => state.transaction.counter);
   const dispatch = useDispatch();
 
   const onSubmit = (transaction) => {

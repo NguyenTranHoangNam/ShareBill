@@ -1,4 +1,5 @@
 import {Platform,Dimensions} from 'react-native';
+import {store} from '../saga/store';
 
 export default class Utils {
 
@@ -57,4 +58,13 @@ export default class Utils {
 			j = (j = i.length) > 3 ? j % 3 : 0;
 		return negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "") + symbol;
 	};
+
+	static getGroupNameById = (groupId) => {
+		let groups = store.getState().group.listGroups;
+		let result = groups.filter(group => group.id === groupId);
+		if (result && result.length > 0){
+			return result[0].name;
+		}
+		return "No name";
+	}
 }
