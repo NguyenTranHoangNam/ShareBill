@@ -1,9 +1,12 @@
 import { DECREMENT, INCREMENT, CREATE_TRANSACTION } from './transaction.type'
+import {store} from './../../saga/store';
 
 export const createTransaction = (transaction) => {
+    let transactions = store.getState().transaction.transactions;
+    transactions.push(transaction);
     return {
         type: CREATE_TRANSACTION,
-        transaction
+        transactions
     }
 }
 

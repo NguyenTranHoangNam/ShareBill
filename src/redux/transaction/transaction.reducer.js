@@ -1,19 +1,14 @@
-import { INCREMENT, DECREMENT } from './transaction.type';
+import { CREATE_TRANSACTION } from './transaction.type';
 
 const initState = {
-    counter: 0,
-   
+    transactions: [],
 };
 
 export const transactionReducer = (state = initState, action) => {
     switch (action.type) {
-        case INCREMENT:
+        case CREATE_TRANSACTION:
             return {
-                counter: state.counter + 1
-            };
-        case DECREMENT:
-            return {
-                counter: state.counter - 1
+                transactions: action.transactions
             };
         default:
             return state

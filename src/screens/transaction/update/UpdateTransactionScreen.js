@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import _ from 'lodash';
 import {
   View,
@@ -16,6 +16,7 @@ import TransactionOptionalInfoView from "./components/TransactionOptionalInfoVie
 import { TransactionImageView } from "./components/TransactionImageView";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
+import { createTransaction } from "../../../redux/transaction/transaction.action";
 
 let  initTrans = {
   id: '',
@@ -41,6 +42,10 @@ export const UpdateTransactionScreen = (props) => {
   const counter = useSelector(state => state.transaction.counter);
   const dispatch = useDispatch();
 
+  const onSubmit = (transaction) => {
+    dispatch(createTransaction(transaction));
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu"} />
@@ -55,11 +60,7 @@ export const UpdateTransactionScreen = (props) => {
         <SBButton
           buttonText={"THÊM CHI TIÊU"}
           roundVertical
-          onPress={() => {
-            dispatch({
-              type: "INCREMENT_ASYNC"
-            });
-          }}
+          onPress={() => onSubmit(transaction)}
         />
       </View>
     </SafeAreaView>
