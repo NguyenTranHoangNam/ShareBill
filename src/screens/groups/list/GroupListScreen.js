@@ -14,39 +14,31 @@ import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 import TouchableListItem from "../../../components/TouchableListItem";
 import TabSummary from "../../../components/TabSummary";
-const data = [
-  {
-    type: "Own",
-    quantity: 500000,
-    groupName: "Đài loan"
-  },
-  {
-    type: "Lend",
-    quantity: 4500000,
-    groupName: "Thái lan"
-  }
-];
+import { useSelector, useDispatch } from "react-redux";
+
 export function GroupListScreen(props) {
 
-  const navigateToGroupDetails = () => {
-    props.navigation.navigate('GroupDetails')
+  const navigateToGroupDetails = (groupSelected) => {
+    
+    props.navigation.navigate('GroupDetails',{groupSelected})
   }
 
   const navigateToCreateGroup = () => {
     props.navigation.navigate('CreateGroup')
   }
-
+  const {listGroups} = useSelector(state =>state.group);
+  const dispatch = useDispatch();
   const renderItem = ({ item, index}) => {
     return (
       <TouchableListItem
-        onPress={navigateToGroupDetails}
-        title={item.groupName}
+        onPress={navigateToGroupDetails.bind(null,item)}
+        title={item.name}
         index={index}
       >
         <View style={{ flexDirection: "row", }}>
           {item.type === defineValue.Lend
-            ? <Text style={styles.subTitle}>Bạn cho mượn<Text style={{ color: colors.mainLight }}> {item.quantity}</Text></Text>
-            : <Text style={styles.subTitle}>Bạn mượn<Text style={{ color: colors.orange }}> {item.quantity}</Text></Text>
+            ? <Text style={styles.subTitle}>Bạn cho mượn<Text style={{ color: colors.mainLight }}> 5000</Text></Text>
+            : <Text style={styles.subTitle}>Bạn mượn<Text style={{ color: colors.orange }}> 5000</Text></Text>
           }
           <SBIconFont style={{ marginLeft: 5 }} name='info-outline' size={14} color={colors.white} />
         </View>
@@ -71,7 +63,7 @@ export function GroupListScreen(props) {
 
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={data}
+        data={listGroups}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
       />
