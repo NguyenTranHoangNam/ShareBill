@@ -4,20 +4,25 @@ import { SBTextInput } from '../../../../components/SBComponent';
 import { colors } from '../../../../utils/color';
 import { SCREEN_WIDTH, FONT_FAMILY, BORDER_WIDTH } from '../../../../utils/const';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import _ from 'lodash';
+import moment from 'moment';
 
-export default TransactionOptionalInfoView = ({ }) => {
+export default TransactionOptionalInfoView = ({transaction}) => {
     const [isDateTimePickerVisible, setDateTimePickerVisible] = useState(false);
+    const [trans, setTrans] = useState(transaction);
 
-    showDateTimePicker = () => {
+    const showDateTimePicker = () => {
         setDateTimePickerVisible(true);
     };
 
-    hideDateTimePicker = () => {
+    const hideDateTimePicker = () => {
         setDateTimePickerVisible(false);
     };
 
-    handleDatePicked = date => {
-        console.log("A date has been picked: ", date);
+    const handleDatePicked = date => {
+        let transClone = _.clone(trans);
+        transClone.createTime = moment(date).format('DD/MM/YYYY HH:mm');
+        setTrans(transClone);
         setDateTimePickerVisible(false);
     };
 
@@ -28,23 +33,22 @@ export default TransactionOptionalInfoView = ({ }) => {
                     <SBIconFont name='today' size={30} color={colors.white} />
                 </View>
                 <TouchableOpacity activeOpacity={1} style={styles.buttonContainer} onPress={showDateTimePicker}>
-                    <Text style={styles.buttonText}>HÔM NAY</Text>
+                    <Text style={styles.buttonText}>{trans.createTime}</Text>
                 </TouchableOpacity>
                 <DateTimePicker
+                    mode={'datetime'}
+                    date={moment(trans.createTime, 'DD/MM/YYYY HH:mm').toDate()}
                     isVisible={isDateTimePickerVisible}
                     onConfirm={handleDatePicked}
                     onCancel={hideDateTimePicker}
+                    datePickerModeAndroid={'spinner'}
                 />
             </View>
             <View style={{ flexDirection: 'row', marginTop: 10 }}>
                 <View style={[styles.iconContainer, { borderRadius: 20, backgroundColor: 'white' }]} />
-                <SBTextInput style={{ width: SCREEN_WIDTH - 90 }} placeholder='TÊN NHÓM' />
-            </View>
-            <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <View style={styles.iconContainer}>
-                    <SBIconFont name='note-add' size={30} color={colors.white} />
-                </View>
-                <SBTextInput style={styles.textInput} placeholder='Ghi chú' />
+                <TouchableOpacity activeOpacity={1} style={styles.buttonContainer}>
+                    <Text style={styles.buttonText}>{transaction.group.name}</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )

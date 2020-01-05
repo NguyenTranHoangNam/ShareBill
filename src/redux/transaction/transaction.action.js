@@ -1,4 +1,11 @@
-import { DECREMENT, INCREMENT } from './transaction.type'
+import { DECREMENT, INCREMENT, CREATE_TRANSACTION } from './transaction.type'
+
+export const createTransaction = (transaction) => {
+    return {
+        type: CREATE_TRANSACTION,
+        transaction
+    }
+}
 
 export const decrement =()=>  {
     return {

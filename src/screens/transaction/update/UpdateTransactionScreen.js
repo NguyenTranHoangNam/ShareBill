@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import _ from 'lodash';
 import {
   View,
   SafeAreaView,
@@ -14,8 +15,25 @@ import TransactionRequireInfoView from "./components/TransactionRequireInfoView"
 import TransactionOptionalInfoView from "./components/TransactionOptionalInfoView";
 import { TransactionImageView } from "./components/TransactionImageView";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 
-export const UpdateTransactionScreen = props => {
+let  initTrans = {
+  id: '',
+  group: {id: 1, name: 'Singapore'},
+  description: 'Ăn sáng',
+  amount: 10000,
+  createTime: moment().format('DD/MM/YYYY HH:mm'),
+  updateTime: '',
+  image: '',
+  payType: 1,
+  logo: '',
+  comments: [],
+  payers: [{id: 1, fullname: 'Lương Kiên Hào'}],
+}
+
+export const UpdateTransactionScreen = (props) => {
+  const [transaction, updateTransaction] = useState(_.clone(props.navigation.getParam('transaction', initTrans)));
+
   const onBackPress = () => {
     props.navigation.navigate(props.navigation.state.params.fromTab);
   };
@@ -25,13 +43,13 @@ export const UpdateTransactionScreen = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu " + counter} />
+      <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu"} />
       <ScrollView>
-        <TransactionRequireInfoView />
+        <TransactionRequireInfoView transaction={transaction}/>
 
-        <TransactionOptionalInfoView />
+        <TransactionOptionalInfoView transaction={transaction} />
 
-        <TransactionImageView />
+        <TransactionImageView transaction={transaction} />
       </ScrollView>
       <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
         <SBButton

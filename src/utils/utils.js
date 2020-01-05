@@ -2,6 +2,32 @@ import {Platform,Dimensions} from 'react-native';
 
 export default class Utils {
 
+	static getCurrentUser = () => {
+		return {id: 0};
+	}
+
+	static getPayTypeText = ({payType = 0, payers = [{id: 1}]}) => {
+		let text = '';
+		if (payers.length > 1){
+			text = 'NHIỀU NGƯỜI TRẢ';
+		} else {
+			if (payers[0].id === this.getCurrentUser().id){
+				text = 'BẠN TRẢ';
+			} else {
+				text = payers[0].fullname.toUpperCase() + ' TRẢ'
+			}
+		}
+
+		text = text + ' VÀ ';
+
+		if (payType === 0){
+			text = text + 'CHIA ĐỀU'
+		} else {
+			text = text + 'CHIA KHÔNG ĐỀU'
+		}
+		return text;
+	}
+
     static isAndroid = () => (
 		Platform.OS === 'android'
     );
