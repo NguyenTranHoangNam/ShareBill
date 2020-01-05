@@ -8,9 +8,8 @@ import _ from 'lodash';
 import moment from 'moment';
 import Utils from '../../../../utils/utils';
 
-export default TransactionOptionalInfoView = ({transaction}) => {
+export default TransactionOptionalInfoView = ({transaction, onDateChange}) => {
     const [isDateTimePickerVisible, setDateTimePickerVisible] = useState(false);
-    const [trans, setTrans] = useState(transaction);
 
     const showDateTimePicker = () => {
         setDateTimePickerVisible(true);
@@ -21,9 +20,7 @@ export default TransactionOptionalInfoView = ({transaction}) => {
     };
 
     const handleDatePicked = date => {
-        let transClone = _.clone(trans);
-        transClone.createTime = moment(date).format('DD/MM/YYYY HH:mm');
-        setTrans(transClone);
+        onDateChange(date)
         setDateTimePickerVisible(false);
     };
 
@@ -34,11 +31,11 @@ export default TransactionOptionalInfoView = ({transaction}) => {
                     <SBIconFont name='today' size={30} color={colors.white} />
                 </View>
                 <TouchableOpacity activeOpacity={1} style={styles.buttonContainer} onPress={showDateTimePicker}>
-                    <Text style={styles.buttonText}>{trans.createTime}</Text>
+                    <Text style={styles.buttonText}>{transaction.createTime}</Text>
                 </TouchableOpacity>
                 <DateTimePicker
                     mode={'datetime'}
-                    date={moment(trans.createTime, 'DD/MM/YYYY HH:mm').toDate()}
+                    date={moment(transaction.createTime, 'DD/MM/YYYY HH:mm').toDate()}
                     isVisible={isDateTimePickerVisible}
                     onConfirm={handleDatePicked}
                     onCancel={hideDateTimePicker}
