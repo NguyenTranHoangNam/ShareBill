@@ -22,7 +22,7 @@ let  initTrans = {
   id: moment().format('DDMMYYYYHHmmss'),
   groupId: 1,
   description: 'Ăn sáng',
-  amount: '10000',
+  amount: '',
   createTime: moment().format('DD/MM/YYYY HH:mm'),
   updateTime: '',
   image: '',
