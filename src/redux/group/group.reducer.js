@@ -28,7 +28,8 @@ export const groupReducer = (state = initState, action) => {
   switch (action.type) {
     case GET_TRANSACTION_BY_GROUP_ID:
       return {
-        transactionsGroup: [action.transactionOfGroups]
+        ...state,
+        transactionsGroup: action.transactionOfGroups
       };
 
     default:

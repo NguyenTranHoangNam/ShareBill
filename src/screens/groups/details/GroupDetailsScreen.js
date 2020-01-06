@@ -59,6 +59,7 @@ const data = [
 export function GroupDetailsScreen(props) {
   const { groupSelected } = props.navigation.state.params;
   const {transactionsGroup} = useSelector(state =>state.group);
+  
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(getTransactionByGroupID(groupSelected.id))
