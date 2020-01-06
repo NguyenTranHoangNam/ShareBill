@@ -19,7 +19,6 @@ import { useSelector, useDispatch } from "react-redux";
 export function GroupListScreen(props) {
 
   const navigateToGroupDetails = (groupSelected) => {
-    
     props.navigation.navigate('GroupDetails',{groupSelected})
   }
 

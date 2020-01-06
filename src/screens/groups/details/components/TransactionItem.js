@@ -10,16 +10,16 @@ export default TransactionItem = ({ item }) => {
         <View style={styles.container}>
             <View style={styles.row}>
                 <Avatar
-                    name={item.transName}
+                    name={item.description}
                     size={40}
                     style={{ borderRadius: 8 }}
                 />
                 <View style={{ marginLeft: 15 }}>
-                    <Text style={styles.name}>{item.transName}</Text>
-                    <Text style={styles.payer}>{item.info} {item.price}</Text>
+                    <Text style={styles.name}>{item.description}</Text>
+                    <Text style={styles.payer}>{item.info} {item.amount}</Text>
                 </View>
             </View>
-            {item.type === defineValue.Lend
+            {/* {item.type === defineValue.Lend
                 ?
                 <View>
                     <Text style={styles.info}>Bạn cho mượn</Text>
@@ -30,7 +30,7 @@ export default TransactionItem = ({ item }) => {
                     <Text style={styles.info}>Bạn mượn</Text>
                     <Text style={[styles.info, { color: colors.orange, alignSelf: "flex-end" }]}> {item.price}</Text>
                 </View>
-            }
+            } */}
         </View>
     )
 }

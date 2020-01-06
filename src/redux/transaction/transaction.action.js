@@ -4,6 +4,7 @@ import {store} from './../../saga/store';
 export const createTransaction = (transaction) => {
     let transactions = store.getState().transaction.transactions;
     transactions.push(transaction);
+    console.log(transactions)
     return {
         type: CREATE_TRANSACTION,
         transactions

@@ -10,13 +10,13 @@ import {
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { FONT_FAMILY } from "../../../utils/const";
-import Avatar from "../../../components/Avatar";
-import { defineValue } from "../../../utils/defineValue";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import { SBButton } from "../../../components/SBComponent";
 import SwipeListView from "../../../components/SwipeList/SwipeListView";
 import DetailCover from "../../../components/DetailCover";
 import TransactionItem from "./components/TransactionItem";
+import { getTransactionByGroupID } from "../../../redux/group/group.action";
+import { useSelector, useDispatch } from "react-redux";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -58,6 +58,12 @@ const data = [
 
 export function GroupDetailsScreen(props) {
   const { groupSelected } = props.navigation.state.params;
+  const {transactionsGroup} = useSelector(state =>state.group);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getTransactionByGroupID(groupSelected.id))
+  },[])
+
   const renderItem = ({ item, index }) => {
     return <TransactionItem item={item} />;
   };
@@ -127,13 +133,14 @@ export function GroupDetailsScreen(props) {
                   <SBIconFont name={"delete"} color={colors.white} size={20} />
                 </TouchableOpacity>
               </View>}
-            sections={data}
+            sections={transactionsGroup}
             stickySectionHeadersEnabled={false}
             keyExtractor={(item, index) => {
               return `${index}`;
             }}
           />
         </View>
+          
       </ScrollView>
     </SafeAreaView>
   );

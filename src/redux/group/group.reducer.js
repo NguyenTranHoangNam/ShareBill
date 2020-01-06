@@ -1,4 +1,8 @@
-import { INCREMENT, DECREMENT } from "./group.type";
+import {
+  INCREMENT,
+  DECREMENT,
+  GET_TRANSACTION_BY_GROUP_ID
+} from "./group.type";
 
 const initState = {
   listGroups: [
@@ -7,28 +11,26 @@ const initState = {
       name: "Đài loan",
       url: "",
       avatar: "",
-      member:['tkien@gmail.com','nloan@gmail.com']
+      member: ["tkien@gmail.com", "nloan@gmail.com"]
     },
     {
       id: 2,
       name: "Thái lan",
       url: "",
       avatar: "",
-      member:['tkien@gmail.com','khao@gmail.com']
+      member: ["tkien@gmail.com", "khao@gmail.com"]
     }
-  ]
+  ],
+  transactionsGroup: []
 };
 
 export const groupReducer = (state = initState, action) => {
   switch (action.type) {
-    case INCREMENT:
+    case GET_TRANSACTION_BY_GROUP_ID:
       return {
-        counter: state.counter + 1
+        transactionsGroup: [action.transactionOfGroups]
       };
-    case DECREMENT:
-      return {
-        counter: state.counter - 1
-      };
+
     default:
       return state;
   }
