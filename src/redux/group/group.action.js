@@ -15,14 +15,14 @@ const createSectionFromTransactionsData = (transactions) => {
     let sectionList = [];
     let filterTrans = lodash.cloneDeep(transactions);
 
-    filterTrans.map(ticket => {
-        let title = 'Tháng ' + moment(ticket.createTime).format("MM/YYYY");
+    filterTrans.map(transaction => {
+        let title = 'Tháng ' + moment(transaction.createTime).format("MM/YYYY");
         let result = sectionList.filter(function (e) { return e.title === title });
 
         if (result.length > 0) {
-            result[0].data.push(ticket);
+            result[0].data.push(transaction);
         } else {
-            sectionList.push({ title: title, data: [ticket] });
+            sectionList.push({ title: title, data: [transaction] });
         }
     });
     return sectionList;
