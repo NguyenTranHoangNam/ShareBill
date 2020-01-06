@@ -22,7 +22,7 @@ let  initTrans = {
   id: moment().format('DDMMYYYYHHmmss'),
   groupId: 1,
   description: 'Ăn sáng',
-  amount: 10000,
+  amount: '',
   createTime: moment().format('DD/MM/YYYY HH:mm'),
   updateTime: '',
   image: '',
@@ -33,7 +33,7 @@ let  initTrans = {
 }
 
 export const UpdateTransactionScreen = (props) => {
-  const [transaction] = useState(_.clone(props.navigation.getParam('transaction', initTrans)));
+  const [transaction, setTransaction] = useState(_.clone(props.navigation.getParam('transaction', initTrans)));
 
   const onBackPress = () => {
     props.navigation.navigate(props.navigation.state.params.fromTab);
@@ -42,16 +42,42 @@ export const UpdateTransactionScreen = (props) => {
   const dispatch = useDispatch();
 
   const onSubmit = (transaction) => {
+    console.log('transaction', transaction);
     dispatch(createTransaction(transaction));
+  }
+
+  const onDescriptionChange = (value) => {
+    let trans = _.clone(transaction);
+    trans.description = value;
+    setTransaction(trans);
+  }
+
+  const onAmountChange = (value) => {
+    let trans = _.clone(transaction);
+    trans.amount = value;
+    setTransaction(trans);
+  }
+
+  const onDateChange = (date) => {
+    let trans = _.clone(transaction);
+    trans.createTime = moment(date).format('DD/MM/YYYY HH:mm');
+    setTransaction(trans);
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu"} />
       <ScrollView>
-        <TransactionRequireInfoView transaction={transaction}/>
+        <TransactionRequireInfoView
+          transaction={transaction}
+          onDescriptionChange={onDescriptionChange}
+          onAmountChange={onAmountChange}
+        />
 
-        <TransactionOptionalInfoView transaction={transaction} />
+        <TransactionOptionalInfoView 
+          transaction={transaction} 
+          onDateChange={onDateChange}
+        />
 
         <TransactionImageView transaction={transaction} />
       </ScrollView>
