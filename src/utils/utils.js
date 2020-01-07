@@ -68,13 +68,13 @@ export default class Utils {
 		return "No name";
 	}
 
-	static getMemberOfGroup=(groupId)=>{
+	static getMembersOfGroup=(groupId)=>{
 		let groups = store.getState().group.listGroups;
 		let friends = store.getState().friend.listFriends;
 		let group = groups.find(group => group.id === groupId)
 		let memberOfGroup = []
 		if(group){
-			group.member.map(member=>{
+			group.members.map(member=>{
 				const result = friends.find(info =>info.email === member)
 				if(result){
 					memberOfGroup.push(result)
