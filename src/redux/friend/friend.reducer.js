@@ -3,24 +3,23 @@ import {store} from '../../saga/store';
 const initState = {
   listFriends: [
     {
+      id:1,
       email: 'khao@gmail.com',
       fullname: "Kiên Hào",
-      avatar: "",
-      type: "Lend",
-    quantity: 4500000,
+      avatar: ""
+
     },
     {
+      id:2,
       email: 'nloan@gmail.com',
       fullname: "Ngọc Loan",
-      avatar: "",type: "Lend",
-      quantity: 4500000,
+      avatar: ""
     },
     {
+      id:3,
       email: 'tkien@gmail.com',
       fullname: "Trung Kiên",
-      avatar: "",
-      type: "Lend",
-    quantity: 4500000,
+      avatar: ""
     }
   ],
   friendGroups:[]
