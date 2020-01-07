@@ -83,4 +83,15 @@ export default class Utils {
 		}
 		return memberOfGroup;
 	}
+
+	static getFriendsFromUsersList=(friends)=>{
+		let users = store.getState().user.listUsers;
+		const friendsList = [];
+		friends.map(email => {
+			if(users[email]){
+				friendsList.push(users[email]);
+			}	
+		});
+		return friendsList;
+	}
 }

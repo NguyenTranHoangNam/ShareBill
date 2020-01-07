@@ -2,25 +2,9 @@ import { GET_FRIEND_GROUPS } from "./friend.type";
 import {store} from '../../saga/store';
 const initState = {
   listFriends: [
-    {
-      id:1,
-      email: 'khao@gmail.com',
-      fullname: "Kiên Hào",
-      avatar: ""
-
-    },
-    {
-      id:2,
-      email: 'nloan@gmail.com',
-      fullname: "Ngọc Loan",
-      avatar: ""
-    },
-    {
-      id:3,
-      email: 'tkien@gmail.com',
-      fullname: "Trung Kiên",
-      avatar: ""
-    }
+    "khao@gmail.com",
+    "nloan@gmail.com",
+    "tkien@gmail.com"
   ],
   friendGroups:[]
 };

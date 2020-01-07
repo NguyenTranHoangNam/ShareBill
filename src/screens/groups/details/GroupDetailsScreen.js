@@ -80,7 +80,7 @@ export function GroupDetailsScreen(props) {
   };
 
   const navigateToGroupInfo = () => {
-    props.navigation.navigate("GroupInfo");
+    props.navigation.navigate("GroupInfo",{groupSelected});
   };
 
   const goBack = () => {

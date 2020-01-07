@@ -14,6 +14,7 @@ import Avatar from "../../../components/Avatar";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont } from "../../../components/SBComponent";
+import Utils from "../../../utils/utils";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -30,13 +31,14 @@ const data = [
 ];
 
 export function GroupInfoScreen(props) {
+  const { groupSelected } = props.navigation.state.params;
   const goBack = () => {
     props.navigation.goBack();
   };
 
-  const navigateToAddMember=()=>{
-    props.navigation.navigate('AddMember');
-  }
+  const navigateToAddMember = () => {
+    props.navigation.navigate("AddMember");
+  };
 
   const renderItem = ({ item, index }) => {
     return (
@@ -56,10 +58,10 @@ export function GroupInfoScreen(props) {
         />
         <View style={{ marginLeft: 35 }}>
           <Text style={styles.memberName}>
-            {item.name}
+            {item.fullname}
           </Text>
           <Text style={styles.memberNumberPhone}>
-            {item.numberPhone}
+            {item.email}
           </Text>
         </View>
       </View>
@@ -74,13 +76,15 @@ export function GroupInfoScreen(props) {
           name={"default"}
           source={require("../../../assets/images/background.png")}
         />
-        <Text style={styles.groupName}>Tên Nhóm</Text>
-        <Text style={styles.countMember}>2 thành viên</Text>
+        <Text style={styles.groupName}>
+          {groupSelected.name}
+        </Text>
+        <Text style={styles.countMember}>
+          {groupSelected.members.length} thành viên
+        </Text>
       </View>
       <View style={styles.blockIcon}>
-        <TouchableOpacity
-          onPress={navigateToAddMember}
-        >
+        <TouchableOpacity onPress={navigateToAddMember}>
           <View style={styles.circleIcon}>
             <SBIconFont name={"person-add"} color={colors.white} size={20} />
           </View>
@@ -97,7 +101,10 @@ export function GroupInfoScreen(props) {
       <View style={styles.headerList}>
         <Text style={styles.titleHeader}>Thành viên nhóm</Text>
       </View>
-      <FlatList data={data} renderItem={renderItem} />
+      <FlatList
+        data={Utils.getFriendsFromUsersList(groupSelected.members)}
+        renderItem={renderItem}
+      />
       <View style={styles.blockSave}>
         <SBButton
           buttonStyle={styles.saveButton}

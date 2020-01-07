@@ -10,17 +10,19 @@ import rootSaga from './rootSaga';
 import {transactionReducer as transaction} from './../redux/transaction/transaction.reducer';
 import {groupReducer as group} from './../redux/group/group.reducer';
 import {friendReducer as friend} from './../redux/friend/friend.reducer';
+import {userReducer as user} from './../redux/user/user.reducer';
 const reducers = {
     transaction,
     group,
-    friend
+    friend,
+    user
 };
 
 /* Redux-Persist */
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['transaction','group','friend'],
+  whitelist: ['transaction','group','friend','user'],
 }, reducers);
 
 /* Saga */

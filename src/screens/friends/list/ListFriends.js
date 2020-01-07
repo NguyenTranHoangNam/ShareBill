@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
   Text,
   SafeAreaView,
-  ImageBackground,
-  Dimensions,
   StyleSheet,
   View,
-  Image,
   FlatList,
 } from "react-native";
 import { colors } from "../../../utils/color";
@@ -16,25 +13,7 @@ import { SBIconFont, SBHeader } from "../../../components/SBComponent";
 import TabSummary from "../../../components/TabSummary";
 import { useSelector, useDispatch } from "react-redux";
 import TouchableListItem from "../../../components/TouchableListItem";
-const data = [
-  {
-    friendName: "Kiên Hào",
-    info: [
-      {
-        type: "Own",
-        quantity: 500000
-      },
-      {
-        type: "Lend",
-        quantity: 4500000
-      }
-    ]
-  },
-  {
-    friendName: "Hoàng Nam",
-    info: null
-  }
-];
+import Utils from "../../../utils/utils";
 export function ListFriendsScreen(props) {
 
   const {listFriends} = useSelector(state => state.friend);
@@ -45,6 +24,7 @@ export function ListFriendsScreen(props) {
   };
 
   const renderItem = ({ index, item }) => {
+    
     return (
       <TouchableListItem
         onPress={navigateToGroupDetails.bind(null,item)}
@@ -88,7 +68,7 @@ export function ListFriendsScreen(props) {
 
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={listFriends}
+        data={Utils.getFriendsFromUsersList(listFriends)}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
       />
