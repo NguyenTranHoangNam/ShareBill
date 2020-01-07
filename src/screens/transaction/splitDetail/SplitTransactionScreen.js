@@ -1,33 +1,40 @@
 import React, { useState, useEffect } from "react";
 import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  Text
+  View, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity, Text
 } from "react-native";
 import { colors } from "../../../utils/color";
 import {
-  SBHeader,
-  SBTextInput,
-  SBButton,
-  SBIconFont
+  SBHeader, SBIconFont
 } from "../../../components/SBComponent";
-import IndicatorViewPager from "../../../components/ViewPager/IndicatorViewPager";
-import PagerTitleIndicator from "../../../components/ViewPager/indicator/PagerTitleIndicator";
-import PagerCustomIndicator from "../../../components/ViewPager/indicator/PagerCustomIndicator";
-import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
 import SplitViewPager from "./components/SplitViewPager";
+import _ from 'lodash';
+import Utils from "../../../utils/utils";
 
-export const SplitTransactionScreen = props => {
+export const SplitTransactionScreen = ({navigation}) => {
+  const transaction = navigation.getParam('transaction', null);
+  const [payers, setPayers] = useState([]);
+
+  useEffect(()=>{
+    let transPayers = Utils.getPayers(transaction.payers);
+    setPayers(transPayers);
+  },[])
+
   const onBackPress = () => {
-    props.navigation.goBack();
+    navigation.goBack();
   };
 
   const navigateToSelectPayer=()=>{
-      props.navigation.navigate('SelectPayerScreen');
+    navigation.navigate('SelectPayerScreen');
+  }
+
+  const getPayersCountText = (payers) => {
+    if (payers.length >= 1){
+      if (payers.length === 1){
+        return payers[0].fullname;
+      }
+      return `${payers.length} người`
+    }
+    return '';
   }
 
   return (
@@ -48,7 +55,7 @@ export const SplitTransactionScreen = props => {
                 }}
               />
               <Text style={{ marginLeft: 10, color: colors.white }}>
-                Trả bởi <Text style={{ fontWeight: "bold" }}>Hào Lương</Text>
+                Trả bởi <Text style={{ fontWeight: "bold" }}>{getPayersCountText(transaction.payers)}</Text>
               </Text>
             </View>
             <SBIconFont
@@ -58,7 +65,8 @@ export const SplitTransactionScreen = props => {
             />
           </View>
         </TouchableOpacity>
-        <SplitViewPager />
+        <SplitViewPager 
+          transaction={transaction} />
       </ScrollView>
     </SafeAreaView>
   );

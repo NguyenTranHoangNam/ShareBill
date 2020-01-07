@@ -22,14 +22,17 @@ let  initTrans = {
   id: moment().format('DDMMYYYYHHmmss'),
   groupId: 1,
   description: 'Ăn sáng',
-  amount: '',
+  amount: '10000',
   createTime: moment().format('DD/MM/YYYY HH:mm'),
   updateTime: '',
   image: '',
-  payType: 1,
+  payType: 0,
   logo: '',
   comments: [],
-  payers: [{id: 1, fullname: 'Lương Kiên Hào'}],
+  payers: [
+    {id: 1, fullname: 'Trung Kiên', mustPay: 5000, paid: 5000, email: 'tkien@gmail.com'},
+    {id: 2, fullname: 'Ngọc Loan', mustPay: 5000, paid: 5000, email: 'nloan@gmail.com'},
+  ],
 }
 
 export const UpdateTransactionScreen = (props) => {
@@ -64,6 +67,10 @@ export const UpdateTransactionScreen = (props) => {
     setTransaction(trans);
   }
 
+  const onSplitTransPress = () => {
+    props.navigation.navigate('SplitTransaction', {transaction: _.clone(transaction)});
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={onBackPress} title={"Thêm chi tiêu"} />
@@ -72,6 +79,7 @@ export const UpdateTransactionScreen = (props) => {
           transaction={transaction}
           onDescriptionChange={onDescriptionChange}
           onAmountChange={onAmountChange}
+          onSplitTransPress={onSplitTransPress}
         />
 
         <TransactionOptionalInfoView 

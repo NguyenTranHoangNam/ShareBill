@@ -94,4 +94,9 @@ export default class Utils {
 		});
 		return friendsList;
 	}
+
+	static getPayers = (payers) => {
+		let result = payers.filter(payer => payer.paid > 0);
+		return result;
+	}
 }

@@ -1,17 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FONT_FAMILY, BORDER_WIDTH } from '../../../../utils/const';
 import { colors } from '../../../../utils/color';
 import IndicatorViewPager from '../../../../components/ViewPager/IndicatorViewPager';
 import PagerCustomIndicator from '../../../../components/ViewPager/indicator/PagerCustomIndicator';
 import PagerTitle from './PagerTitle';
-import { SplitByEqually } from './SplitByEqually';
+import SplitByEqually from './SplitByEqually';
 import { SplitByExactly } from './SplitByExactly';
 import { SplitByPercent } from './SplitByPercent';
 import { SplitByShares } from './SplitByShares';
 import { SplitByAdjustment } from './SplitByAdjustment';
-export default SplitViewPager = () => {
-    const [tabIndex, setTabIndex] = useState(0);
+import Utils from '../../../../utils/utils';
+export default SplitViewPager = ({transaction}) => {
+    const [tabIndex, setTabIndex] = useState(transaction.payType);
+    const [members, setMembers] = useState([]);
+
+    useEffect(()=>{
+        let membersOfGroup = Utils.getMembersOfGroup(transaction.groupId);
+        setMembers(membersOfGroup);
+    },[])
 
     const _renderCustomIndicator = () => {
         let tabs = [{
@@ -72,7 +79,11 @@ export default SplitViewPager = () => {
                 onPageSelected={onPageSelected}
             >
                 <View>
-                    <SplitByEqually/>
+                    <SplitByEqually 
+                        payers={transaction.payers}
+                        amount={transaction.amount}
+                        members={members}
+                    />
                 </View>
                 <View>
                     <SplitByExactly/>

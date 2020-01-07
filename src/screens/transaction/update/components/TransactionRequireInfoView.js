@@ -3,13 +3,12 @@ import {View, StyleSheet} from 'react-native';
 import { SBTextInput, SBButton } from '../../../../components/SBComponent';
 import { colors } from '../../../../utils/color';
 import { SCREEN_WIDTH } from '../../../../utils/const';
-import NavigationService from '../../../../navigator/NavigationService';
 import Utils from '../../../../utils/utils';
 
-export default TransactionRequireInfoView = ({transaction, onDescriptionChange, onAmountChange}) => {
+export default TransactionRequireInfoView = ({transaction, onDescriptionChange, onAmountChange, onSplitTransPress}) => {
 
     const onSplitPress = () => {
-        NavigationService.navigate('SplitTransaction');
+        onSplitTransPress();
     }
 
     const onTransDescChange = (value) => {
