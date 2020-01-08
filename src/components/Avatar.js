@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import { FONT_FAMILY } from '../utils/const';
 import { colors } from '../utils/color';
 
-export default Avatar = (props) => {
+const Avatar = (props) => {
     const { name, size = 60 } = props;
     const stringToColour = (str) => {
         str = str + Math.random().toString(36);
@@ -48,3 +48,5 @@ const styles = StyleSheet.create({
         color: colors.white,
     }
 })
+
+export default React.memo(Avatar)

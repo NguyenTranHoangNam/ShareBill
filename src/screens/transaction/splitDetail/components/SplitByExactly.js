@@ -14,10 +14,10 @@ const SplitByExactly = ({ amount, members }) => {
 
   useEffect(() => {
     setTotalAmount(membersOfGroup.reduce((accumulator, currentValue) => (accumulator + currentValue.mustPay), 0))
-  }, [totalAmount])
+  }, [])
 
   const onPayerAmountChange = (value, payer) => {
-    payer['mustPay'] = parseInt(value);
+    payer['mustPay'] = parseFloat(value);
     setTotalAmount(membersOfGroup.reduce((accumulator, currentValue) => (accumulator + currentValue.mustPay), 0))
     setMembersOfGroup(_.clone(membersOfGroup));
   }
@@ -50,7 +50,7 @@ const SplitByExactly = ({ amount, members }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.pagerSummaryContainer}>
         <Text style={styles.summaryTilte}>{Utils.formatMoney(totalAmount, 0, 'đ')} trên {Utils.formatMoney(amount, 0, 'đ')}</Text>
-        <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>còn {Utils.formatMoney(parseInt(amount) - parseInt(totalAmount), 0, 'đ')}</Text>
+        <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>còn {Utils.formatMoney(parseFloat(amount) - parseFloat(totalAmount), 0, 'đ')}</Text>
       </View>
       <FlatList
         renderItem={renderItem}
