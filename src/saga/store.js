@@ -22,7 +22,7 @@ const reducers = {
 const rootReducer = persistCombineReducers({
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['transaction','group','friend','user'],
+  // whitelist: ['transaction','group','friend','user'],
 }, reducers);
 
 /* Saga */
