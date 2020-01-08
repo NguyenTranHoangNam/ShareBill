@@ -70,18 +70,9 @@ export default class Utils {
 
 	static getMembersOfGroup=(groupId)=>{
 		let groups = store.getState().group.listGroups;
-		let friends = store.getState().friend.listFriends;
 		let group = groups.find(group => group.id === groupId)
-		let memberOfGroup = []
-		if(group){
-			group.members.map(member=>{
-				const result = friends.find(info =>info.email === member)
-				if(result){
-					memberOfGroup.push(result)
-				}
-			})
-		}
-		return memberOfGroup;
+		return this.getFriendsFromUsersList(group.members)
+
 	}
 
 	static getFriendsFromUsersList=(friends)=>{
@@ -93,5 +84,10 @@ export default class Utils {
 			}	
 		});
 		return friendsList;
+	}
+
+	static getPayers = (payers) => {
+		let result = payers.filter(payer => payer.paid > 0);
+		return result;
 	}
 }
