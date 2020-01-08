@@ -8,18 +8,16 @@ import {
 } from "react-native";
 import { styles } from './SplitBy.style';
 import { SBTextInput } from "../../../../components/SBComponent";
+import Avatar from '../../../../components/Avatar';
 
-const data = [1, 2];
-export const SplitByShares = props => {
+export const SplitByShares = ({ amount, payers, members }) => {
+  const [checkingPayers, setCheckingPayers] = useState(payers);
   
   const renderItem = ({ item }) => {
     return (
       <View style={styles.rowStyles}>
-        <Image
-          source={require("../../../../assets/images/logo.png")}
-          style={styles.avatarStyles}
-        />
-        <Text style={styles.memberStyles}>Tên thành viên {item}</Text>
+        <Avatar name={item.fullname} size={40} />
+        <Text style={styles.memberStyles}>{item.fullname}</Text>
         <View style={styles.inputAmountContainer}>
           <SBTextInput
             style={styles.inputAmount}
@@ -40,7 +38,13 @@ export const SplitByShares = props => {
       <View style={styles.pagerSummaryContainer}>
         <Text style={styles.summaryTilte}>Tổng cộng 1 phần</Text>
       </View>
-      <FlatList renderItem={renderItem} keyExtractor={keyExtractor} data={data} />
+      <FlatList
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        data={members}
+      />
     </SafeAreaView>
   );
 };
+
+export default React.memo(SplitByShares);

@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
 import {
-  View,
-  SafeAreaView,
-  Image,
-  Text,
-  FlatList,
+  View, SafeAreaView, Text, FlatList,
 } from "react-native";
 import { styles } from './SplitBy.style';
 import { SBTextInput } from "../../../../components/SBComponent";
+import Avatar from '../../../../components/Avatar';
+import Utils from "../../../../utils/utils";
+import _ from 'lodash';
 
-const data = [1, 2];
-export const SplitByExactly = props => {
+const SplitByExactly = ({ amount, members }) => {
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [membersOfGroup, setMembersOfGroup] = useState(members);
 
-  const renderItem = ({ item }) => {
+  useEffect(() => {
+    setTotalAmount(membersOfGroup.reduce((accumulator, currentValue) => (accumulator + currentValue.mustPay), 0))
+  }, [totalAmount])
+
+  const onPayerAmountChange = (value, payer) => {
+    payer['mustPay'] = parseInt(value);
+    setTotalAmount(membersOfGroup.reduce((accumulator, currentValue) => (accumulator + currentValue.mustPay), 0))
+    setMembersOfGroup(_.clone(membersOfGroup));
+  }
+
+  const renderItem = ({ item: payer }) => {
     return (
       <View style={styles.rowStyles}>
-        <Image
-          source={require("../../../../assets/images/logo.png")}
-          style={styles.avatarStyles}
-        />
-        <Text style={styles.memberStyles}>Tên thành viên {item}</Text>
+        <Avatar name={payer.fullname} size={40} />
+        <Text style={styles.memberStyles}>{payer.fullname}</Text>
         <View style={styles.inputAmountContainer}>
           <SBTextInput
             style={styles.inputAmount}
+            value={`${payer.mustPay}`}
+            onChangeText={(value) => onPayerAmountChange(value, payer)}
             placeholder={'0.000'}
           />
           <Text style={styles.unit}>đ</Text>
@@ -34,14 +43,22 @@ export const SplitByExactly = props => {
   const keyExtractor = (index) => {
     return `${index}`;
   }
-  
+
+  console.log('render')
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.pagerSummaryContainer}>
-        <Text style={styles.summaryTilte}>0đ trên 5.000.000đ</Text>
-        <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>còn 5.000.000đ</Text>
+        <Text style={styles.summaryTilte}>{Utils.formatMoney(totalAmount, 0, 'đ')} trên {Utils.formatMoney(amount, 0, 'đ')}</Text>
+        <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>còn {Utils.formatMoney(parseInt(amount) - parseInt(totalAmount), 0, 'đ')}</Text>
       </View>
-      <FlatList renderItem={renderItem} keyExtractor={keyExtractor} data={data} />
+      <FlatList
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        data={membersOfGroup}
+      />
     </SafeAreaView>
   );
 };
+
+export default React.memo(SplitByExactly);
