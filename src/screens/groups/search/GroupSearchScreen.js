@@ -11,18 +11,34 @@ import {
 import { colors } from "../../../utils/color";
 import { defineValue } from "../../../utils/defineValue";
 import { FONT_FAMILY, BORDER_WIDTH } from "../../../utils/const";
-import { SBIconFont, SBHeader } from "../../../components/SBComponent";
+import {
+  SBIconFont,
+  SBHeader,
+  SBTextInput
+} from "../../../components/SBComponent";
 import TouchableListItem from "../../../components/TouchableListItem";
-import TabSummary from "../../../components/TabSummary";
 import { useSelector, useDispatch } from "react-redux";
 import Utils from "../../../utils/utils";
 
-export function GroupListScreen(props) {
+export function GroupSearchScreen(props) {
+  const { listGroups } = useSelector(state => state.group);
+  const [keyword, setKeyword] = useState("");
+  const [groupsResult, setGroupsResult] = useState(listGroups);
   const navigateToGroupDetails = groupSelected => {
     props.navigation.navigate("GroupDetails", { groupSelected });
   };
-  const { listGroups } = useSelector(state => state.group);
-  const dispatch = useDispatch();
+
+  const goBack = () => {
+    props.navigation.goBack();
+  };
+  const onChangeText = groupName => {
+    const groupsFilter = listGroups.filter(group => {
+      return Utils.removeAccentsCharacter(group.name).includes(
+        Utils.removeAccentsCharacter(groupName)
+      );
+    });
+    setGroupsResult(groupsFilter);
+  };
   const renderItem = ({ item, index }) => {
     return (
       <TouchableListItem
@@ -51,27 +67,19 @@ export function GroupListScreen(props) {
     );
   };
 
-  const onHeaderIconPress = index => {
-    if(index === 1){
-      props.navigation.navigate("GroupSearch");
-    }
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader
-        type="tab"
-        tabTitle={"Nhóm"}
-        icons={["group-add", "search"]}
-        onLeftPress={()=>{alert(1)}}
-        onIconPress={onHeaderIconPress}
+        type={"input"}
+        placeholder={"Tên nhóm"}
+        onChangeText={onChangeText}
+        onIconPress={goBack}
       />
-
-      <TabSummary />
 
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={listGroups}
+        data={groupsResult}
+        extraData={groupsResult}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
       />
