@@ -12,36 +12,44 @@ import Avatar from '../../../../components/Avatar';
 import Utils from "../../../../utils/utils";
 import _ from 'lodash';
 
-export const SplitByEqually = ({amount, payers, members}) => {
-  const [checkingPayers, setCheckingPayers] = useState(payers);
+const SplitByEqually = ({ amount, members }) => {
+  const [totalPayers, setTotalPayers] = useState(0);
+
+  useEffect(() => {
+    setTotalPayers(members.filter(member => member.mustPay && member.mustPay > 0).length)
+  }, [])
 
   const onCheckAllChange = (isChecked) => {
-    if (isChecked){
-      setCheckingPayers(members);
+    if (isChecked) {
+      setTotalPayers(members.length);
+      const amountPerPayer = getAmountPerPayer(amount, members.length);
+      members.map(member => member['mustPay'] = amountPerPayer)
     } else {
-      setCheckingPayers([]);
+      setTotalPayers(0);
+      members.map(member => member['mustPay'] = 0)
+    }
+    console.log('members', members);
+  }
+
+  const onCheckedChange = (isChecked, payer) => {
+    if (isChecked) {
+      setTotalPayers(totalPayers + 1);
+      payer['mustPay'] = getAmountPerPayer(amount, totalPayers + 1)
+    } else {
+      setTotalPayers(totalPayers - 1);
+      payer['mustPay'] = 0;
     }
   }
 
-  const onCheckedChange = (isChecked, checkingPayers, checkingPayer) => {
-    checkingPayers = _.clone(checkingPayers);
-    if (isChecked){
-      checkingPayers.push(checkingPayer);
-    } else {
-      checkingPayers = checkingPayers.filter(payer => payer.email !== checkingPayer.email)
-    }
-    setCheckingPayers(checkingPayers)
-  }
-
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item: payer }) => {
     return (
       <View style={styles.rowStyles}>
-        <Avatar name={item.fullname} size={40}/>
-        <Text style={styles.memberStyles}>{item.fullname}</Text>
+        <Avatar name={payer.fullname} size={40} />
+        <Text style={styles.memberStyles}>{payer.fullname}</Text>
         <View style={styles.checkBoxStyles}>
-          <SBCheckbox 
-            onCheckedChange={(isChecked) => onCheckedChange(isChecked, checkingPayers, item)}
-            checked={checkingPayers.some(payer => payer.email === item.email)} />
+          <SBCheckbox
+            onCheckedChange={(isChecked) => onCheckedChange(isChecked, payer)}
+            checked={payer.mustPay > 0} />
         </View>
       </View>
     );
@@ -51,28 +59,31 @@ export const SplitByEqually = ({amount, payers, members}) => {
     return `${index}`;
   }
 
-  const getAmountPerPayer = (amount, members) => {
-    return Math.round(amount/members.length);
+  const getAmountPerPayer = (amount, totalPayers) => {
+    if (totalPayers > 0) {
+      return Math.round(amount / totalPayers);
+    }
+    return 0;
   }
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={[styles.pagerSummaryContainer, styles.row]}>
         <View style={styles.summaryLeftContainer}>
-          <Text style={styles.summaryTilte}>{Utils.formatMoney(getAmountPerPayer(amount, members), 0, 'đ')}/người</Text>
-          <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>({members.length} người)</Text>
+          <Text style={styles.summaryTilte}>{Utils.formatMoney(getAmountPerPayer(amount, totalPayers), 0, 'đ')}/người</Text>
+          <Text style={[styles.summaryTilte, { fontWeight: 'normal' }]}>({totalPayers} người)</Text>
         </View>
         <View style={styles.summaryRightContainer}>
           <Text style={[styles.summaryTilte, { marginRight: 5 }]}>Tất cả</Text>
-          <SBCheckbox 
-            checked={checkingPayers.length === members.length ? true : false}
+          <SBCheckbox
+            checked={totalPayers === members.length ? true : false}
             onCheckedChange={onCheckAllChange}
           />
         </View>
       </View>
-      <FlatList 
-        renderItem={renderItem} 
-        keyExtractor={keyExtractor} 
+      <FlatList
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         data={members} />
     </SafeAreaView>
   );

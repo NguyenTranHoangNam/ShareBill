@@ -35,7 +35,7 @@ export default TransactionRequireInfoView = ({transaction, onDescriptionChange, 
                 <SBTextInput 
                     style={styles.textInput} 
                     onChangeText={onTransAmountChange} 
-                    value={transaction.amount} 
+                    value={`${transaction.amount}`} 
                     placeholder='Giá tiền' 
                 />
             </View>

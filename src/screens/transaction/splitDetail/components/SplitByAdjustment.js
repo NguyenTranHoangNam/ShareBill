@@ -8,18 +8,16 @@ import {
 } from "react-native";
 import { styles } from './SplitBy.style';
 import { SBTextInput } from "../../../../components/SBComponent";
+import Avatar from '../../../../components/Avatar';
 
-const data = [1, 2];
-export const SplitByAdjustment = props => {
+const SplitByAdjustment = ({ amount, payers, members }) => {
+  const [checkingPayers, setCheckingPayers] = useState(payers);
   
   const renderItem = ({ item }) => {
     return (
       <View style={styles.rowStyles}>
-        <Image
-          source={require("../../../../assets/images/logo.png")}
-          style={styles.avatarStyles}
-        />
-        <Text style={styles.memberStyles}>Tên thành viên {item}</Text>
+        <Avatar name={item.fullname} size={40} />
+        <Text style={styles.memberStyles}>{item.fullname}</Text>
         <View style={styles.inputAmountContainer}>
           <Text style={styles.unit}>+</Text>
           <SBTextInput
@@ -37,8 +35,13 @@ export const SplitByAdjustment = props => {
   
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList renderItem={renderItem} keyExtractor={keyExtractor} data={data} />
+       <FlatList
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        data={members}
+      />
     </SafeAreaView>
   );
 };
 
+export default React.memo(SplitByAdjustment);

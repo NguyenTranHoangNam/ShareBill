@@ -6,18 +6,29 @@ import IndicatorViewPager from '../../../../components/ViewPager/IndicatorViewPa
 import PagerCustomIndicator from '../../../../components/ViewPager/indicator/PagerCustomIndicator';
 import PagerTitle from './PagerTitle';
 import SplitByEqually from './SplitByEqually';
-import { SplitByExactly } from './SplitByExactly';
-import { SplitByPercent } from './SplitByPercent';
-import { SplitByShares } from './SplitByShares';
-import { SplitByAdjustment } from './SplitByAdjustment';
+import SplitByExactly from './SplitByExactly';
+import SplitByPercent from './SplitByPercent';
+import SplitByShares from './SplitByShares';
+import SplitByAdjustment from './SplitByAdjustment';
 import Utils from '../../../../utils/utils';
+import _ from 'lodash';
+
 export default SplitViewPager = ({transaction}) => {
     const [tabIndex, setTabIndex] = useState(transaction.payType);
-    const [members, setMembers] = useState([]);
+    const [arrayMembers, setArrayMembers] = useState([]);
 
     useEffect(()=>{
         let membersOfGroup = Utils.getMembersOfGroup(transaction.groupId);
-        setMembers(membersOfGroup);
+        // let arrayMembers = [_.clone(membersOfGroup), _.clone(membersOfGroup), _.clone(membersOfGroup), ]
+        let arrayMembers = [];
+        for (let i = 0; i < 5; i++){
+            membersOfGroup.map(member => {
+                let foundPayer = transaction.payers.find(payer => payer.email === member.email)
+                member['mustPay'] = foundPayer.mustPay
+            })
+            arrayMembers.push(_.clone(membersOfGroup));
+        }
+        setArrayMembers(arrayMembers);
     },[])
 
     const _renderCustomIndicator = () => {
@@ -80,22 +91,33 @@ export default SplitViewPager = ({transaction}) => {
             >
                 <View>
                     <SplitByEqually 
-                        payers={transaction.payers}
                         amount={transaction.amount}
-                        members={members}
+                        members={arrayMembers[0]}
                     />
                 </View>
                 <View>
-                    <SplitByExactly/>
+                    <SplitByExactly
+                        amount={transaction.amount}
+                        members={arrayMembers[1]}
+                    />
                 </View>
                 <View>
-                    <SplitByPercent/>
+                    <SplitByPercent
+                        amount={transaction.amount}
+                        members={arrayMembers[2]}
+                    />
                 </View>
                 <View>
-                    <SplitByShares/>
+                    <SplitByShares
+                        amount={transaction.amount}
+                        members={arrayMembers[3]}
+                    />
                 </View>
                 <View>
-                    <SplitByAdjustment/>
+                    <SplitByAdjustment
+                        amount={transaction.amount}
+                        members={arrayMembers[4]}
+                    />
                 </View>
             </IndicatorViewPager>
         </View>
