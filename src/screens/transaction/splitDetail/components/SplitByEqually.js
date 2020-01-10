@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  SafeAreaView,
-  Image,
-  Text,
-  FlatList,
-} from "react-native";
+import { View, SafeAreaView, Text, FlatList } from "react-native";
 import { styles } from './SplitBy.style';
 import SBCheckbox from "../../../../components/SBComponents/SBCheckbox";
 import Avatar from '../../../../components/Avatar';
@@ -28,7 +22,6 @@ const SplitByEqually = ({ amount, members }) => {
       setTotalPayers(0);
       members.map(member => member['mustPay'] = 0)
     }
-    console.log('members', members);
   }
 
   const onCheckedChange = (isChecked, payer) => {

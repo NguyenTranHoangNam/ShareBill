@@ -108,4 +108,16 @@ export default class Utils {
 		r = r.replace(new RegExp(/\W/g),"");
 		return r;
 	};
+
+
+	static gcd = (a, b) => {
+		if(b == 0){
+			return a;
+		}
+		return this.gcd(b, a%b);
+	};
+
+	static gcdArray = (a) => {
+	  return a.reduce(this.gcd)
+	}
 }

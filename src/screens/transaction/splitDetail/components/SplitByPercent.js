@@ -54,7 +54,7 @@ const SplitByPercent = ({ amount, members }) => {
   const keyExtractor = (index) => {
     return `${index}`;
   }
-  console.log('membersOfGroup', membersOfGroup);
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.pagerSummaryContainer}>

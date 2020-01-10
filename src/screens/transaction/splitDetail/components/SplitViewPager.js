@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { FONT_FAMILY, BORDER_WIDTH } from '../../../../utils/const';
+import { View, StyleSheet } from 'react-native';
 import { colors } from '../../../../utils/color';
 import IndicatorViewPager from '../../../../components/ViewPager/IndicatorViewPager';
 import PagerCustomIndicator from '../../../../components/ViewPager/indicator/PagerCustomIndicator';
@@ -24,7 +23,7 @@ export default SplitViewPager = ({transaction}) => {
         for (let i = 0; i < 5; i++){
             membersOfGroup.map(member => {
                 let foundPayer = transaction.payers.find(payer => payer.email === member.email)
-                member['mustPay'] = foundPayer.mustPay
+                member['mustPay'] = foundPayer ? foundPayer.mustPay : 0;
             })
             arrayMembers.push(_.clone(membersOfGroup));
         }

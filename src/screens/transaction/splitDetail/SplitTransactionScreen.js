@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  View, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity, Text
-} from "react-native";
+import { View, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity, Text } from "react-native";
 import { colors } from "../../../utils/color";
-import {
-  SBHeader, SBIconFont
-} from "../../../components/SBComponent";
+import { SBHeader, SBIconFont } from "../../../components/SBComponent";
 import SplitViewPager from "./components/SplitViewPager";
 import _ from 'lodash';
 import Utils from "../../../utils/utils";

@@ -44,8 +44,6 @@ const SplitByExactly = ({ amount, members }) => {
     return `${index}`;
   }
 
-  console.log('render')
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.pagerSummaryContainer}>
