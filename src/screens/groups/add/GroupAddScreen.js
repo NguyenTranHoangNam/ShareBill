@@ -6,7 +6,8 @@ import {
   Dimensions,
   StyleSheet,
   Text,
-  FlatList
+  FlatList,
+  Keyboard
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { FONT_FAMILY } from "../../../utils/const";
@@ -47,8 +48,13 @@ export function GroupAddScreen(props) {
   const modalAddMember = useRef();
 
   const addMember = () => {
+    console.log(modalAddMember);
     // modalAddMember.current.alertaa()
   };
+
+  const dismissKeyboard=() => {
+    Keyboard.dismiss();
+  }
 
   const renderItem = ({ item, index }) => {
     return (
@@ -87,47 +93,52 @@ export function GroupAddScreen(props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SBHeader onLeftPress={goBack} />
-      <View style={{ width, alignItems: "center" }}>
-        <Avatar
-          name={"default"}
-          source={require("../../../assets/images/background.png")}
-        />
-        <View style={{ marginLeft: 133, marginRight: 133 }}>
-          <SBTextInput
-            style={styles.groupName}
-            placeholder={"Tên nhóm"}
-            autoFocus
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={dismissKeyboard}
+      >
+        <SBHeader onLeftPress={goBack} />
+        <View style={{ width, alignItems: "center" }}>
+          <Avatar
+            name={"default"}
+            source={require("../../../assets/images/background.png")}
           />
-        </View>
-        <Text style={styles.countMember}>2 thành viên</Text>
-      </View>
-      <View style={styles.blockIcon}>
-        <TouchableOpacity onPress={addMember}>
-          <View style={styles.circleIcon}>
-            <SBIconFont name={"person-add"} color={colors.white} size={20} />
+          <View style={{ marginLeft: 133, marginRight: 133 }}>
+            <SBTextInput
+              style={styles.groupName}
+              placeholder={"Tên nhóm"}
+              autoFocus
+            />
           </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.headerList}>
-        <Text style={styles.titleHeader}>Thành viên nhóm</Text>
-      </View>
-      {/* {/* <FlatList data={data} renderItem={renderItem} /> */}
-      {/* <SBSwipeListView
+          <Text style={styles.countMember}>2 thành viên</Text>
+        </View>
+        <View style={styles.blockIcon}>
+          <TouchableOpacity onPress={addMember}>
+            <View style={styles.circleIcon}>
+              <SBIconFont name={"person-add"} color={colors.white} size={20} />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.headerList}>
+          <Text style={styles.titleHeader}>Thành viên nhóm</Text>
+        </View>
+        <FlatList data={data} renderItem={renderItem} />
+        {/* <SBSwipeListView
         leftIconName={"create"}
         rightIconName={"delete"}
         useFlatList
         data={data}
         renderItem={renderItem}
       /> */}
-      <View style={styles.blockSave}>
-        <SBButton
-          buttonStyle={styles.saveButton}
-          buttonText={"LƯU THÔNG TIN"}
-          textStyle={styles.saveTitle}
-        />
-      </View>
-      <ModalAddMember ref={modalAddMember} />
+        <View style={styles.blockSave}>
+          <SBButton
+            buttonStyle={styles.saveButton}
+            buttonText={"LƯU THÔNG TIN"}
+            textStyle={styles.saveTitle}
+          />
+        </View>
+        <ModalAddMember ref={modalAddMember} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

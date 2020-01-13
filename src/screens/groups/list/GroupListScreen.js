@@ -21,6 +21,9 @@ export function GroupListScreen(props) {
   const navigateToGroupDetails = groupSelected => {
     props.navigation.navigate("GroupDetails", { groupSelected });
   };
+  const navigateToCreateGroup = () => {
+    props.navigation.navigate("CreateGroup");
+  };
   const { listGroups } = useSelector(state => state.group);
   const dispatch = useDispatch();
   const renderItem = ({ item, index }) => {
@@ -52,7 +55,9 @@ export function GroupListScreen(props) {
   };
 
   const onHeaderIconPress = index => {
-    if(index === 1){
+    if (index == 0) {
+      navigateToCreateGroup();
+    } else if (index === 1) {
       props.navigation.navigate("GroupSearch");
     }
   };
@@ -63,7 +68,9 @@ export function GroupListScreen(props) {
         type="tab"
         tabTitle={"Nhóm"}
         icons={["group-add", "search"]}
-        onLeftPress={()=>{alert(1)}}
+        onLeftPress={() => {
+          alert(1);
+        }}
         onIconPress={onHeaderIconPress}
       />
 
