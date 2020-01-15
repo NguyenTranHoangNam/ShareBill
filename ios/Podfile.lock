@@ -192,6 +192,8 @@ PODS:
     - React
   - react-native-netinfo (4.6.1):
     - React
+  - react-native-webview (8.0.3):
+    - React
   - React-RCTActionSheet (0.61.4):
     - React-Core/RCTActionSheetHeaders (= 0.61.4)
   - React-RCTAnimation (0.61.4):
@@ -258,6 +260,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -313,6 +316,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-camera"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -364,6 +369,7 @@ SPEC CHECKSUMS:
   React-jsinspector: d15478d0a8ada19864aa4d1cc1c697b41b3fa92f
   react-native-camera: b7ad0c9648c3ea83f58a3ef4f815ab4acd88dc7e
   react-native-netinfo: 16c6408c311572f17f9ffc3fa12614489307b6cf
+  react-native-webview: de308e0b614039e483eef19a3cf6a9b6b166cff0
   React-RCTActionSheet: 7369b7c85f99b6299491333affd9f01f5a130c22
   React-RCTAnimation: d07be15b2bd1d06d89417eb0343f98ffd2b099a7
   React-RCTBlob: 8e0b23d95c9baa98f6b0e127e07666aaafd96c34
@@ -381,6 +387,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: ba3d99dbee6c15ea6bbe3783d1f0cb1ffb79af0f
 
-PODFILE CHECKSUM: 4365391fb8ddddfa31d553364f2780de26aa2ed5
+PODFILE CHECKSUM: 570ad639be7e09c034a11efab56f54bc98277ced
 
 COCOAPODS: 1.8.1

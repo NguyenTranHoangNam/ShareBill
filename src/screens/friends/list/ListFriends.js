@@ -24,7 +24,6 @@ export function ListFriendsScreen(props) {
   };
 
   const renderItem = ({ index, item }) => {
-    
     return (
       <TouchableListItem
         onPress={navigateToGroupDetails.bind(null,item)}

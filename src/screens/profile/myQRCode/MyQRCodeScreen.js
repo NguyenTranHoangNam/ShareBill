@@ -5,13 +5,15 @@ import {
   Dimensions,
   StyleSheet,
   Text,
-  Image
+  Image,
 } from "react-native";
 import { colors } from "../../../utils/color";
 import { FONT_FAMILY } from "../../../utils/const";
 import SBHeader from "../../../components/SBComponents/SBHeader";
-const { width, height } = Dimensions.get("screen");
+import QRCode from '../../../components/QRCode/QRCode';
 
+const { width, height } = Dimensions.get("screen");
+const qrCodeSize = 200
 export function MyQRCodeScreen(props) {
   const goBack = () => {
     props.navigation.goBack();
@@ -20,22 +22,19 @@ export function MyQRCodeScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={goBack} title={"Mã QR của tôi"} />
-
-      <Image
-        source={{
-          uri:
-            "https://vi.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png"
-        }}
-        style={{
-          width: 200,
-          height: 200,
-          alignSelf: "center",
-          marginTop: 21
-        }}
-      />
+      <View  style={styles.qrContainer}>
+      <QRCode
+          value={'HoangNamNguyenTranHoangNamNguyenTranHoangNamNguyenTranHoangNamNguyenTran'}
+          size={qrCodeSize}
+          bgColor={'black'}
+          fgColor={'white'}
+          />
+      </View>
+       
       <View style={{ marginTop: 50,marginLeft:20,marginRight:20 }}>
         <Text style={styles.titleHeader}>Bạn bè có thể tìm kiếm và kết nối với bạn khi quét mã QR này.</Text>
       </View>
+
     </SafeAreaView>
   );
 }
@@ -60,5 +59,13 @@ const styles = StyleSheet.create({
     color: colors.white,
     paddingLeft: 10,
     textAlign:'center'
+  },
+  qrContainer:{
+    width: qrCodeSize + 2,
+    height: qrCodeSize + 2,
+    alignSelf: "center",
+    marginTop: 21,
+    borderColor:colors.white,
+    borderWidth:1
   }
 });

@@ -16,7 +16,8 @@ import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
 import { ModalAddMember } from "../addMember/modal/ModalAddMember";
-
+import { useSelector, useDispatch } from "react-redux";
+import TouchableListItem from "../../../components/TouchableListItem";
 const { width, height } = Dimensions.get("screen");
 
 const data = [
@@ -45,6 +46,8 @@ export function GroupAddScreen(props) {
     props.navigation.goBack();
   };
 
+  const {listFriends} = useSelector(state => state.friend);
+
   const modalAddMember = useRef();
 
   const addMember = () => {
@@ -56,41 +59,32 @@ export function GroupAddScreen(props) {
     Keyboard.dismiss();
   }
 
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({ index, item }) => {
     return (
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => console.log(item)}
-        style={styles.rowFront}
-        underlayColor={"#AAA"}
+      <TouchableListItem
+        onPress={()=>{console.log(item)}}
+        title={item.fullname}
+        index={index}
       >
-        <View
-          style={{
-            width,
-            height: 60,
-            flexDirection: "row",
-            alignItems: "center"
-          }}
-        >
-          <Avatar
-            name={"default"}
-            source={require("../../../assets/images/background.png")}
-            size={40}
-            style={{ borderRadius: 20, marginLeft: 20 }}
-          />
-          <View style={{ marginLeft: 35 }}>
-            <Text style={styles.memberName}>
-              {item.name}
-            </Text>
-            <Text style={styles.memberNumberPhone}>
-              {item.numberPhone}
-            </Text>
-          </View>
-        </View>
-      </TouchableOpacity>
+        {item.info &&
+          item.info.map(data => {
+            return (
+              <View style={{ flexDirection: "row", }}>
+                {data.type === defineValue.Lend
+                  ? <Text style={styles.subTitle}>Bạn cho mượn<Text style={{ color: colors.mainLight }}> {data.quantity}</Text></Text>
+                  : <Text style={styles.subTitle}>Bạn mượn<Text style={{ color: colors.orange }}> {data.quantity}</Text></Text>}
+                <SBIconFont
+                  style={{ marginLeft: 5 }}
+                  name={"info-outline"}
+                  size={14}
+                  color={colors.white}
+                />
+              </View>
+            );
+          })}
+      </TouchableListItem>
     );
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -122,7 +116,7 @@ export function GroupAddScreen(props) {
         <View style={styles.headerList}>
           <Text style={styles.titleHeader}>Thành viên nhóm</Text>
         </View>
-        <FlatList data={data} renderItem={renderItem} />
+        <FlatList data={listFriends} renderItem={renderItem} />
         {/* <SBSwipeListView
         leftIconName={"create"}
         rightIconName={"delete"}
