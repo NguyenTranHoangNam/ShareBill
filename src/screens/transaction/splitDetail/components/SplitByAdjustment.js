@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  SafeAreaView,
-  Image,
-  Text,
-  FlatList,
-} from "react-native";
+import { View, SafeAreaView, Text, FlatList } from "react-native";
 import { styles } from './SplitBy.style';
 import { SBTextInput } from "../../../../components/SBComponent";
 import Avatar from '../../../../components/Avatar';
+import _ from 'lodash';
 
-const SplitByAdjustment = ({ amount, payers, members }) => {
-  const [checkingPayers, setCheckingPayers] = useState(payers);
+const SplitByAdjustment = ({ amount, members }) => {
+  const [adjustments, setAdjustments] = useState([]);
+  const [membersOfGroup, setMembersOfGroup] = useState(members);
+
+  useEffect(() => {
+    let minMustPay = Math.min.apply(Math, membersOfGroup.map(member => parseFloat(member.mustPay)));
+    membersOfGroup.map(member => adjustments.push(parseFloat(member.mustPay) - minMustPay));
+    setAdjustments(_.clone(adjustments));
+  }, [])
+
+
+  const onAdjustmentChange = (value, index) => {
+    adjustments[index] = value;
+    let total = adjustments.reduce((accumulator, currentValue) => (parseFloat(accumulator || 0) + parseFloat(currentValue || 0)));
+    membersOfGroup.map((member, index) => member['mustPay'] = (amount - total)/membersOfGroup.length + parseFloat(adjustments[index]))
+    setAdjustments(adjustments);
+    setMembersOfGroup(_.clone(membersOfGroup));
+  }
   
-  const renderItem = ({ item }) => {
+  const renderItem = ({ item, index }) => {
     return (
       <View style={styles.rowStyles}>
         <Avatar name={item.fullname} size={40} />
@@ -22,6 +33,8 @@ const SplitByAdjustment = ({ amount, payers, members }) => {
           <Text style={styles.unit}>+</Text>
           <SBTextInput
             style={styles.inputAmount}
+            value={`${adjustments[index]}`}
+            onChangeText={(value) => onAdjustmentChange(value, index)}
             placeholder={'0.000'}
           />
         </View>
@@ -32,13 +45,16 @@ const SplitByAdjustment = ({ amount, payers, members }) => {
   const keyExtractor = (index) => {
     return `${index}`;
   }
+
+
+  console.log('adjustments', adjustments);
   
   return (
     <SafeAreaView style={styles.container}>
        <FlatList
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        data={members}
+        data={membersOfGroup}
       />
     </SafeAreaView>
   );
