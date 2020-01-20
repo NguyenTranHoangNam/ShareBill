@@ -63,7 +63,7 @@ export function GroupAddScreen(props) {
     return (
       <TouchableListItem
         onPress={()=>{console.log(item)}}
-        title={item.fullname}
+        title={item}
         index={index}
       >
         {item.info &&
