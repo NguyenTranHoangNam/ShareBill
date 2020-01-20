@@ -30,8 +30,8 @@ let  initTrans = {
   logo: '',
   comments: [],
   payers: [
-    {id: 1, fullname: 'Trung Kiên', mustPay: 5000, paid: 5000, email: 'tkien@gmail.com'},
-    {id: 2, fullname: 'Ngọc Loan', mustPay: 5000, paid: 5000, email: 'nloan@gmail.com'},
+    {id: 1, fullname: 'Trung Kiên', mustPay: 7000, paid: 5000, email: 'tkien@gmail.com'},
+    {id: 2, fullname: 'Ngọc Loan', mustPay: 3000, paid: 5000, email: 'nloan@gmail.com'},
   ],
 }
 
