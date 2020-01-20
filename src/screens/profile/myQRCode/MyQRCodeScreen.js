@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   qrContainer:{
-    width: qrCodeSize + 2,
-    height: qrCodeSize + 2,
+    width: qrCodeSize * 1.01,
+    height: qrCodeSize * 1.01,
     alignSelf: "center",
     marginTop: 21,
     borderColor:colors.white,
