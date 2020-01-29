@@ -34,6 +34,7 @@ export function MemberInfoInput(props) {
       </View>
       <View style={styles.blockButton}>
         <SBButton
+          // onPress={props.onPress}
           buttonStyle={styles.buttonStyle}
           textStyle={styles.buttonTextStyle}
           buttonText={"THÊM THÀNH VIÊN"}

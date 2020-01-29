@@ -5,7 +5,6 @@ import { GroupDetailsScreen } from "../../screens/groups/details/GroupDetailsScr
 import { GroupInfoScreen } from "../../screens/groups/info/GroupInfoScreen";
 import { TransitionConfiguration } from "../transitionConfig";
 import  {GroupAddScreen}  from "../../screens/groups/add/GroupAddScreen";
-import { MemberInfoInput } from "../../screens/groups/addMember/components/addMember/MemberInfoInput";
 import { AddMemberScreen } from "../../screens/groups/addMember/AddMemberScreen";
 import { GroupSearchScreen } from "../../screens/groups/search/GroupSearchScreen";
 

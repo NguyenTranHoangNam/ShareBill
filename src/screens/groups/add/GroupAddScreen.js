@@ -20,45 +20,26 @@ import { useSelector, useDispatch } from "react-redux";
 import TouchableListItem from "../../../components/TouchableListItem";
 const { width, height } = Dimensions.get("screen");
 
-const data = [
-  {
-    key: "0",
-    avatar: "",
-    name: "Lương Kiên Hào",
-    numberPhone: "123456789"
-  },
-  {
-    key: "1",
-    avatar: "",
-    name: "Nguyễn Trần Hoàng Nam",
-    numberPhone: "112233445"
-  },
-  {
-    key: "2",
-    avatar: "",
-    name: "Nguyễn Trần Hoàng Nam",
-    numberPhone: "112233445"
-  }
-];
-
 export function GroupAddScreen(props) {
   const goBack = () => {
     props.navigation.goBack();
   };
 
   const {listFriends} = useSelector(state => state.friend);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const modalAddMember = useRef();
 
   const addMember = () => {
-    console.log(modalAddMember);
-    // modalAddMember.current.alertaa()
+    setModalVisible(true)
   };
 
   const dismissKeyboard=() => {
     Keyboard.dismiss();
   }
-
+  const closeModal=()=>{
+    setModalVisible(false)
+  }
   const renderItem = ({ index, item }) => {
     return (
       <TouchableListItem
@@ -131,7 +112,7 @@ export function GroupAddScreen(props) {
             textStyle={styles.saveTitle}
           />
         </View>
-        <ModalAddMember ref={modalAddMember} />
+        <ModalAddMember modalVisible={modalVisible} closeModal={closeModal} />
       </TouchableOpacity>
     </SafeAreaView>
   );
