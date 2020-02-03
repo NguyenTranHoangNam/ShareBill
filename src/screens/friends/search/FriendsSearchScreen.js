@@ -20,29 +20,31 @@ import TouchableListItem from "../../../components/TouchableListItem";
 import { useSelector, useDispatch } from "react-redux";
 import Utils from "../../../utils/utils";
 
-export function GroupSearchScreen(props) {
-  const { listGroups } = useSelector(state => state.group);
-  const [groupsResult, setGroupsResult] = useState(listGroups);
-  const navigateToGroupDetails = groupSelected => {
-    props.navigation.navigate("GroupDetails", { groupSelected });
-  };
-
+export function FriendsSearchScreen(props) {
+  const { listFriends } = useSelector(state => state.friend);
+  const [listFriendsResult, setListFriendsResult] = useState(Utils.getFriendsFromUsersList(listFriends));
   const goBack = () => {
     props.navigation.goBack();
   };
-  const onChangeText = groupName => {
-    const groupsFilter = listGroups.filter(group => {
-      return Utils.removeAccentsCharacter(group.name).includes(
-        Utils.removeAccentsCharacter(groupName)
+  const onChangeText = friendsName => {
+    const listFriendsFilter = listFriends.filter(friend => {
+      return Utils.removeAccentsCharacter(friend).includes(
+        Utils.removeAccentsCharacter(friendsName)
       );
     });
-    setGroupsResult(groupsFilter);
+    console.log(Utils.getFriendsFromUsersList(listFriendsFilter))
+    setListFriendsResult(Utils.getFriendsFromUsersList(listFriendsFilter));
   };
+
+  const navigateToGroupDetails = friendSelected => {
+    props.navigation.navigate("FriendInfo", { friendSelected });
+  };
+
   const renderItem = ({ item, index }) => {
     return (
       <TouchableListItem
         onPress={navigateToGroupDetails.bind(null, item)}
-        title={item.name}
+        title={item.fullname}
         index={index}
       >
         <View style={{ flexDirection: "row" }}>
@@ -77,8 +79,7 @@ export function GroupSearchScreen(props) {
 
       <FlatList
         contentContainerStyle={styles.contentContainerStyle}
-        data={groupsResult}
-        extraData={groupsResult}
+        data={listFriendsResult}
         renderItem={renderItem}
         keyExtractor={index => String(index)}
       />

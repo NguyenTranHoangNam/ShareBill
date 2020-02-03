@@ -5,6 +5,7 @@ import { TransitionConfiguration } from "../transitionConfig";
 import { ListFriendsScreen } from "../../screens/friends/list/ListFriends";
 import { FriendInfoScreen } from "../../screens/friends/info/FriendInfoScreen";
 import { GroupDetailsScreen } from "../../screens/groups/details/GroupDetailsScreen";
+import { FriendsSearchScreen } from "../../screens/friends/search/FriendsSearchScreen";
 
 const FriendsNavigator = createStackNavigator(
   {
@@ -17,6 +18,9 @@ const FriendsNavigator = createStackNavigator(
     GroupDetails: {
       screen: GroupDetailsScreen
     },
+    FriendsSearch:{
+      screen: FriendsSearchScreen
+    }
   },
   {
     headerMode: "none",

@@ -15,7 +15,6 @@ import Avatar from "../../../components/Avatar";
 import SBHeader from "../../../components/SBComponents/SBHeader";
 import SBButton from "../../../components/SBComponents/SBButton";
 import { SBIconFont, SBTextInput } from "../../../components/SBComponent";
-import { ModalAddMember } from "../addMember/modal/ModalAddMember";
 import { useSelector, useDispatch } from "react-redux";
 import TouchableListItem from "../../../components/TouchableListItem";
 const { width, height } = Dimensions.get("screen");
@@ -26,20 +25,15 @@ export function GroupAddScreen(props) {
   };
 
   const {listFriends} = useSelector(state => state.friend);
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const modalAddMember = useRef();
 
   const addMember = () => {
-    setModalVisible(true)
+    props.navigation.navigate('ChooseMembers')
   };
 
   const dismissKeyboard=() => {
     Keyboard.dismiss();
   }
-  const closeModal=()=>{
-    setModalVisible(false)
-  }
+
   const renderItem = ({ index, item }) => {
     return (
       <TouchableListItem
@@ -72,7 +66,7 @@ export function GroupAddScreen(props) {
         activeOpacity={1}
         onPress={dismissKeyboard}
       >
-        <SBHeader onLeftPress={goBack} />
+        <SBHeader onLeftPress={goBack}/>
         <View style={{ width, alignItems: "center" }}>
           <Avatar
             name={"default"}
@@ -98,13 +92,6 @@ export function GroupAddScreen(props) {
           <Text style={styles.titleHeader}>Thành viên nhóm</Text>
         </View>
         <FlatList data={listFriends} renderItem={renderItem} />
-        {/* <SBSwipeListView
-        leftIconName={"create"}
-        rightIconName={"delete"}
-        useFlatList
-        data={data}
-        renderItem={renderItem}
-      /> */}
         <View style={styles.blockSave}>
           <SBButton
             buttonStyle={styles.saveButton}
@@ -112,7 +99,6 @@ export function GroupAddScreen(props) {
             textStyle={styles.saveTitle}
           />
         </View>
-        <ModalAddMember modalVisible={modalVisible} closeModal={closeModal} />
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -208,7 +194,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
   rowFront: {
     alignItems: "center",

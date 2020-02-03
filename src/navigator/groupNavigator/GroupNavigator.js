@@ -7,6 +7,7 @@ import { TransitionConfiguration } from "../transitionConfig";
 import  {GroupAddScreen}  from "../../screens/groups/add/GroupAddScreen";
 import { AddMemberScreen } from "../../screens/groups/addMember/AddMemberScreen";
 import { GroupSearchScreen } from "../../screens/groups/search/GroupSearchScreen";
+import { ChooseMembersScreen } from "../../screens/groups/chooseMembers/ChooseMembersScreen";
 
 const GroupNavigator = createStackNavigator(
   {
@@ -27,6 +28,9 @@ const GroupNavigator = createStackNavigator(
     },
     GroupSearch:{
       screen: GroupSearchScreen
+    },
+    ChooseMembers:{
+      screen:ChooseMembersScreen
     }
   },
   {

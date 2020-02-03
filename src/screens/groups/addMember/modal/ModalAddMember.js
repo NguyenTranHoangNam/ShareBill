@@ -28,7 +28,7 @@ export function ModalAddMember(props) {
         <SafeAreaView style={styles.container}>
           <View style={styles.modalContainer}>
             <Text style={styles.titleStyles}>THÊM THÀNH VIÊN</Text>
-            <MemberInfoInput />
+            <MemberInfoInput onPress={props.closeModal} />
           </View>
         </SafeAreaView>
       </TouchableOpacity>
