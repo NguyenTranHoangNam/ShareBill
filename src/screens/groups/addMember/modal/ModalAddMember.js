@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { colors } from "../../../../utils/color";
 import { MemberInfoInput } from "../components/addMember/MemberInfoInput";
+import { FONT_FAMILY } from "../../../../utils/const";
 
 const { width, height } = Dimensions.get("screen");
 export function ModalAddMember(props) {
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   titleStyles: {
     textAlign: "center",
-    fontFamily: "Roboto",
+    fontFamily: FONT_FAMILY,
     fontSize: 11,
     fontWeight: "bold",
     fontStyle: "normal",

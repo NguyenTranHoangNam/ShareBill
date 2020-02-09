@@ -27,13 +27,12 @@ export function FriendsSearchScreen(props) {
     props.navigation.goBack();
   };
   const onChangeText = friendsName => {
-    const listFriendsFilter = listFriends.filter(friend => {
-      return Utils.removeAccentsCharacter(friend).includes(
+    const listFriendsFilter = Utils.getFriendsFromUsersList(listFriends).filter(friend => {
+      return Utils.removeAccentsCharacter(friend.fullname).includes(
         Utils.removeAccentsCharacter(friendsName)
       );
     });
-    console.log(Utils.getFriendsFromUsersList(listFriendsFilter))
-    setListFriendsResult(Utils.getFriendsFromUsersList(listFriendsFilter));
+    setListFriendsResult(listFriendsFilter);
   };
 
   const navigateToGroupDetails = friendSelected => {

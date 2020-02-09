@@ -24,30 +24,46 @@ export function GroupAddScreen(props) {
     props.navigation.goBack();
   };
 
-  const {listFriends} = useSelector(state => state.friend);
+  const { listFriends } = useSelector(state => state.friend);
+  const [listMembers, setListMembers] = useState([]);
 
   const addMember = () => {
-    props.navigation.navigate('ChooseMembers')
+    props.navigation.navigate("ChooseMembers",{listMembers,getListMembersChose});
   };
 
-  const dismissKeyboard=() => {
-    Keyboard.dismiss();
+  const getListMembersChose=(listMembers)=>{
+    setListMembers(listMembers)
+    console.log({listMembers})
   }
+
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
 
   const renderItem = ({ index, item }) => {
     return (
       <TouchableListItem
-        onPress={()=>{console.log(item)}}
+        onPress={() => {
+          console.log(item);
+        }}
         title={item}
         index={index}
       >
         {item.info &&
           item.info.map(data => {
             return (
-              <View style={{ flexDirection: "row", }}>
+              <View style={{ flexDirection: "row" }}>
                 {data.type === defineValue.Lend
-                  ? <Text style={styles.subTitle}>Bạn cho mượn<Text style={{ color: colors.mainLight }}> {data.quantity}</Text></Text>
-                  : <Text style={styles.subTitle}>Bạn mượn<Text style={{ color: colors.orange }}> {data.quantity}</Text></Text>}
+                  ? <Text style={styles.subTitle}>
+                      Bạn cho mượn<Text style={{ color: colors.mainLight }}>
+                        {" "}{data.quantity}
+                      </Text>
+                    </Text>
+                  : <Text style={styles.subTitle}>
+                      Bạn mượn<Text style={{ color: colors.orange }}>
+                        {" "}{data.quantity}
+                      </Text>
+                    </Text>}
                 <SBIconFont
                   style={{ marginLeft: 5 }}
                   name={"info-outline"}
@@ -62,11 +78,8 @@ export function GroupAddScreen(props) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={dismissKeyboard}
-      >
-        <SBHeader onLeftPress={goBack}/>
+      <TouchableOpacity activeOpacity={1} onPress={dismissKeyboard}>
+        <SBHeader onLeftPress={goBack} />
         <View style={{ width, alignItems: "center" }}>
           <Avatar
             name={"default"}
@@ -79,7 +92,7 @@ export function GroupAddScreen(props) {
               autoFocus
             />
           </View>
-          <Text style={styles.countMember}>2 thành viên</Text>
+          <Text style={styles.countMember}>{listMembers.length} thành viên</Text>
         </View>
         <View style={styles.blockIcon}>
           <TouchableOpacity onPress={addMember}>
@@ -91,7 +104,12 @@ export function GroupAddScreen(props) {
         <View style={styles.headerList}>
           <Text style={styles.titleHeader}>Thành viên nhóm</Text>
         </View>
-        <FlatList data={listFriends} renderItem={renderItem} />
+        <FlatList
+          data={listMembers}
+          extraData={listMembers}
+          renderItem={renderItem}
+          keyExtractor={index => String(index)}
+        />
         <View style={styles.blockSave}>
           <SBButton
             buttonStyle={styles.saveButton}
@@ -194,7 +212,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 10,
+    marginBottom: 10
   },
   rowFront: {
     alignItems: "center",
