@@ -37,9 +37,7 @@ export const SplitTransactionScreen = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <SBHeader onLeftPress={onBackPress} title={"Chi tiết chi tiêu"} />
       <ScrollView contentContainerStyle={styles.scrollViewContentStyle}>
-        <TouchableOpacity
-            onPress={navigateToSelectPayer}
-        >
+        <TouchableOpacity onPress={navigateToSelectPayer} >
           <View style={styles.payerContainer}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <View
@@ -54,11 +52,7 @@ export const SplitTransactionScreen = ({navigation}) => {
                 Trả bởi <Text style={{ fontWeight: "bold" }}>{getPayersCountText(transaction.payers)}</Text>
               </Text>
             </View>
-            <SBIconFont
-              size={20}
-              name={"chevron-right"}
-              color={colors.subTitle}
-            />
+            <SBIconFont size={20} name={"chevron-right"} color={colors.subTitle} />
           </View>
         </TouchableOpacity>
         <SplitViewPager 

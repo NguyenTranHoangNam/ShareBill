@@ -4,6 +4,7 @@ import { styles } from './SplitBy.style';
 import { SBTextInput } from "../../../../components/SBComponent";
 import Avatar from '../../../../components/Avatar';
 import _ from 'lodash';
+import Utils from "../../../../utils/utils";
 
 const SplitByAdjustment = ({ amount, members }) => {
   const [adjustments, setAdjustments] = useState([]);
@@ -28,7 +29,10 @@ const SplitByAdjustment = ({ amount, members }) => {
     return (
       <View style={styles.rowStyles}>
         <Avatar name={item.fullname} size={40} />
-        <Text style={styles.memberStyles}>{item.fullname}</Text>
+        <View style={{flexDirection: 'column'}}>
+          <Text style={styles.memberStyles}>{item.fullname}</Text>
+          <Text style={styles.memberMustPayStyles}>{Utils.formatMoney(item.mustPay, 0, 'đ')}</Text>
+        </View>
         <View style={styles.inputAmountContainer}>
           <Text style={styles.unit}>+</Text>
           <SBTextInput

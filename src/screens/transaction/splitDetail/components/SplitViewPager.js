@@ -18,7 +18,6 @@ export default SplitViewPager = ({transaction}) => {
 
     useEffect(()=>{
         let membersOfGroup = Utils.getMembersOfGroup(transaction.groupId);
-        // let arrayMembers = [_.clone(membersOfGroup), _.clone(membersOfGroup), _.clone(membersOfGroup), ]
         let arrayMembers = [];
         for (let i = 0; i < 5; i++){
             membersOfGroup.map(member => {

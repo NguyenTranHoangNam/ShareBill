@@ -19,6 +19,12 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold"
     },
+    memberMustPayStyles: {
+        marginLeft: 15,
+        color: colors.white,
+        fontFamily: FONT_FAMILY,
+        fontSize: 10,
+    },
     rowStyles: {
         flexDirection: "row",
         alignItems: "center",
