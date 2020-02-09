@@ -17,19 +17,6 @@ import { SBIconFont } from "../../../components/SBComponent";
 import Utils from "../../../utils/utils";
 const { width, height } = Dimensions.get("screen");
 
-const data = [
-  {
-    avatar: "",
-    name: "Lương Kiên Hào",
-    numberPhone: "123456789"
-  },
-  {
-    avatar: "",
-    name: "Nguyễn Trần Hoàng Nam",
-    numberPhone: "112233445"
-  }
-];
-
 export function GroupInfoScreen(props) {
   const { groupSelected } = props.navigation.state.params;
   const goBack = () => {
